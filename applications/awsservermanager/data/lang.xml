@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<language>
+ <app key="awsservermanager" version="10001">
+  <word key="__app_awsservermanager" js="0">AWS Server Manager</word>
+  <word key="menutab__awsservermanager" js="0">AWS Steam Servers</word>
+  <word key="menutab__awsservermanager_icon" js="0">server</word>
+  <word key="menu__awsservermanager_servers" js="0">Servers</word>
+  <word key="menu__awsservermanager_servers_settings" js="0">Settings</word>
+  <word key="aws_credentials" js="0">AWS Programmatic Access Credentials</word>
+  <word key="aws_region" js="0">Region</word>
+  <word key="aws_access_key_id" js="0">Access Key ID</word>
+  <word key="aws_access_key_secret" js="0">Access Key Secret</word>
+  <word key="steam_api_key" js="0">Steam API Credentials</word>
+  <word key="menu__awsservermanager_servers_servers" js="0">Servers</word>
+  <word key="awsservermanager_servers" js="0">Manage Servers</word>
+  <word key="name" js="0">Internal Name</word>
+  <word key="position" js="0">Position</word>
+  <word key="ip" js="0">IP Address</word>
+  <word key="port" js="0">Port</word>
+  <word key="domain" js="0">Domain</word>
+  <word key="appid" js="0">Steam AppID</word>
+  <word key="steam_query_port" js="0">Steam Query Port</word>
+  <word key="aws_instance_id" js="0">AWS Instance ID</word>
+  <word key="awsservermanager_serverperm__label" js="0">Server Permissions</word>
+  <word key="awsservermanager_serverperm__view" js="0">Can view</word>
+  <word key="awsservermanager_serverperm__start" js="0">Can start</word>
+  <word key="awsservermanager_serverperm__stop" js="0">Can stop/reboot</word>
+  <word key="servers_title" js="0">Servers</word>
+  <word key="servers_subtitle" js="0">View current game server information</word>
+  <word key="awsservermanager_state" js="0">State</word>
+  <word key="awsservermanager_server_ip" js="0">IP Address</word>
+  <word key="awsservermanager_server_port" js="0">Port</word>
+  <word key="awsservermanager_steam_name" js="0">Name</word>
+  <word key="awsservermanager_steam_game" js="0">Game</word>
+  <word key="awsservermanager_steam_players" js="0">Players</word>
+  <word key="awsservermanager_steam_noinfo" js="0">No Steam information available.</word>
+  <word key="awsservermanager_start" js="0">Start</word>
+  <word key="awsservermanager_stop" js="0">Stop</word>
+  <word key="awsservermanager_reboot" js="0">Reboot</word>
+ </app>
+</language>

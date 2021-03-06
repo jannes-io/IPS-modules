@@ -1,0 +1,140 @@
+{
+    "awsservermanager_servers": {
+        "name": "awsservermanager_servers",
+        "columns": {
+            "id": {
+                "allow_null": false,
+                "auto_increment": true,
+                "comment": "ID Number",
+                "decimals": null,
+                "default": null,
+                "length": 20,
+                "name": "id",
+                "type": "BIGINT",
+                "unsigned": true,
+                "values": []
+            },
+            "ip": {
+                "allow_null": false,
+                "auto_increment": false,
+                "comment": "",
+                "decimals": null,
+                "default": null,
+                "length": 64,
+                "name": "ip",
+                "type": "VARCHAR",
+                "unsigned": false,
+                "values": []
+            },
+            "port": {
+                "allow_null": false,
+                "auto_increment": false,
+                "comment": "Server port",
+                "decimals": null,
+                "default": null,
+                "length": 10,
+                "name": "port",
+                "type": "INT",
+                "unsigned": true,
+                "values": []
+            },
+            "domain": {
+                "allow_null": true,
+                "auto_increment": false,
+                "comment": "Full domain name (eg. server1.example.com)",
+                "decimals": null,
+                "default": null,
+                "length": 128,
+                "name": "domain",
+                "type": "VARCHAR",
+                "unsigned": false,
+                "values": []
+            },
+            "appid": {
+                "allow_null": false,
+                "auto_increment": false,
+                "comment": "Steam application id",
+                "decimals": null,
+                "default": null,
+                "length": 10,
+                "name": "appid",
+                "type": "INT",
+                "unsigned": true,
+                "values": []
+            },
+            "steam_query_port": {
+                "name": "steam_query_port",
+                "type": "INT",
+                "length": null,
+                "decimals": null,
+                "values": null,
+                "allow_null": false,
+                "default": null,
+                "comment": "Steam query port, usually different from actual server port",
+                "unsigned": true,
+                "auto_increment": false
+            },
+            "aws_instance_id": {
+                "name": "aws_instance_id",
+                "type": "VARCHAR",
+                "length": 128,
+                "decimals": null,
+                "values": null,
+                "allow_null": false,
+                "default": null,
+                "comment": "",
+                "unsigned": false,
+                "auto_increment": false
+            },
+            "position": {
+                "name": "position",
+                "type": "INT",
+                "length": null,
+                "decimals": null,
+                "values": null,
+                "allow_null": false,
+                "default": "999",
+                "comment": "",
+                "unsigned": true,
+                "auto_increment": false
+            },
+            "name": {
+                "name": "name",
+                "type": "VARCHAR",
+                "length": 128,
+                "decimals": null,
+                "values": null,
+                "allow_null": false,
+                "default": null,
+                "comment": "Server name",
+                "unsigned": false,
+                "auto_increment": false
+            }
+        },
+        "indexes": {
+            "PRIMARY": {
+                "type": "primary",
+                "name": "PRIMARY",
+                "length": [
+                    null
+                ],
+                "columns": [
+                    "id"
+                ]
+            },
+            "ip_port_unique": {
+                "type": "unique",
+                "name": "ip_port_unique",
+                "length": [
+                    null,
+                    null
+                ],
+                "columns": [
+                    "ip",
+                    "port"
+                ]
+            }
+        },
+        "collation": "utf8mb4_unicode_ci"
+    }
+}

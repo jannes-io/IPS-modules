@@ -1,0 +1,18 @@
+[
+    {
+        "key": "aws_access_key_id",
+        "default": ""
+    },
+    {
+        "key": "aws_access_key_secret",
+        "default": ""
+    },
+    {
+        "key": "aws_region",
+        "default": ""
+    },
+    {
+        "key": "steam_api_key",
+        "default": ""
+    }
+]

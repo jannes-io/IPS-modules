@@ -1,0 +1,9 @@
+{
+  "topLevel": "servers",
+  "pages": {
+    "servers": {
+      "friendly": "",
+      "real": "app=awsservermanager&module=servers&controller=servers"
+    }
+  }
+}

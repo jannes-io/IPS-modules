@@ -1,0 +1,56 @@
+{
+    "1": {
+        "method": "addColumn",
+        "params": [
+            "awsservermanager_servers",
+            {
+                "name": "aws_instance_id",
+                "type": "VARCHAR",
+                "length": 128,
+                "decimals": null,
+                "values": null,
+                "allow_null": false,
+                "default": null,
+                "comment": "",
+                "unsigned": false,
+                "auto_increment": false
+            }
+        ]
+    },
+    "2": {
+        "method": "addColumn",
+        "params": [
+            "awsservermanager_servers",
+            {
+                "name": "position",
+                "type": "INT",
+                "length": null,
+                "decimals": null,
+                "values": null,
+                "allow_null": false,
+                "default": "999",
+                "comment": "",
+                "unsigned": true,
+                "auto_increment": false
+            }
+        ]
+    },
+    "3": {
+        "method": "addColumn",
+        "params": [
+            "awsservermanager_servers",
+            {
+                "name": "name",
+                "type": "VARCHAR",
+                "length": 128,
+                "decimals": null,
+                "values": null,
+                "allow_null": false,
+                "default": null,
+                "comment": "Server name",
+                "unsigned": false,
+                "auto_increment": false
+            }
+        ]
+    }
+}

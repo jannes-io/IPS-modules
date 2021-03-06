@@ -1,0 +1,18 @@
+{
+    "servers": {
+        "settings": {
+            "tab": "awsservermanager",
+            "controller": "settings",
+            "do": "",
+            "restriction": "settings_manage",
+            "subcontrollers": ""
+        },
+        "servers": {
+            "tab": "awsservermanager",
+            "controller": "servers",
+            "do": "",
+            "restriction": "servers_manage",
+            "subcontrollers": ""
+        }
+    }
+}

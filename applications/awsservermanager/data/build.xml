@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<build>
+ <module key="admin/servers"><![CDATA[{"default_controller":"servers","protected":0,"default":1}]]></module>
+ <module key="front/servers"><![CDATA[{"default_controller":"","protected":false,"default":null}]]></module>
+ <setting key="aws_access_key_id"><![CDATA[{"key":"aws_access_key_id","default":""}]]></setting>
+ <setting key="aws_access_key_secret"><![CDATA[{"key":"aws_access_key_secret","default":""}]]></setting>
+ <setting key="aws_region"><![CDATA[{"key":"aws_region","default":""}]]></setting>
+ <setting key="steam_api_key"><![CDATA[{"key":"steam_api_key","default":""}]]></setting>
+</build>

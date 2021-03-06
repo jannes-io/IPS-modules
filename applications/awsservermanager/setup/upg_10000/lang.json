@@ -1,0 +1,49 @@
+{
+    "normal": {
+        "added": [
+            "__app_awsservermanager",
+            "menutab__awsservermanager",
+            "menutab__awsservermanager_icon",
+            "menu__awsservermanager_servers",
+            "menu__awsservermanager_servers_settings",
+            "aws_credentials",
+            "aws_region",
+            "aws_access_key_id",
+            "aws_access_key_secret",
+            "steam_api_key",
+            "menu__awsservermanager_servers_servers",
+            "awsservermanager_servers",
+            "name",
+            "position",
+            "ip",
+            "port",
+            "domain",
+            "appid",
+            "steam_query_port",
+            "aws_instance_id",
+            "awsservermanager_serverperm__label",
+            "awsservermanager_serverperm__view",
+            "awsservermanager_serverperm__start",
+            "awsservermanager_serverperm__stop",
+            "servers_title",
+            "servers_subtitle",
+            "awsservermanager_state",
+            "awsservermanager_server_ip",
+            "awsservermanager_server_port",
+            "awsservermanager_steam_name",
+            "awsservermanager_steam_game",
+            "awsservermanager_steam_players",
+            "awsservermanager_steam_noinfo",
+            "awsservermanager_start",
+            "awsservermanager_stop",
+            "awsservermanager_reboot"
+        ],
+        "edited": [],
+        "removed": []
+    },
+    "js": {
+        "added": [],
+        "edited": [],
+        "removed": []
+    }
+}

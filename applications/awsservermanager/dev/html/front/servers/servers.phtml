@@ -1,0 +1,12 @@
+<ips:template parameters="$servers=[]" />
+<div class="ipsPageHeader ipsBox ipsResponsive_pull ipsPadding ipsSpacer_bottom ipsClearfix">
+    <header>
+        <h1 class="ipsType_pageTitle">{lang="servers_title"}</h1>
+        <div class="ipsType_richText ipsType_normal">{lang="servers_subtitle"}</div>
+    </header>
+</div>
+<div class="ipsGrid ipsGrid_collapsePhone">
+    {{foreach $servers as $server}}
+    {template="server" app="awsservermanager" group="servers" params="$server"}
+    {{endforeach}}
+</div>

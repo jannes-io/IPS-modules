@@ -1,0 +1,10 @@
+{
+    "added": [
+        "aws_access_key_id",
+        "aws_access_key_secret",
+        "aws_region",
+        "steam_api_key"
+    ],
+    "edited": [],
+    "removed": []
+}

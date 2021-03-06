@@ -1,0 +1,106 @@
+{
+    "1": {
+        "method": "createTable",
+        "params": [
+            {
+                "name": "awsservermanager_servers",
+                "columns": {
+                    "id": {
+                        "name": "id",
+                        "type": "BIGINT",
+                        "length": "20",
+                        "unsigned": true,
+                        "allow_null": false,
+                        "default": null,
+                        "auto_increment": true,
+                        "comment": "ID Number"
+                    },
+                    "ip": {
+                        "name": "ip",
+                        "type": "VARCHAR",
+                        "length": 64,
+                        "decimals": null,
+                        "values": null,
+                        "allow_null": false,
+                        "default": null,
+                        "comment": "",
+                        "unsigned": false,
+                        "auto_increment": false
+                    },
+                    "port": {
+                        "name": "port",
+                        "type": "INT",
+                        "length": null,
+                        "decimals": null,
+                        "values": null,
+                        "allow_null": false,
+                        "default": null,
+                        "comment": "Server port",
+                        "unsigned": true,
+                        "auto_increment": false
+                    },
+                    "domain": {
+                        "name": "domain",
+                        "type": "VARCHAR",
+                        "length": 128,
+                        "decimals": null,
+                        "values": null,
+                        "allow_null": true,
+                        "default": null,
+                        "comment": "Full domain name (eg. server1.example.com)",
+                        "unsigned": false,
+                        "auto_increment": false
+                    },
+                    "appid": {
+                        "name": "appid",
+                        "type": "INT",
+                        "length": null,
+                        "decimals": null,
+                        "values": null,
+                        "allow_null": false,
+                        "default": null,
+                        "comment": "Steam application id",
+                        "unsigned": true,
+                        "auto_increment": false
+                    },
+                    "steam_query_port": {
+                        "name": "steam_query_port",
+                        "type": "INT",
+                        "length": null,
+                        "decimals": null,
+                        "values": null,
+                        "allow_null": false,
+                        "default": null,
+                        "comment": "Steam query port, usually different from actual server port",
+                        "unsigned": true,
+                        "auto_increment": false
+                    }
+                },
+                "indexes": {
+                    "PRIMARY": {
+                        "type": "primary",
+                        "name": "PRIMARY",
+                        "columns": [
+                            "id"
+                        ],
+                        "length": [
+                            null
+                        ]
+                    },
+                    "ip_port_unique": {
+                        "type": "unique",
+                        "name": "ip_port_unique",
+                        "columns": [
+                            "ip",
+                            "port"
+                        ],
+                        "length": [
+                            null,
+                            null
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}
