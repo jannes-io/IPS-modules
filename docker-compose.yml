@@ -1,0 +1,41 @@
+version: '3.3'
+
+services:
+  mysql:
+    image: mysql:5.7.30
+    container_name: thirdinf_mysql
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - mysqldb:/var/lib/mysql
+  mailcatcher:
+    image: schickling/mailcatcher
+    container_name: thirdinf_mailcatcher
+    ports:
+      - 1025:1025
+      - 1080:1080
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: thirdinf_phpmyadmin
+    ports:
+      - 8080:80
+    links:
+      - mysql:db
+  ipboard:
+    image: cmer81/ipboard:latest
+    container_name: thirdinf_ipboard
+    ports:
+      - 80:80
+      - 443:443
+    environment:
+      - WEB_DOCUMENT_ROOT=/var/www/html
+    volumes:
+      - './:/var/www/html'
+    links:
+      - mysql
+      - mailcatcher
+
+volumes:
+  mysqldb:
