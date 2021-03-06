@@ -1,8 +1,7 @@
 *
 
-!applications/
-applications/*
-!applications/awsservermanager
-
 !.gitignore
 !docker-compose.yml
+
+!*/
+!*/applications/awsservermanager/*
