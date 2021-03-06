@@ -40,6 +40,8 @@ class _settings extends \IPS\Dispatcher\Controller
         $form->add(new Form\Password('aws_access_key_secret', \IPS\Settings::i()->aws_access_key_secret, false, [], null, null, null, 'aws_access_key_secret'));
         $form->addHeader('steam_api_key');
         $form->add(new Form\Password('steam_api_key', \IPS\Settings::i()->steam_api_key, false, [], null, null, null, 'steam_api_key'));
+        $form->addHeader('stop_conditions');
+        $form->add(new Form\Number('minutes_since_last_activity', \IPS\Settings::i()->minutes_since_last_activity, false, ['placeholder' => '30'], null, null, null, 'minutes_since_last_activity'));
 
         if ($values = $form->values()) {
             $form->saveAsSettings($values);

@@ -14,6 +14,8 @@ $lang = [
     'aws_access_key_id' => 'Access Key ID',
     'aws_access_key_secret' => 'Access Key Secret',
     'steam_api_key' => 'Steam API Credentials',
+    'stop_conditions' => 'Server stop conditions',
+    'minutes_since_last_activity' => 'Minutes since last activity',
 
     ## Server
     'menu__awsservermanager_servers_servers' => 'Servers',
@@ -32,6 +34,7 @@ $lang = [
     'awsservermanager_serverperm__stop' => 'Can stop/reboot',
 
     # Front
+    'module__awsservermanager_servers' => 'Servers',
     'servers_title' => 'Servers',
     'servers_subtitle' => 'View current game server information',
     'awsservermanager_state' => 'State',

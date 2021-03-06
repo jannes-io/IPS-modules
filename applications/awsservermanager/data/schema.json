@@ -109,6 +109,18 @@
                 "comment": "Server name",
                 "unsigned": false,
                 "auto_increment": false
+            },
+            "last_activity": {
+                "name": "last_activity",
+                "type": "TIMESTAMP",
+                "length": null,
+                "decimals": null,
+                "values": null,
+                "allow_null": false,
+                "default": "CURRENT_TIMESTAMP",
+                "comment": "",
+                "unsigned": false,
+                "auto_increment": false
             }
         },
         "indexes": {

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <language>
- <app key="awsservermanager" version="10001">
+ <app key="awsservermanager" version="10002">
   <word key="__app_awsservermanager" js="0">AWS Server Manager</word>
   <word key="menutab__awsservermanager" js="0">AWS Steam Servers</word>
   <word key="menutab__awsservermanager_icon" js="0">server</word>
@@ -11,6 +11,8 @@
   <word key="aws_access_key_id" js="0">Access Key ID</word>
   <word key="aws_access_key_secret" js="0">Access Key Secret</word>
   <word key="steam_api_key" js="0">Steam API Credentials</word>
+  <word key="stop_conditions" js="0">Server stop conditions</word>
+  <word key="minutes_since_last_activity" js="0">Minutes since last activity</word>
   <word key="menu__awsservermanager_servers_servers" js="0">Servers</word>
   <word key="awsservermanager_servers" js="0">Manage Servers</word>
   <word key="name" js="0">Internal Name</word>
@@ -25,6 +27,7 @@
   <word key="awsservermanager_serverperm__view" js="0">Can view</word>
   <word key="awsservermanager_serverperm__start" js="0">Can start</word>
   <word key="awsservermanager_serverperm__stop" js="0">Can stop/reboot</word>
+  <word key="module__awsservermanager_servers" js="0">Servers</word>
   <word key="servers_title" js="0">Servers</word>
   <word key="servers_subtitle" js="0">View current game server information</word>
   <word key="awsservermanager_state" js="0">State</word>

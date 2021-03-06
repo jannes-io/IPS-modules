@@ -3,6 +3,7 @@
 namespace IPS\awsservermanager;
 
 use Aws\Ec2\Ec2Client;
+use DateTime;
 use IPS\awsservermanager\Server\SteamServerInfo;
 use IPS\Helpers\Form;
 use IPS\Http\Url;
@@ -21,6 +22,7 @@ require_once \IPS\ROOT_PATH . '/applications/awsservermanager/system/3rd_party/a
  * @property int $appid
  * @property int $steam_query_port
  * @property string $aws_instance_id
+ * @property string $last_activity
  */
 class _Server extends \IPS\Node\Model implements \IPS\Node\Permissions
 {
@@ -70,6 +72,7 @@ class _Server extends \IPS\Node\Model implements \IPS\Node\Permissions
     public function formatFormValues($values)
     {
         if (!$this->id) {
+            $this->last_activity = (new DateTime())->format('Y-m-d H:i:s');
             $this->save();
         }
         return $values;
@@ -94,6 +97,9 @@ class _Server extends \IPS\Node\Model implements \IPS\Node\Permissions
         $this->createEC2Client()->startInstances([
             'InstanceIds' => [$this->aws_instance_id]
         ]);
+
+        $this->last_activity = (new DateTime())->format('Y-m-d H:i:s');
+        $this->save();
     }
 
     public function stop(): void
@@ -108,6 +114,9 @@ class _Server extends \IPS\Node\Model implements \IPS\Node\Permissions
         $this->createEC2Client()->rebootInstances([
             'InstanceIds' => [$this->aws_instance_id]
         ]);
+
+        $this->last_activity = (new DateTime())->format('Y-m-d H:i:s');
+        $this->save();
     }
 
     protected function createEC2Client(): Ec2Client
