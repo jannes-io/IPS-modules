@@ -1,0 +1,10 @@
+[
+    {
+        "key": "Twitch API client ID",
+        "default": "ny0lf0oe3bxdcno8oyxr1ujsswkifb"
+    },
+    {
+        "key": "Twitch API token",
+        "default": "6dao96e3hwevd3um2xlxes0u4q8gyt"
+    }
+]

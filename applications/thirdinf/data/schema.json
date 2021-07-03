@@ -1,0 +1,62 @@
+{
+    "thirdinf_clanlist_votes": {
+        "name": "thirdinf_clanlist_votes",
+        "columns": {
+            "id": {
+                "allow_null": false,
+                "auto_increment": true,
+                "binary": false,
+                "comment": "ID Number",
+                "decimals": null,
+                "default": null,
+                "length": 20,
+                "name": "id",
+                "type": "BIGINT",
+                "unsigned": true,
+                "values": [],
+                "zerofill": false
+            },
+            "member_id": {
+                "name": "member_id",
+                "type": "BIGINT",
+                "length": 20,
+                "decimals": null,
+                "values": [],
+                "allow_null": false,
+                "default": null,
+                "comment": "",
+                "unsigned": true,
+                "zerofill": false,
+                "auto_increment": false,
+                "binary": false
+            },
+            "timestamp": {
+                "allow_null": false,
+                "auto_increment": false,
+                "binary": false,
+                "comment": "",
+                "decimals": null,
+                "default": "",
+                "length": 10,
+                "name": "timestamp",
+                "type": "INT",
+                "unsigned": true,
+                "values": [],
+                "zerofill": false
+            }
+        },
+        "indexes": {
+            "PRIMARY": {
+                "type": "primary",
+                "name": "PRIMARY",
+                "length": [
+                    null
+                ],
+                "columns": [
+                    "id"
+                ]
+            }
+        },
+        "collation": "utf8mb4_unicode_ci"
+    }
+}

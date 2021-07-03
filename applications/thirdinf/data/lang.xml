@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<language>
+ <app key="thirdinf" version="00001">
+  <word key="__app_thirdinf" js="0">3rd Infantry Division Extension</word>
+  <word key="menutab__thirdinf" js="0">3rd Infantry Division</word>
+  <word key="menutab__thirdinf_icon" js="0">fighter-jet</word>
+  <word key="menu__thirdinf_servers" js="0">Servers</word>
+  <word key="menu__thirdinf_servers_settings" js="0">Settings</word>
+ </app>
+</language>

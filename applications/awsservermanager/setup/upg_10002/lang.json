@@ -1,0 +1,16 @@
+{
+    "normal": {
+        "added": [
+            "stop_conditions",
+            "minutes_since_last_activity",
+            "module__awsservermanager_servers"
+        ],
+        "edited": [],
+        "removed": []
+    },
+    "js": {
+        "added": [],
+        "edited": [],
+        "removed": []
+    }
+}

@@ -59,6 +59,7 @@ class _Server extends \IPS\Node\Model implements \IPS\Node\Permissions
      */
     public function form(&$form): void
     {
+        $form->addHeader('awsservermanager_servers_settings');
         $form->add(new Form\Text('name', $this->name, false, [], null, null, null, 'name'));
         $form->add(new Form\Number('position', $this->position, false, [], null, null, null, 'position'));
         $form->add(new Form\Text('ip', $this->ip, false, ['placeholder' => '0.0.0.0'], null, null, null, 'ip'));

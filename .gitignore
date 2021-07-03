@@ -4,5 +4,8 @@
 !docker-compose.yml
 
 !*/
-!*/applications/awsservermanager/*
-!*/applications/awsservermanager/**/*
+!/applications/awsservermanager/*
+!/applications/awsservermanager/**/*
+
+!/applications/thirdinf/*
+!/applications/thirdinf/**/*

@@ -1,0 +1,39 @@
+{
+    "1": {
+        "method": "addColumn",
+        "params": [
+            "awsservermanager_servers",
+            {
+                "name": "last_seen_with_players",
+                "type": "TIMESTAMP",
+                "length": null,
+                "decimals": null,
+                "values": null,
+                "allow_null": false,
+                "default": "CURRENT_TIMESTAMP",
+                "comment": "",
+                "unsigned": false,
+                "auto_increment": false
+            }
+        ]
+    },
+    "2": {
+        "method": "changeColumn",
+        "params": [
+            "awsservermanager_servers",
+            "last_seen_with_players",
+            {
+                "name": "last_activity",
+                "type": "TIMESTAMP",
+                "length": null,
+                "decimals": null,
+                "values": null,
+                "allow_null": false,
+                "default": "CURRENT_TIMESTAMP",
+                "comment": "",
+                "unsigned": false,
+                "auto_increment": false
+            }
+        ]
+    }
+}

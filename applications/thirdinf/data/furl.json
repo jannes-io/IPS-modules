@@ -1,0 +1,9 @@
+{
+  "topLevel": "thirdinf",
+  "pages": {
+    "forums": {
+      "friendly": "",
+      "real": "app=thirdinf&module=servers&controller=index"
+    }
+  }
+}

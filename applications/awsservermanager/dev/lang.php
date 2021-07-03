@@ -20,6 +20,7 @@ $lang = [
     ## Server
     'menu__awsservermanager_servers_servers' => 'Servers',
     'awsservermanager_servers' => 'Manage Servers',
+    'awsservermanager_servers_settings' => 'Server Settings',
     'name' => 'Internal Name',
     'position' => 'Position',
     'ip' => 'IP Address',
