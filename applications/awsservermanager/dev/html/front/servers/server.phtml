@@ -1,36 +1,38 @@
 <ips:template parameters="$server=null" />
-<div class="ipsBox ipsSpacer_bottom ipsPad ipsGrid_span6 ">
-    <ul class="ipsDataList ipsDataList_reducedSpacing ipsContained_container" data-controller="awsservermanager.front.servers.main" data-serverId="{$server->id}">
-        <li class="ipsDataItem">
-            <p><strong>{lang="awsservermanager_server_ip"}:</strong> {$server->domain ?: $server->ip}</p>
-            <p><strong>{lang="awsservermanager_server_port"}:</strong> {$server->port}</p>
-        </li>
-        <li class="ipsDataItem" data-loading>
-            <div class="ipsLoading ipsPad_double">&nbsp;</div>
-        </li>
-        <li class="ipsDataItem ipsHide" data-serverInfo>
-            <p><strong>{lang="awsservermanager_state"}: </strong><span data-serverState></span></p>
-            <div class="ipsHide" data-steamInfo>
-                <p><strong>{lang="awsservermanager_steam_name"}: </strong><span data-serverName></span></p>
-                <p><strong>{lang="awsservermanager_steam_game"}: </strong><span data-serverGame></span></p>
-                <p><strong>{lang="awsservermanager_steam_players"}: </strong><span data-serverPlayers></span></p>
-            </div>
-            <div class="ipsHide" data-noSteamInfo>
-                <p>{lang="awsservermanager_steam_noinfo"}</p>
-            </div>
-        </li>
-        {{if $server->can('start') or $server->can('stop')}}
-        <li class="ipsDataItem">
-            <p>
-                {{if $server->can('start')}}
-                <button type="button" data-startServer class="ipsButton ipsButton_verySmall ipsButton_alternate"><i class="fa fa-play"></i> {lang="awsservermanager_start"}</button>
-                {{endif}}
-                {{if $server->can('stop')}}
-                <button type="button" data-stopServer class="ipsButton ipsButton_verySmall"><i class="fa fa-stop"></i> {lang="awsservermanager_stop"}</button>
-                <button type="button" data-rebootServer class="ipsButton ipsButton_verySmall"><i class="fa fa-refresh"></i> {lang="awsservermanager_reboot"}</button>
-                {{endif}}
-            </p>
-        </li>
-        {{endif}}
-    </ul>
+<div class="ipsGrid_span6">
+    <div class="ipsBox ipsPad ipsMargin_bottom">
+        <ul class="ipsDataList ipsDataList_reducedSpacing ipsContained_container" data-controller="awsservermanager.front.servers.main" data-serverId="{$server->id}">
+            <li class="ipsDataItem">
+                <p><strong>{lang="awsservermanager_server_ip"}:</strong> {$server->domain ?: $server->ip}</p>
+                <p><strong>{lang="awsservermanager_server_port"}:</strong> {$server->port}</p>
+            </li>
+            <li class="ipsDataItem" data-loading>
+                <div class="ipsLoading ipsPad_double">&nbsp;</div>
+            </li>
+            <li class="ipsDataItem ipsHide" data-serverInfo>
+                <p><strong>{lang="awsservermanager_state"}: </strong><span data-serverState></span></p>
+                <div class="ipsHide" data-steamInfo>
+                    <p><strong>{lang="awsservermanager_steam_name"}: </strong><span data-serverName></span></p>
+                    <p><strong>{lang="awsservermanager_steam_game"}: </strong><span data-serverGame></span></p>
+                    <p><strong>{lang="awsservermanager_steam_players"}: </strong><span data-serverPlayers></span></p>
+                </div>
+                <div class="ipsHide" data-noSteamInfo>
+                    <p>{lang="awsservermanager_steam_noinfo"}</p>
+                </div>
+            </li>
+            {{if $server->can('start') or $server->can('stop')}}
+            <li class="ipsDataItem">
+                <p>
+                    {{if $server->can('start')}}
+                    <button type="button" data-startServer class="ipsButton ipsButton_verySmall ipsButton_alternate"><i class="fa fa-play"></i> {lang="awsservermanager_start"}</button>
+                    {{endif}}
+                    {{if $server->can('stop')}}
+                    <button type="button" data-stopServer class="ipsButton ipsButton_verySmall"><i class="fa fa-stop"></i> {lang="awsservermanager_stop"}</button>
+                    <button type="button" data-rebootServer class="ipsButton ipsButton_verySmall"><i class="fa fa-refresh"></i> {lang="awsservermanager_reboot"}</button>
+                    {{endif}}
+                </p>
+            </li>
+            {{endif}}
+        </ul>
+    </div>
 </div>

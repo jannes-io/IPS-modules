@@ -5,7 +5,7 @@
         <div class="ipsType_richText ipsType_normal">{lang="servers_subtitle"}</div>
     </header>
 </div>
-<div class="ipsGrid ipsGrid_collapsePhone">
+<div class="ipsGrid ipsGrid_collapsePhone" data-ipsGrid data-ipsGrid-minItemSize="500" data-ipsGrid-maxItemSize="600" data-ipsGrid-equalHeights="row">
     {{foreach $servers as $server}}
     {template="server" app="awsservermanager" group="servers" params="$server"}
     {{endforeach}}
