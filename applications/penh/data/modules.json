@@ -1,0 +1,16 @@
+{
+    "front": {
+        "operations": {
+            "default_controller": "",
+            "protected": 0,
+            "default": 0
+        }
+    },
+    "admin": {
+        "operations": {
+            "default_controller": "",
+            "protected": false,
+            "default": null
+        }
+    }
+}

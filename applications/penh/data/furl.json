@@ -1,0 +1,9 @@
+{
+  "topLevel": "penh",
+  "pages": {
+    "operation": {
+      "friendly": "operations",
+      "real": "app=penh&module=operations&controller=operation"
+    }
+  }
+}

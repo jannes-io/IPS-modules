@@ -1,0 +1,11 @@
+{
+    "operations": {
+        "operation": {
+            "tab": "penh",
+            "controller": "operation",
+            "do": "",
+            "restriction": "operation_manage",
+            "subcontrollers": ""
+        }
+    }
+}

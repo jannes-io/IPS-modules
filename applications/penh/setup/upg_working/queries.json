@@ -1,0 +1,278 @@
+[
+    {
+        "method": "createTable",
+        "params": [
+            {
+                "name": "penh_operations",
+                "columns": {
+                    "operation_id": {
+                        "name": "operation_id",
+                        "type": "INT",
+                        "length": "20",
+                        "decimals": null,
+                        "values": null,
+                        "allow_null": false,
+                        "default": 0,
+                        "comment": "ID Number",
+                        "unsigned": true,
+                        "auto_increment": true
+                    },
+                    "operation_name": {
+                        "name": "operation_name",
+                        "type": "VARCHAR",
+                        "length": 255,
+                        "decimals": null,
+                        "values": null,
+                        "allow_null": false,
+                        "default": "",
+                        "comment": "",
+                        "unsigned": false,
+                        "auto_increment": false
+                    },
+                    "operation_content": {
+                        "name": "operation_content",
+                        "type": "MEDIUMTEXT",
+                        "length": null,
+                        "decimals": null,
+                        "values": null,
+                        "allow_null": true,
+                        "default": null,
+                        "comment": "",
+                        "unsigned": false,
+                        "auto_increment": false
+                    },
+                    "operation_start": {
+                        "name": "operation_start",
+                        "type": "DATE",
+                        "length": null,
+                        "decimals": null,
+                        "values": null,
+                        "allow_null": false,
+                        "default": null,
+                        "comment": "",
+                        "unsigned": false,
+                        "auto_increment": false
+                    },
+                    "operation_end": {
+                        "name": "operation_end",
+                        "type": "DATE",
+                        "length": null,
+                        "decimals": null,
+                        "values": null,
+                        "allow_null": true,
+                        "default": null,
+                        "comment": "",
+                        "unsigned": false,
+                        "auto_increment": false
+                    }
+                },
+                "indexes": {
+                    "PRIMARY": {
+                        "type": "primary",
+                        "name": "PRIMARY",
+                        "columns": [
+                            "operation_id"
+                        ],
+                        "length": [
+                            null
+                        ]
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "method": "createTable",
+        "params": [
+            {
+                "name": "penh_missions",
+                "columns": {
+                    "mission_id": {
+                        "name": "mission_id",
+                        "type": "INT",
+                        "length": "20",
+                        "decimals": null,
+                        "values": null,
+                        "allow_null": false,
+                        "default": 0,
+                        "comment": "ID Number",
+                        "unsigned": true,
+                        "auto_increment": true
+                    },
+                    "mission_operation_id": {
+                        "name": "mission_operation_id",
+                        "type": "INT",
+                        "length": null,
+                        "decimals": null,
+                        "values": null,
+                        "allow_null": false,
+                        "default": 0,
+                        "comment": "",
+                        "unsigned": true,
+                        "auto_increment": false
+                    },
+                    "mission_name": {
+                        "name": "mission_name",
+                        "type": "VARCHAR",
+                        "length": 255,
+                        "decimals": null,
+                        "values": null,
+                        "allow_null": false,
+                        "default": null,
+                        "comment": "",
+                        "unsigned": false,
+                        "auto_increment": false
+                    },
+                    "mission_start": {
+                        "name": "mission_start",
+                        "type": "DATETIME",
+                        "length": null,
+                        "decimals": null,
+                        "values": null,
+                        "allow_null": false,
+                        "default": null,
+                        "comment": "",
+                        "unsigned": false,
+                        "auto_increment": false
+                    },
+                    "mission_content": {
+                        "name": "mission_content",
+                        "type": "MEDIUMTEXT",
+                        "length": null,
+                        "decimals": null,
+                        "values": null,
+                        "allow_null": true,
+                        "default": null,
+                        "comment": "",
+                        "unsigned": false,
+                        "auto_increment": false
+                    }
+                },
+                "indexes": {
+                    "PRIMARY": {
+                        "type": "primary",
+                        "name": "PRIMARY",
+                        "columns": [
+                            "mission_id"
+                        ],
+                        "length": [
+                            null
+                        ]
+                    },
+                    "mission_operation_id": {
+                        "type": "key",
+                        "name": "mission_operation_id",
+                        "columns": [
+                            "mission_operation_id"
+                        ],
+                        "length": [
+                            null
+                        ]
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "method": "createTable",
+        "params": [
+            {
+                "name": "penh_mission_aars",
+                "columns": {
+                    "aar_id": {
+                        "name": "aar_id",
+                        "type": "INT",
+                        "length": "20",
+                        "decimals": null,
+                        "values": null,
+                        "allow_null": false,
+                        "default": 0,
+                        "comment": "ID Number",
+                        "unsigned": true,
+                        "auto_increment": true
+                    },
+                    "aar_mission_id": {
+                        "name": "aar_mission_id",
+                        "type": "INT",
+                        "length": null,
+                        "decimals": null,
+                        "values": null,
+                        "allow_null": false,
+                        "default": 0,
+                        "comment": "",
+                        "unsigned": true,
+                        "auto_increment": false
+                    },
+                    "aar_combat_unit_id": {
+                        "name": "aar_combat_unit_id",
+                        "type": "INT",
+                        "length": null,
+                        "decimals": null,
+                        "values": null,
+                        "allow_null": false,
+                        "default": 0,
+                        "comment": "",
+                        "unsigned": true,
+                        "auto_increment": false
+                    },
+                    "aar_attendance": {
+                        "name": "aar_attendance",
+                        "type": "LONGTEXT",
+                        "length": null,
+                        "decimals": null,
+                        "values": null,
+                        "allow_null": true,
+                        "default": null,
+                        "comment": "",
+                        "unsigned": false,
+                        "auto_increment": false
+                    },
+                    "aar_content": {
+                        "name": "aar_content",
+                        "type": "MEDIUMTEXT",
+                        "length": null,
+                        "decimals": null,
+                        "values": null,
+                        "allow_null": true,
+                        "default": null,
+                        "comment": "",
+                        "unsigned": false,
+                        "auto_increment": false
+                    }
+                },
+                "indexes": {
+                    "PRIMARY": {
+                        "type": "primary",
+                        "name": "PRIMARY",
+                        "columns": [
+                            "aar_id"
+                        ],
+                        "length": [
+                            null
+                        ]
+                    },
+                    "aar_mission_id": {
+                        "type": "key",
+                        "name": "aar_mission_id",
+                        "columns": [
+                            "aar_mission_id"
+                        ],
+                        "length": [
+                            null
+                        ]
+                    },
+                    "aar_combat_unit_id": {
+                        "type": "key",
+                        "name": "aar_combat_unit_id",
+                        "columns": [
+                            "aar_combat_unit_id"
+                        ],
+                        "length": [
+                            null
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+]
