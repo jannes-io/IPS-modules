@@ -11,6 +11,11 @@
             "default_controller": "",
             "protected": 0,
             "default": 0
+        },
+        "settings": {
+            "default_controller": "",
+            "protected": 0,
+            "default": 1
         }
     }
 }

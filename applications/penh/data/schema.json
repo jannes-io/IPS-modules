@@ -40,26 +40,26 @@
             },
             "operation_start": {
                 "name": "operation_start",
-                "type": "DATE",
+                "type": "INT",
                 "length": null,
                 "decimals": null,
                 "values": null,
                 "allow_null": false,
-                "default": null,
+                "default": 0,
                 "comment": "",
-                "unsigned": false,
+                "unsigned": true,
                 "auto_increment": false
             },
             "operation_end": {
                 "name": "operation_end",
-                "type": "DATE",
+                "type": "INT",
                 "length": null,
                 "decimals": null,
                 "values": null,
                 "allow_null": true,
                 "default": null,
                 "comment": "",
-                "unsigned": false,
+                "unsigned": true,
                 "auto_increment": false
             }
         },
@@ -117,14 +117,14 @@
             },
             "mission_start": {
                 "name": "mission_start",
-                "type": "DATETIME",
+                "type": "INT",
                 "length": null,
                 "decimals": null,
                 "values": null,
                 "allow_null": false,
-                "default": null,
+                "default": 0,
                 "comment": "",
-                "unsigned": false,
+                "unsigned": true,
                 "auto_increment": false
             },
             "mission_content": {
@@ -137,6 +137,54 @@
                 "default": null,
                 "comment": "",
                 "unsigned": false,
+                "auto_increment": false
+            },
+            "mission_author": {
+                "name": "mission_author",
+                "type": "BIGINT",
+                "length": null,
+                "decimals": null,
+                "values": null,
+                "allow_null": false,
+                "default": 0,
+                "comment": "",
+                "unsigned": true,
+                "auto_increment": false
+            },
+            "mission_created_at": {
+                "name": "mission_created_at",
+                "type": "INT",
+                "length": null,
+                "decimals": null,
+                "values": null,
+                "allow_null": false,
+                "default": 0,
+                "comment": "",
+                "unsigned": true,
+                "auto_increment": false
+            },
+            "mission_author_name": {
+                "name": "mission_author_name",
+                "type": "VARCHAR",
+                "length": 255,
+                "decimals": null,
+                "values": null,
+                "allow_null": false,
+                "default": "",
+                "comment": "",
+                "unsigned": false,
+                "auto_increment": false
+            },
+            "mission_views": {
+                "name": "mission_views",
+                "type": "INT",
+                "length": null,
+                "decimals": null,
+                "values": null,
+                "allow_null": false,
+                "default": 0,
+                "comment": "",
+                "unsigned": true,
                 "auto_increment": false
             }
         },

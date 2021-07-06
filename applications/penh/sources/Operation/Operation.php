@@ -14,13 +14,20 @@ use IPS\Helpers\Form;
  * @property string $start
  * @property string|null $end
  */
-class _Operation extends \IPS\Node\Model implements \IPS\Content\Permissions
+class _Operation extends \IPS\Node\Model implements \IPS\Node\Permissions
 {
+    use \IPS\Node\Statistics;
+
     public static $multitons;
+    public static $application = 'penh';
+    public static $module = 'operation';
     public static $databaseTable = 'penh_operations';
     public static $databasePrefix = 'operation_';
     public static $databaseColumnOrder = 'id DESC';
     public static $nodeTitle = 'operations';
+    public static $urlTemplate = 'operation';
+    public static $urlBase = 'app=penh&module=operations&controller=operation&do=view&id=';
+    public static $seoTitleColumn = 'name';
 
     protected static $restrictions = [
         'app' => 'penh',
@@ -28,11 +35,13 @@ class _Operation extends \IPS\Node\Model implements \IPS\Content\Permissions
         'prefix' => 'operations_'
     ];
 
-    public static $permApp = 'operation';
+    public static $permApp = 'penh';
     public static $permType = 'operation';
 
     public static $permissionMap = [
         'view' => 'view',
+        'read' => 2,
+        'add' => 3,
     ];
 
     public static $titleLangPrefix = 'penh_operation_';
@@ -54,8 +63,8 @@ class _Operation extends \IPS\Node\Model implements \IPS\Content\Permissions
 
     public function formatFormValues($values): array
     {
-        $values['operation_start'] = $values['operation_start']->format('Y-m-d');
-        $values['operation_end'] = $values['operation_end'] !== null ? $values['operation_end']->format('Y-m-d') : null;
+        $values['operation_start'] = $values['operation_start']->getTimestamp();
+        $values['operation_end'] = $values['operation_end'] !== null ? $values['operation_end']->getTimestamp() : null;
         return $values;
     }
 
@@ -64,19 +73,8 @@ class _Operation extends \IPS\Node\Model implements \IPS\Content\Permissions
         return $this->name;
     }
 
-    public function getStartDate(): \IPS\DateTime
+    public function url()
     {
-        $dt = \DateTime::createFromFormat('Y-m-d', $this->start);
-        return \IPS\DateTime::ts($dt->getTimestamp());
-    }
-
-    public function getEndDate(): ?\IPS\DateTime
-    {
-        if ($this->end === null) {
-            return null;
-        }
-
-        $dt = \DateTime::createFromFormat('Y-m-d', $this->end);
-        return \IPS\DateTime::ts($dt->getTimestamp());
+        return \IPS\Http\Url::internal('app=penh&module=operations&controller=operation&do=view&id='. $this->id);
     }
 }
