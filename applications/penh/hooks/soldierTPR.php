@@ -10,7 +10,7 @@ class penh_hook_soldierTPR extends _HOOK_CLASS_
 {
 	public function isTPRd()
 	{
-		$threeDaysAgo = (new \DateTime())->sub(new \DateInterval('P3D'));
+		$duration = (new \DateTime())->sub(new \DateInterval('P' . \IPS\Settings::i()->personnel_action_request_duration . 'D'));
 
         $select = \IPS\Db::i()->select(
             'requests_status AS status',
@@ -18,7 +18,7 @@ class penh_hook_soldierTPR extends _HOOK_CLASS_
             [
 				'requests_form = ? and requests_date > ? and requests_soldier = ?',
 				\IPS\Settings::i()->personnel_action_request_id,
-				$threeDaysAgo->getTimestamp(),
+				$duration->getTimestamp(),
 				$this->id
 			]
         );

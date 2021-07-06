@@ -1,5 +1,9 @@
 [
     {
+        "key": "personnel_action_request_duration",
+        "default": "3"
+    },
+    {
         "key": "personnel_action_request_id",
         "default": "1"
     }
