@@ -46,4 +46,8 @@ $lang = array(
     // Missions
     'missions' => 'Missions',
     'mission_create' => 'Create new mission',
+
+    // TPR
+    'request_approved' => 'TPR Approved',
+    'request_pending' => 'TPR Pending Approval',
 );

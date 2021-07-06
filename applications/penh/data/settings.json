@@ -1,14 +1,22 @@
 [
-    {
-        "key": "penh_settings_calendar_enable",
-        "default": "0"
-    },
-    {
-        "key": "penh_settings_calendar_node",
-        "default": ""
-    },
-    {
-        "key": "penh_settings_combat_record_entry_enable",
-        "default": "0"
-    }
+  {
+    "key": "penh_settings_calendar_enable",
+    "default": "0"
+  },
+  {
+    "key": "penh_settings_calendar_node",
+    "default": ""
+  },
+  {
+    "key": "penh_settings_combat_record_entry_enable",
+    "default": "0"
+  },
+  {
+    "key": "personnel_action_request_duration",
+    "default": "3"
+  },
+  {
+    "key": "personnel_action_request_id",
+    "default": "1"
+  }
 ]

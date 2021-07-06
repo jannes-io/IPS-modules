@@ -1,5 +1,5 @@
-[
-    {
+{
+    "1": {
         "method": "createTable",
         "params": [
             {
@@ -81,7 +81,7 @@
             }
         ]
     },
-    {
+    "2": {
         "method": "createTable",
         "params": [
             {
@@ -221,7 +221,7 @@
             }
         ]
     },
-    {
+    "3": {
         "method": "createTable",
         "params": [
             {
@@ -323,4 +323,4 @@
             }
         ]
     }
-]
+}

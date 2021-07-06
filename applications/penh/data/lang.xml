@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<language>
+ <app key="penh" version="10000">
+  <word key="__app_penh" js="0">PERSCOM Enhanced</word>
+  <word key="module__penh_operations" js="0">Operations</word>
+  <word key="menutab__penh" js="0">PERSCOM Enhanced</word>
+  <word key="menutab__penh_icon" js="0">angle-double-up</word>
+  <word key="menu__penh_operations" js="0">Operations</word>
+  <word key="menu__penh_operations_operation" js="0">Operations</word>
+  <word key="operations" js="0">Operations</word>
+  <word key="operation_name" js="0">Name</word>
+  <word key="operation_content" js="0">Description</word>
+  <word key="operation_start" js="0">Start date</word>
+  <word key="operation_end" js="0">End date</word>
+  <word key="penh_operations_perm__label" js="0">Groups</word>
+  <word key="penh_operations_perm__view" js="0">Can view?</word>
+  <word key="frontnavigation_penh" js="0">PERSCOM Enhanced</word>
+  <word key="frontnavigation_penh_operations" js="0">Operations</word>
+  <word key="penh_operations_title" js="0">Operations</word>
+  <word key="penh_operations_subtitle" js="0">TO BE CHANGED TO A CONTENT FIELD</word>
+ </app>
+</language>
