@@ -13,28 +13,18 @@ if ( !\defined( '\IPS\SUITE_UNIQUE_KEY' ) )
 /**
  * mission
  */
-class _mission extends \IPS\Dispatcher\Controller
+class _mission extends \IPS\Content\Controller
 {
-	/**
-	 * Execute
-	 *
-	 * @return	void
-	 */
-	public function execute()
+    public static $contentModel = 'IPS\penh\Operation\Mission';
+
+	public function execute(): void
 	{
-		
 		parent::execute();
 	}
 
-	/**
-	 * ...
-	 *
-	 * @return	void
-	 */
-	protected function manage()
-	{
-		// This is the default method if no 'do' parameter is specified
+    public function manage(): void
+    {
+        $mission = parent::manage();
+        \IPS\Output::i()->output = \IPS\Theme::i()->getTemplate('operations', 'penh', 'front')->mission($mission);
 	}
-	
-	// Create new methods with the same name as the 'do' parameter which should execute it
 }

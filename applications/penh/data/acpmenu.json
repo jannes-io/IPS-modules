@@ -1,4 +1,13 @@
 {
+    "settings": {
+        "settings": {
+            "tab": "penh",
+            "controller": "settings",
+            "do": "",
+            "restriction": "settings_manage",
+            "subcontrollers": ""
+        }
+    },
     "operations": {
         "operation": {
             "tab": "penh",

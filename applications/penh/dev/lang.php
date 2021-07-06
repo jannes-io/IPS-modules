@@ -9,8 +9,19 @@ $lang = array(
     'menutab__penh' => 'PERSCOM Enhanced',
     'menutab__penh_icon' => 'angle-double-up',
 
+    'menu__penh_settings' => 'Settings',
+    'menu__penh_settings_settings' => 'Settings',
+
     'menu__penh_operations' => 'Operations',
     'menu__penh_operations_operation' => 'Operations',
+
+    // Settings
+    'penh_settings_calendar' => 'Calendar integration',
+    'penh_settings_calendar_enable' => 'Calendar integration',
+    'penh_settings_calendar_node' => 'Calendar',
+
+    'penh_settings_combat_record' => 'PERSCOM Combat record',
+    'penh_settings_combat_record_entry_enable' => 'Automatic combat record entries',
 
     // Operations
     'operations' => 'Operations',
@@ -27,6 +38,12 @@ $lang = array(
     'frontnavigation_penh_operations' => 'Operations',
 
     // Operations
-    'penh_operations_title' => 'Operations',
-    'penh_operations_subtitle' => 'TO BE CHANGED TO A CONTENT FIELD',
+    'operations_title' => 'Operations',
+    'operations_subtitle' => 'TO BE CHANGED TO A CONTENT FIELD',
+    'operation_started' => 'Started on',
+    'operation_ended' => 'Ended on',
+
+    // Missions
+    'missions' => 'Missions',
+    'mission_create' => 'Create new mission',
 );

@@ -1,10 +1,10 @@
 <ips:template parameters="$operations=[]" />
 <div class="ipsPageHeader ipsBox ipsResponsive_pull ipsPadding ipsSpacer_bottom ipsClearfix">
     <header>
-        <h1 class="ipsType_pageTitle">{lang="penh_operations_title"}</h1>
-        <div class="ipsType_richText ipsType_normal">{lang="penh_operations_subtitle"}</div>
+        <h1 class="ipsType_pageTitle">{lang="operations_title"}</h1>
+        <div class="ipsType_richText ipsType_normal">{lang="operations_subtitle"}</div>
     </header>
 </div>
 {{foreach $operations as $operation}}
-    {template="operation_row" app="penh" group="operations" params="$operation"}
+    {template="operationRow" app="penh" group="operations" params="$operation"}
 {{endforeach}}

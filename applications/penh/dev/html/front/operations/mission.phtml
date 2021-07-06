@@ -1,0 +1,9 @@
+<ips:template parameters="$mission" />
+<div class="ipsPageHeader ipsBox ipsResponsive_pull ipsPadding ipsSpacer_bottom ipsClearfix">
+    <header>
+        <h1 class="ipsType_pageTitle">{$mission->name}</h1>
+    </header>
+</div>
+<div class="ipsBox ipsResponsive_pull ipsPadding">
+    {$mission->content|raw}
+</div>

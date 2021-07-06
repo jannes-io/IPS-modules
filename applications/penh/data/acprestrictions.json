@@ -3,5 +3,10 @@
         "operation": {
             "operation_manage": "operation_manage"
         }
+    },
+    "settings": {
+        "settings": {
+            "settings_manage": "settings_manage"
+        }
     }
 }

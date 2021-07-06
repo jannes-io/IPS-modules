@@ -1,0 +1,16 @@
+<ips:template parameters="$operation, $missionTable" />
+{template="operationRow" app="penh" group="operations" params="$operation"}
+<div>
+    <ul class="ipsToolList ipsToolList_horizontal ipsToolList_horizontal--flex ipsClearfix ipsSpacer_both">
+        {{if $operation->can('add')}}
+        <li class="ipsToolList_primaryAction">
+            <a class="ipsButton ipsButton_medium ipsButton_important ipsButton_fullWidth" href="{$operation->url()->setQueryString('do', 'add')}">
+                {lang="mission_create"}
+            </a>
+        </li>
+        {{endif}}
+    </ul>
+</div>
+<div class="ipsBox ipsResponsive_pull">
+    {$missionTable|raw}
+</div>

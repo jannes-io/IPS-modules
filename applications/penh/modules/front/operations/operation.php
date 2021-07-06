@@ -21,17 +21,55 @@ class _operation extends \IPS\Content\Controller
      *
      * @return    void
      */
-    public function execute()
+    public function execute(): void
     {
         parent::execute();
     }
 
-    public function manage()
+    public function manage(): void
     {
         \IPS\penh\Operation\Operation::loadIntoMemory();
         $operations = \IPS\penh\Operation\Operation::roots();
 
-        \IPS\Output::i()->title = \IPS\Member::loggedIn()->language()->addToStack('penh_operations_title');
+
+        \IPS\Output::i()->title = \IPS\Member::loggedIn()->language()->addToStack('operations_title');
         \IPS\Output::i()->output = \IPS\Theme::i()->getTemplate('operations', 'penh', 'front')->operations($operations);
+    }
+
+    public function view(): void
+    {
+        try {
+            $operation = \IPS\penh\Operation\Operation::loadAndCheckPerms(\IPS\Request::i()->id);
+            if (!$operation->id) {
+                throw new \OutOfRangeException('Operation not found');
+            }
+        } catch (\Exception $ex) {
+            \IPS\Output::i()->error('node_error', '2F176/1', 404, '');
+            return;
+        }
+
+        \IPS\Output::i()->title = $operation->name;
+
+        $table = new \IPS\Helpers\Table\Content('IPS\penh\Operation\Mission', $operation->url(), [], $operation, null, null, false, false, null, false, false, false);
+        $table->title = \IPS\Member::loggedIn()->language()->addToStack('missions');
+
+        $missionTable = (string)$table;
+        \IPS\Output::i()->output = \IPS\Theme::i()->getTemplate('operations', 'penh', 'front')->operation($operation, $missionTable);
+    }
+
+    public function add(): void
+    {
+        try {
+            $operation = \IPS\penh\Operation\Operation::loadAndCheckPerms(\IPS\Request::i()->id);
+            if (!$operation->id) {
+                throw new \OutOfRangeException('Operation not found');
+            }
+        } catch (\Exception $ex) {
+            \IPS\Output::i()->error('node_error', '2F176/1', 404, '');
+            return;
+        }
+
+        \IPS\Output::i()->title = \IPS\Member::loggedIn()->language()->addToStack('mission_create');
+        \IPS\Output::i()->output = \IPS\penh\Operation\Mission::create($operation);
     }
 }
