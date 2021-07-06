@@ -29,4 +29,8 @@ $lang = array(
     // Operations
     'penh_operations_title' => 'Operations',
     'penh_operations_subtitle' => 'TO BE CHANGED TO A CONTENT FIELD',
+
+    // TPR
+    'request_approved' => 'TPR Approved',
+    'request_pending' => 'TPR Pending Approval',
 );

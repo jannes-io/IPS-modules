@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theme name="Default" author_name="Invision Power Services, Inc" author_url="https://www.invisioncommunity.com">
+ <template template_group="operations" template_name="operation_row" template_data="$operation" template_location="front" template_app="penh"><![CDATA[<div class="ipsBox ipsPad ipsSpacer_bottom">
+    <h4 class="ipsType_pageTitle">{$operation->name}</h4>
+    {$operation->getStartDate()->localeDate()}
+    {{if $operation->end !== null}}
+        {$operation->getEndDate()->localeDate()}
+    {{endif}}
+    {$operation->content|raw}
+</div>
+
+]]></template>
+ <template template_group="operations" template_name="operations" template_data="$operations=[]" template_location="front" template_app="penh"><![CDATA[<div class="ipsPageHeader ipsBox ipsResponsive_pull ipsPadding ipsSpacer_bottom ipsClearfix">
+    <header>
+        <h1 class="ipsType_pageTitle">{lang="penh_operations_title"}</h1>
+        <div class="ipsType_richText ipsType_normal">{lang="penh_operations_subtitle"}</div>
+    </header>
+</div>
+{{foreach $operations as $operation}}
+    {template="operation_row" app="penh" group="operations" params="$operation"}
+{{endforeach}}
+]]></template>
+</theme>

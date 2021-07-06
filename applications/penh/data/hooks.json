@@ -1,1 +1,10 @@
-[]
+{
+    "soldierTPR": {
+        "type": "C",
+        "class": "\\IPS\\perscom\\Personnel\\Soldier"
+    },
+    "soldierRowTPR": {
+        "type": "S",
+        "class": "\\IPS\\Theme\\class_perscom_front_personnel"
+    }
+}

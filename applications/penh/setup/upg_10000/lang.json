@@ -1,0 +1,30 @@
+{
+    "normal": {
+        "added": [
+            "__app_penh",
+            "module__penh_operations",
+            "menutab__penh",
+            "menutab__penh_icon",
+            "menu__penh_operations",
+            "menu__penh_operations_operation",
+            "operations",
+            "operation_name",
+            "operation_content",
+            "operation_start",
+            "operation_end",
+            "penh_operations_perm__label",
+            "penh_operations_perm__view",
+            "frontnavigation_penh",
+            "frontnavigation_penh_operations",
+            "penh_operations_title",
+            "penh_operations_subtitle"
+        ],
+        "edited": [],
+        "removed": []
+    },
+    "js": {
+        "added": [],
+        "edited": [],
+        "removed": []
+    }
+}

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<build>
+ <module key="front/operations"><![CDATA[{"default_controller":"","protected":0,"default":0}]]></module>
+ <module key="admin/operations"><![CDATA[{"default_controller":"","protected":false,"default":null}]]></module>
+ <setting key="personnel_action_request_id"><![CDATA[{"key":"personnel_action_request_id","default":"1"}]]></setting>
+ <hook key="soldierTPR"><![CDATA[{"type":"C","class":"\\IPS\\perscom\\Personnel\\Soldier"}]]></hook>
+ <hook key="soldierRowTPR"><![CDATA[{"type":"S","class":"\\IPS\\Theme\\class_perscom_front_personnel"}]]></hook>
+</build>
