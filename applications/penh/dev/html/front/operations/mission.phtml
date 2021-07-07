@@ -1,8 +1,46 @@
 <ips:template parameters="$mission" />
 <div class="ipsPageHeader ipsBox ipsResponsive_pull ipsPadding ipsSpacer_bottom ipsClearfix">
     <header>
-        <h1 class="ipsType_pageTitle">{$mission->name}</h1>
+        <h1 class="ipsType_pageTitle">{lang="mission_title_name" sprintf="$mission->name"}</h1>
     </header>
+    <hr class='ipsHr'>
+    <div class='ipsPageHeader__meta ipsFlex ipsFlex-jc:between ipsFlex-ai:center ipsFlex-fw:wrap ipsGap:3'>
+        <div class='ipsFlex-flex:11'>
+            <div class='ipsPhotoPanel ipsPhotoPanel_mini ipsPhotoPanel_notPhone ipsClearfix'>
+                {template="userPhoto" group="global" app="core" params="$mission->author(), 'mini', $mission->warningRef()"}
+                <div>
+                    <p class='ipsType_reset ipsType_blendLinks'>
+						<span class='ipsType_normal'>
+							<strong>{lang="byline_itemprop" htmlsprintf="$mission->author()->link( $mission->warningRef(), NULL, $mission->isAnonymous() )"}</strong><br />
+							<span class='ipsType_light'>{lang="in"} <a href="{$mission->container()->url()}">{$mission->container()->_formattedTitle|raw}</a></span>
+						</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class='ipsClearfix'>
+    <ul class="ipsToolList ipsToolList_horizontal ipsClearfix ipsSpacer_both ipsResponsive_hidePhone">
+        {{if $mission->container()->can('add')}}
+        <li class='ipsResponsive_hidePhone'>
+            <a href="{$mission->container()->url()->setQueryString('do', 'add')}" class='ipsButton ipsButton_link ipsButton_medium ipsButton_fullWidth' title='{lang="create_new_mission"}'>{lang="mission_create"}</a>
+        </li>
+        {{endif}}
+        {{if ($mission->canDelete() or $mission->canEdit())}}
+        <li>
+            <a href='#elMissionActions_menu' id='elMissionActions' class='ipsButton ipsButton_link ipsButton_medium ipsButton_fullWidth' data-ipsMenu>{lang="moderator_actions"} <i class='fa fa-caret-down'></i></a>
+            <ul id='elMissionActions_menu' class='ipsMenu ipsMenu_auto ipsHide'>
+                {{if $mission->canEdit()}}
+                <li class='ipsMenu_item'><a href="{$mission->url()->setQueryString('do', 'edit')}">{lang="edit"}</a></li>
+                {{endif}}
+                {{if $mission->canDelete()}}
+                <li class='ipsMenu_item'><a href="{$mission->url()->setQueryString('do', 'delete')}">{lang="delete"}</a></li>
+                {{endif}}
+            </ul>
+        </li>
+        {{endif}}
+    </ul>
 </div>
 <div class="ipsBox ipsResponsive_pull ipsPadding">
     {$mission->content|raw}

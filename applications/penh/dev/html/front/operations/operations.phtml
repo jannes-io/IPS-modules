@@ -2,7 +2,8 @@
 <div class="ipsPageHeader ipsBox ipsResponsive_pull ipsPadding ipsSpacer_bottom ipsClearfix">
     <header>
         <h1 class="ipsType_pageTitle">{lang="operations_title"}</h1>
-        <div class="ipsType_richText ipsType_normal">{lang="operations_subtitle"}</div>
+        {{$subTitle = \IPS\Settings::i()->penh_operations_content;}}
+        <div class="ipsType_richText ipsType_normal">{$subTitle|raw}</div>
     </header>
 </div>
 {{foreach $operations as $operation}}

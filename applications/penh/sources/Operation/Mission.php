@@ -11,8 +11,12 @@ use IPS\Helpers\Form;
  * @property int $id
  * @property int $operation_id
  * @property string $name
- * @property string $start
+ * @property int $start
+ * @property int $end
  * @property string $content
+ * @property bool $create_combat_record
+ * @property bool $create_calendar_event
+ * @property int $calendar_event_id
  */
 class _Mission extends \IPS\Content\Item implements
     \IPS\Content\Permissions,
@@ -53,9 +57,16 @@ class _Mission extends \IPS\Content\Item implements
     {
         $form = parent::formElements($item, $container);
         $form['mission_start'] = new Form\Date('mission_start', $item->start ?? null, true, ['time' => true]);
+        $form['mission_end'] = new Form\Date('mission_end', $item->start ?? null, true, ['time' => true]);
 
-        $form['mission_create_event'] = new Form\Checkbox('mission_create_event', null, false);
-        $form['mission_create_combat_record_entry'] = new Form\Checkbox('mission_create_combat_record_entry', null, false);
+        if ($item === null || !$item->id) {
+            if (static::isCalendarEnabled()) {
+                $form['mission_create_event'] = new Form\Checkbox('mission_create_event', null, false);
+            }
+            if (\IPS\Settings::i()->penh_combat_record_entry_enable) {
+                $form['mission_create_combat_record_entry'] = new Form\Checkbox('mission_create_combat_record_entry', null, false);
+            }
+        }
 
         $form['mission_content'] = new Form\Editor('mission_content', $item->content ?? null, true, [
             'app' => 'penh',
@@ -70,6 +81,45 @@ class _Mission extends \IPS\Content\Item implements
     {
         parent::processForm($values);
         $this->start = $values['mission_start']->getTimestamp();
+        $this->end = $values['mission_end']->getTimestamp();
         $this->content = $values['mission_content'];
+    }
+
+    public function processAfterCreate($comment, $values): void
+    {
+        $this->create_calendar_event = $this->create_calendar_event ?: (bool)($values['mission_create_event'] ?? false);
+        $this->create_combat_record = $this->create_combat_record ?: (bool)($values['mission_create_combat_record_entry'] ?? false);
+
+        if ($this->create_calendar_event && $this->calendar_event_id === null && static::isCalendarEnabled()) {
+            $calendarId = \IPS\Settings::i()->penh_calendar_node;
+            $calendar =  \IPS\calendar\Calendar::load($calendarId);
+
+            $eventValues = [
+                'event_container' => $calendarId,
+                'event_dates' => [
+                    'start_date' => $values['mission_start']->localeDate(),
+                    'start_time' => $values['mission_start']->localeTime(),
+                    'end_date' => $values['mission_end']->localeDate(),
+                    'end_time' => $values['mission_end']->localeTime(),
+                    'event_timezone' => \IPS\Member::loggedIn()->timezone,
+                    'all_day' => false,
+                    'repeat_end' => 'never',
+                ],
+                'event_content' => $values['mission_content'],
+                'event_cover_photo' => null,
+                'event_location' => null,
+                'event_title' => $this->name,
+                'event_title_seo' => $this->name,
+            ];
+
+            $event = \IPS\calendar\Event::createFromForm($eventValues, $calendar);
+            $this->calendar_event_id = $event->id;
+        }
+        $this->save();
+    }
+
+    protected static function isCalendarEnabled(): bool
+    {
+        return \IPS\Application::load('calendar')->enabled && \IPS\Settings::i()->penh_calendar_enable && \IPS\Settings::i()->penh_calendar_node;
     }
 }

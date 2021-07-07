@@ -1,7 +1,7 @@
 <ips:template parameters="$operation" />
 <div class="ipsBox ipsResponsive_pull ipsPadding ipsSpacer_bottom">
     <h2>
-        <a class="ipsType_brandedLink" href="{$operation->url()}">{$operation->name}</a>
+        <a class="ipsType_brandedLink" href="{$operation->url()}">{lang="operation_title_name" sprintf="$operation->name"}</a>
     </h2>
     <p>
         <span>{lang="operation_started"}: </span>

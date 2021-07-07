@@ -80,56 +80,140 @@
         "name": "penh_missions",
         "columns": {
             "mission_id": {
+                "allow_null": false,
+                "auto_increment": true,
+                "comment": "ID Number",
+                "decimals": null,
+                "default": null,
+                "length": 10,
                 "name": "mission_id",
                 "type": "INT",
-                "length": "20",
-                "decimals": null,
-                "values": null,
-                "allow_null": false,
-                "default": 0,
-                "comment": "ID Number",
                 "unsigned": true,
-                "auto_increment": true
+                "values": []
             },
             "mission_operation_id": {
+                "allow_null": false,
+                "auto_increment": false,
+                "comment": "",
+                "decimals": null,
+                "default": "0",
+                "length": 10,
                 "name": "mission_operation_id",
                 "type": "INT",
-                "length": null,
-                "decimals": null,
-                "values": null,
-                "allow_null": false,
-                "default": 0,
-                "comment": "",
                 "unsigned": true,
-                "auto_increment": false
+                "values": []
             },
             "mission_name": {
+                "allow_null": false,
+                "auto_increment": false,
+                "comment": "",
+                "decimals": null,
+                "default": null,
+                "length": 255,
                 "name": "mission_name",
                 "type": "VARCHAR",
-                "length": 255,
-                "decimals": null,
-                "values": null,
+                "unsigned": false,
+                "values": []
+            },
+            "mission_start": {
                 "allow_null": false,
+                "auto_increment": false,
+                "comment": "",
+                "decimals": null,
+                "default": "0",
+                "length": 10,
+                "name": "mission_start",
+                "type": "INT",
+                "unsigned": true,
+                "values": []
+            },
+            "mission_content": {
+                "allow_null": true,
+                "auto_increment": false,
+                "comment": "",
+                "decimals": null,
                 "default": null,
+                "length": 0,
+                "name": "mission_content",
+                "type": "MEDIUMTEXT",
+                "unsigned": false,
+                "values": []
+            },
+            "mission_author": {
+                "allow_null": false,
+                "auto_increment": false,
+                "comment": "",
+                "decimals": null,
+                "default": "0",
+                "length": 20,
+                "name": "mission_author",
+                "type": "BIGINT",
+                "unsigned": true,
+                "values": []
+            },
+            "mission_created_at": {
+                "allow_null": false,
+                "auto_increment": false,
+                "comment": "",
+                "decimals": null,
+                "default": "0",
+                "length": 10,
+                "name": "mission_created_at",
+                "type": "INT",
+                "unsigned": true,
+                "values": []
+            },
+            "mission_author_name": {
+                "allow_null": false,
+                "auto_increment": false,
+                "comment": "",
+                "decimals": null,
+                "default": "",
+                "length": 255,
+                "name": "mission_author_name",
+                "type": "VARCHAR",
+                "unsigned": false,
+                "values": []
+            },
+            "mission_views": {
+                "allow_null": false,
+                "auto_increment": false,
+                "comment": "",
+                "decimals": null,
+                "default": "0",
+                "length": 10,
+                "name": "mission_views",
+                "type": "INT",
+                "unsigned": true,
+                "values": []
+            },
+            "mission_create_combat_record": {
+                "name": "mission_create_combat_record",
+                "type": "TINYINT",
+                "length": 1,
+                "decimals": null,
+                "values": [],
+                "allow_null": false,
+                "default": 0,
                 "comment": "",
                 "unsigned": false,
                 "auto_increment": false
             },
-            "mission_start": {
-                "name": "mission_start",
-                "type": "INT",
-                "length": null,
+            "mission_create_calendar_event": {
+                "name": "mission_create_calendar_event",
+                "type": "TINYINT",
+                "length": 1,
                 "decimals": null,
                 "values": null,
                 "allow_null": false,
                 "default": 0,
                 "comment": "",
-                "unsigned": true,
+                "unsigned": false,
                 "auto_increment": false
             },
-            "mission_content": {
-                "name": "mission_content",
-                "type": "MEDIUMTEXT",
+            "mission_calendar_event_id": {
+                "name": "mission_calendar_event_id",
+                "type": "BIGINT",
                 "length": null,
                 "decimals": null,
                 "values": null,
@@ -139,44 +223,8 @@
                 "unsigned": false,
                 "auto_increment": false
             },
-            "mission_author": {
-                "name": "mission_author",
-                "type": "BIGINT",
-                "length": null,
-                "decimals": null,
-                "values": null,
-                "allow_null": false,
-                "default": 0,
-                "comment": "",
-                "unsigned": true,
-                "auto_increment": false
-            },
-            "mission_created_at": {
-                "name": "mission_created_at",
-                "type": "INT",
-                "length": null,
-                "decimals": null,
-                "values": null,
-                "allow_null": false,
-                "default": 0,
-                "comment": "",
-                "unsigned": true,
-                "auto_increment": false
-            },
-            "mission_author_name": {
-                "name": "mission_author_name",
-                "type": "VARCHAR",
-                "length": 255,
-                "decimals": null,
-                "values": null,
-                "allow_null": false,
-                "default": "",
-                "comment": "",
-                "unsigned": false,
-                "auto_increment": false
-            },
-            "mission_views": {
-                "name": "mission_views",
+            "mission_end": {
+                "name": "mission_end",
                 "type": "INT",
                 "length": null,
                 "decimals": null,
@@ -192,24 +240,25 @@
             "PRIMARY": {
                 "type": "primary",
                 "name": "PRIMARY",
-                "columns": [
-                    "mission_id"
-                ],
                 "length": [
                     null
+                ],
+                "columns": [
+                    "mission_id"
                 ]
             },
             "mission_operation_id": {
                 "type": "key",
                 "name": "mission_operation_id",
-                "columns": [
-                    "mission_operation_id"
-                ],
                 "length": [
                     null
+                ],
+                "columns": [
+                    "mission_operation_id"
                 ]
             }
-        }
+        },
+        "collation": "utf8mb4_unicode_ci"
     },
     "penh_mission_aars": {
         "name": "penh_mission_aars",

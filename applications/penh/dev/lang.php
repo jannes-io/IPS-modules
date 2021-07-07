@@ -16,12 +16,15 @@ $lang = array(
     'menu__penh_operations_operation' => 'Operations',
 
     // Settings
-    'penh_settings_calendar' => 'Calendar integration',
-    'penh_settings_calendar_enable' => 'Calendar integration',
-    'penh_settings_calendar_node' => 'Calendar',
+    'penh_operations_settings' => 'Operations',
+    'penh_operations_content' => 'Operations content',
 
-    'penh_settings_combat_record' => 'PERSCOM Combat record',
-    'penh_settings_combat_record_entry_enable' => 'Automatic combat record entries',
+    'penh_calendar_settings' => 'Calendar integration',
+    'penh_calendar_enable' => 'Calendar integration',
+    'penh_calendar_node' => 'Calendar',
+
+    'penh_combat_record_settings' => 'PERSCOM Combat record',
+    'penh_combat_record_entry_enable' => 'Automatic combat record entries',
 
     // Operations
     'operations' => 'Operations',
@@ -39,13 +42,19 @@ $lang = array(
 
     // Operations
     'operations_title' => 'Operations',
-    'operations_subtitle' => 'TO BE CHANGED TO A CONTENT FIELD',
+    'operation_title_name' => 'Operation %s',
     'operation_started' => 'Started on',
     'operation_ended' => 'Ended on',
 
     // Missions
     'missions' => 'Missions',
     'mission_create' => 'Create new mission',
+    'mission_start' => 'Start',
+    'mission_end' => 'End',
+    'mission_title_name' => 'Mission %s',
+    'mission_create_event' => 'Automatically create calendar event',
+    'mission_create_combat_record_entry' => 'Automatically create combat record after AAR',
+    'mission_content' => 'OPORD',
 
     // TPR
     'request_approved' => 'TPR Approved',

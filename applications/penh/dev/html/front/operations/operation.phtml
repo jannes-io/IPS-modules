@@ -1,5 +1,26 @@
 <ips:template parameters="$operation, $missionTable" />
-{template="operationRow" app="penh" group="operations" params="$operation"}
+<div class="ipsPageHeader ipsBox ipsResponsive_pull ipsPadding ipsSpacer_bottom ipsClearfix">
+    <header>
+        <h1 class="ipsType_pageTitle">{lang="operation_title_name" sprintf="$operation->name"}</h1>
+    </header>
+    <hr class='ipsHr'>
+    <div class='ipsPageHeader__meta ipsFlex ipsFlex-jc:between ipsFlex-ai:center ipsFlex-fw:wrap ipsGap:3'>
+        <div class='ipsFlex-flex:11'>
+            <div class='ipsClearfix'>
+                <div>
+                    <p class="ipsType_reset ipsType_blendLinks">
+                        <span class="ipsType_normal">
+                            <span>{lang="operation_started"}: </span>{$d = \IPS\DateTime::ts($operation->start)->localeDate()}
+                            {{if $operation->end !== null}}
+                            <span>{lang="operation_ended"}: </span>{$d = \IPS\DateTime::ts($operation->end)->localeDate()}
+                            {{endif}}
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div>
     <ul class="ipsToolList ipsToolList_horizontal ipsToolList_horizontal--flex ipsClearfix ipsSpacer_both">
         {{if $operation->can('add')}}
@@ -11,6 +32,9 @@
         {{endif}}
     </ul>
 </div>
-<div class="ipsBox ipsResponsive_pull">
+<div class="ipsBox ipsResponsive_pull ipsSpacer_bottom">
     {$missionTable|raw}
+</div>
+<div class="ipsBox ipsPadding ipsResponsive_pull">
+    {$operation->content|raw}
 </div>

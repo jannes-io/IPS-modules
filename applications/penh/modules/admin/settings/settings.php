@@ -35,17 +35,25 @@ class _settings extends \IPS\Dispatcher\Controller
     {
         $form = new Form;
 
-        $form->addTab('penh_settings_missions');
-        $form->addHeader('penh_settings_calendar');
-        $form->add(new Form\YesNo('penh_settings_calendar_enable', \IPS\Settings::i()->penh_settings_calendar_enable, false));
-        $form->add(new Form\Node('penh_settings_calendar_node', \IPS\Settings::i()->penh_settings_calendar_node, false, [
+        $form->addTab('penh_operations_settings_tab');
+        $form->addHeader('penh_operations_settings');
+        $form->add(new Form\Editor('penh_operations_content', \IPS\Settings::i()->penh_operations_content ?? null, true, [
+            'app' => 'penh',
+            'key' => 'Operation',
+            'autoSaveKey' => 'penh_mission_content-' . ($item->id ?? 'new')
+        ]));
+
+        $form->addHeader('penh_calendar_settings');
+        $form->add(new Form\YesNo('penh_calendar_enable', \IPS\Settings::i()->penh_calendar_enable, false));
+        $form->add(new Form\Node('penh_calendar_node', \IPS\Settings::i()->penh_calendar_node, false, [
             'class' => '\IPS\calendar\Calendar'
         ]));
 
-        $form->addHeader('penh_settings_combat_record');
-        $form->add(new Form\YesNo('penh_settings_combat_record_entry_enable', \IPS\Settings::i()->penh_settings_combat_record_entry_enable, false));
+        $form->addHeader('penh_combat_record_settings');
+        $form->add(new Form\YesNo('penh_combat_record_entry_enable', \IPS\Settings::i()->penh_combat_record_entry_enable, false));
 
         if ($values = $form->values()) {
+            $values['penh_calendar_node'] = $values['penh_calendar_node'] instanceof \IPS\Node\Model ? $values['penh_calendar_node']->id : null;
             $form->saveAsSettings($values);
         }
 

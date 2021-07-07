@@ -52,6 +52,7 @@ class _operation extends \IPS\Content\Controller
 
         $table = new \IPS\Helpers\Table\Content('IPS\penh\Operation\Mission', $operation->url(), [], $operation, null, null, false, false, null, false, false, false);
         $table->title = \IPS\Member::loggedIn()->language()->addToStack('missions');
+        $table->limit = 3;
 
         $missionTable = (string)$table;
         \IPS\Output::i()->output = \IPS\Theme::i()->getTemplate('operations', 'penh', 'front')->operation($operation, $missionTable);
