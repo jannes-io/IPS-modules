@@ -4,6 +4,10 @@
     "operation": {
       "friendly": "operations",
       "real": "app=penh&module=operations&controller=operation"
+    },
+    "attendance": {
+      "friendly": "attendance",
+      "real": "app=penh&module=attendance&controller=attendancesheet"
     }
   }
 }

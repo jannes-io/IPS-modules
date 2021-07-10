@@ -1,0 +1,53 @@
+<ips:template parameters="$attendance" />
+{{$allStatus = \IPS\penh\Operation\AfterActionReport::availableStatus();}}
+{{$countStatus = \count($allStatus);}}
+{{foreach $attendance as $record}}
+{{if \count($record['afterActionReports']) > 0}}
+<div class="ipsBox ipsResponsive_pull ipsPadding ipsSpacer_bottom ipsClearfix">
+    <div class="ipsSpacer_bottom">
+        <h2 class="ipsType_pageTitle">{$record['mission']->start()->localeDate()}: {$record['mission']->name}</h2>
+        <a href="{$record['mission']->url()}" target="_blank">{lang="attendance_view_mission"}</a>
+    </div>
+    <table class="ipsTable ipsTable_zebra">
+        <tbody>
+        <tr>
+            {{foreach $allStatus as $status}}
+            <th>
+                <div class="ipsType_center">{$ucStatus = ucfirst($status)}</div>
+            </th>
+            {{endforeach}}
+        </tr>
+        {{foreach $record['afterActionReports'] as $aar}}
+        <tr>
+            <th colspan="{$countStatus}">
+                {$aar['combatUnit']->position}: {$aar['combatUnit']->name}
+                <a class="ipsType_right ipsPos_right" href="{$aar['url']}">
+                    {lang="attendance_view_aar"}
+                </a>
+            </th>
+        </tr>
+        {{$attendance = $aar['attendance'];}}
+        {template="attendanceTableBody" group="attendance" app="penh" params="$attendance"}
+        <tr>
+            <td colspan="$countStatus">
+                {{$stats = $aar['statistics'];}}
+                {{foreach $allStatus as $status}}
+                {$s = ucfirst($status)}: <strong>{$stats[$status]} ({$p = number_format($stats[$status] / $stats['total'], 2) * 100}%)</strong>
+                {{endforeach}}
+            </td>
+        </tr>
+        {{endforeach}}
+        <tr>
+            {{foreach $allStatus as $status}}
+            <th>
+                <div class="ipsType_center">
+                    {$record['statistics'][$status]} ({$p = number_format($record['statistics'][$status] / $record['statistics']['total'], 2) * 100}%)
+                </div>
+            </th>
+            {{endforeach}}
+        </tr>
+        </tbody>
+    </table>
+</div>
+{{endif}}
+{{endforeach}}

@@ -3,6 +3,7 @@
 $lang = array(
     '__app_penh' => 'PERSCOM Enhanced',
     'module__penh_operations' => 'Operations',
+    'module__penh_attendance' => 'Attendance',
 
     // ACP
     // ACP Menu
@@ -18,6 +19,7 @@ $lang = array(
     // Settings
     'penh_operations_settings' => 'Operations',
     'penh_operations_content' => 'Operations content',
+    'penh_missions_template' => 'Mission content template',
 
     'penh_calendar_settings' => 'Calendar integration',
     'penh_calendar_enable' => 'Calendar integration',
@@ -43,6 +45,7 @@ $lang = array(
     // Frontnav
     'frontnavigation_penh' => 'PERSCOM Enhanced',
     'frontnavigation_penh_operations' => 'Operations',
+    'frontnavigation_penh_attendance' => 'Attendance',
 
     // Operations
     'operations_title' => 'Operations',
@@ -53,6 +56,8 @@ $lang = array(
     // Missions
     'missions' => 'Missions',
     'mission_create' => 'Create new mission',
+    'mission_edit' => 'Edit mission',
+    'mission_delete' => 'Delete missions',
     'mission_start' => 'Start',
     'mission_end' => 'End',
     'mission_title_name' => 'Mission %s',
@@ -68,6 +73,15 @@ $lang = array(
     'aar_attendance' => 'Attendance',
     'aar_combat_unit_id' => 'Combat unit',
     'aar_content' => 'After action report',
+
+    // Attendance
+    'attendance_sheet_title' => 'Attendance sheet',
+    'attendance_sheet_subtitle' => 'Generate an attendance sheet. Use the controls below to specify a time frame and combat units.',
+    'attendance_from' => 'From',
+    'attendance_to' => 'To',
+    'attendance_generate' => 'Generate sheet',
+    'attendance_view_mission' => 'View mission',
+    'attendance_view_aar' => 'View AAR',
 
     // TPR
     'request_approved' => 'TPR Approved',

@@ -1,0 +1,25 @@
+<ips:template parameters="$attendance" />
+{{if \count($attendance) > 0}}
+{{$rowCount = max(array_map(function ($soldiers) { return \count($soldiers); }, $attendance));}}
+{{for $i = 0; $i < $rowCount; $i++}}
+<tr>
+    {{foreach \IPS\penh\Operation\AfterActionReport::availableStatus() as $status}}
+    {{$soldier = $attendance[$status][$i] ?? null;}}
+    <td>
+        {{if $soldier !== null}}
+        <div class="ipsType_center">
+            {{$rank = $soldier->get_rank();}}
+            {{if $rank->image_small !== null}}
+            {{$rankImg = '/uploads/' . $soldier->get_rank()->image_small;}}
+            <img src="{$rankImg}" width="20px" />&nbsp;
+            {{elseif $rank->icon !== null}}
+            <i class="fa fa-fw fa-rank {$rank->icon}"></i>
+            {{endif}}
+            {$soldier->firstname} {$soldier->lastname}
+        </div>
+        {{endif}}
+    </td>
+    {{endforeach}}
+</tr>
+{{endfor}}
+{{endif}}

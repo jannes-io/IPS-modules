@@ -4,6 +4,11 @@
             "default_controller": "",
             "protected": 0,
             "default": 0
+        },
+        "attendance": {
+            "default_controller": "",
+            "protected": false,
+            "default": null
         }
     },
     "admin": {

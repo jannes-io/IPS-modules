@@ -30,6 +30,7 @@ class _Application extends \IPS\Application
                     'key' => 'PerscomEnhanced',
                     'children' => [
                         ['key' => 'Operations'],
+                        ['key' => 'Attendance'],
                     ]
                 ]
             ],

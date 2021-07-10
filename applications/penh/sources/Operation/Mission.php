@@ -38,7 +38,7 @@ class _Mission extends \IPS\Content\Item implements
         'author' => 'author',
         'author_name' => 'author_name',
         'container' => 'operation_id',
-        'date' => 'created_at',
+        'date' => 'start',
         'title' => 'name',
         'views' => 'views',
         'content' => 'content',
@@ -53,6 +53,16 @@ class _Mission extends \IPS\Content\Item implements
     public function url($action = null)
     {
         return \IPS\Http\Url::internal('app=penh&module=operations&controller=mission&id=' . $this->id);
+    }
+
+    public function start()
+    {
+        return \IPS\DateTime::ts($this->start);
+    }
+
+    public function end()
+    {
+        return \IPS\DateTime::ts($this->end);
     }
 
     public static function formElements($item = null, \IPS\Node\Model $container = null)
@@ -70,7 +80,7 @@ class _Mission extends \IPS\Content\Item implements
             }
         }
 
-        $form['mission_content'] = new Form\Editor('mission_content', $item->content ?? null, true, [
+        $form['mission_content'] = new Form\Editor('mission_content', $item->content ?? \IPS\Settings::i()->penh_missions_template, true, [
             'app' => 'penh',
             'key' => 'Operation',
             'autoSaveKey' => 'penh_mission_content-' . ($item->id ?? 'new')

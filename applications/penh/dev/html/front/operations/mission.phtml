@@ -43,10 +43,10 @@
             <a href="#elMissionActions_menu" id="elMissionActions" class="ipsButton ipsButton_link ipsButton_medium ipsButton_fullWidth" data-ipsMenu>{lang="moderator_actions"} <i class="fa fa-caret-down"></i></a>
             <ul id="elMissionActions_menu" class="ipsMenu ipsMenu_auto ipsHide ipsType_reset">
                 {{if $mission->canEdit()}}
-                <li class="ipsMenu_item"><a href="{$mission->url()->setQueryString('do', 'edit')}">{lang="edit"}</a></li>
+                <li class="ipsMenu_item"><a href="{$mission->url()->setQueryString('do', 'edit')}">{lang="mission_edit"}</a></li>
                 {{endif}}
                 {{if $mission->canDelete()}}
-                <li class="ipsMenu_item"><a href="{$mission->url()->setQueryString('do', 'delete')}">{lang="delete"}</a></li>
+                <li class="ipsMenu_item"><a href="{$mission->url()->setQueryString('do', 'delete')}">{lang="mission_delete"}</a></li>
                 {{endif}}
             </ul>
         </li>

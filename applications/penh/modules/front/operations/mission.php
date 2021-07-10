@@ -51,7 +51,10 @@ class _mission extends \IPS\Content\Controller
             return;
         }
 
+        $operation = $mission->container();
+
         \IPS\Output::i()->title = $mission->name;
+        \IPS\Output::i()->breadcrumb[] = [$operation->url, $operation->name];
         \IPS\Output::i()->breadcrumb[] = [$mission->url, $mission->mapped('title')];
         \IPS\Output::i()->output = $form;
     }

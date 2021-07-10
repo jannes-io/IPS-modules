@@ -96,7 +96,7 @@ class _AfterActionReport extends \IPS\Content\Comment
             'class' => 'IPS\perscom\Units\CombatUnit'
         ]));
         $form->add(new Form\Text('aar_attendance', $aar->attendance ?? '{}', false));
-        $form->add(new Form\Editor('aar_content', $aar->content ?? null, true, [
+        $form->add(new Form\Editor('aar_content', $aar->content ?? \IPS\Settings::i()->penh_aar_template, true, [
             'app' => 'penh',
             'key' => 'AfterActionReport',
             'autoSaveKey' => 'penh_aar_content-' . ($aar->id ?? 'new')

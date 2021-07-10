@@ -40,7 +40,17 @@ class _settings extends \IPS\Dispatcher\Controller
         $form->add(new Form\Editor('penh_operations_content', \IPS\Settings::i()->penh_operations_content ?? null, true, [
             'app' => 'penh',
             'key' => 'Operation',
-            'autoSaveKey' => 'penh_mission_content-' . ($item->id ?? 'new')
+            'autoSaveKey' => 'penh_operations_content-' . ($item->id ?? 'new')
+        ]));
+        $form->add(new Form\Editor('penh_missions_template', \IPS\Settings::i()->penh_missions_template ?? null, true, [
+            'app' => 'penh',
+            'key' => 'Operation',
+            'autoSaveKey' => 'penh_missions_template-' . ($item->id ?? 'new')
+        ]));
+        $form->add(new Form\Editor('penh_aar_template', \IPS\Settings::i()->penh_aar_template ?? null, true, [
+            'app' => 'penh',
+            'key' => 'Operation',
+            'autoSaveKey' => 'penh_aar_template-' . ($item->id ?? 'new')
         ]));
 
         $form->addHeader('penh_calendar_settings');

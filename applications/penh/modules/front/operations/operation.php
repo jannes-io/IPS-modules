@@ -70,7 +70,10 @@ class _operation extends \IPS\Content\Controller
             return;
         }
 
-        \IPS\Output::i()->title = \IPS\Member::loggedIn()->language()->addToStack('mission_create');
+        $langCreate = \IPS\Member::loggedIn()->language()->addToStack('mission_create');
+        \IPS\Output::i()->title = $langCreate;
+        \IPS\Output::i()->breadcrumb[] = [$operation->url(), $operation->name];
+        \IPS\Output::i()->breadcrumb[] = [null, $langCreate];
         \IPS\Output::i()->output = \IPS\penh\Operation\Mission::create($operation);
     }
 }

@@ -48,33 +48,16 @@
             <thead>
             <tr>
                 {{foreach \IPS\penh\Operation\AfterActionReport::availableStatus() as $status}}
-                <th>{$ucStatus = ucfirst($status)}</th>
+                <th>
+                    <div class="ipsType_center">
+                        {$ucStatus = ucfirst($status)}
+                    </div>
+                </th>
                 {{endforeach}}
             </tr>
             </thead>
             <tbody>
-            {{if \count($attendance) > 0}}
-            {{$rowCount = max(array_map(function ($soldiers) { return \count($soldiers); }, $attendance));}}
-            {{for $i = 0; $i < $rowCount; $i++}}
-            <tr>
-                {{foreach \IPS\penh\Operation\AfterActionReport::availableStatus() as $status}}
-                {{$soldier = $attendance[$status][$i] ?? null;}}
-                <td>
-                    {{if $soldier !== null}}
-                    {{$rank = $soldier->get_rank();}}
-                    {{if $rank->image_small !== null}}
-                    {{$rankImg = '/uploads/' . $soldier->get_rank()->image_small;}}
-                    <img src="{$rankImg}" width="20px" />&nbsp;
-                    {{elseif $rank->icon !== null}}
-                    <i class="fa fa-fw fa-rank {$rank->icon}"></i>
-                    {{endif}}
-                    {$soldier->firstname} {$soldier->lastname}
-                    {{endif}}
-                </td>
-                {{endforeach}}
-            </tr>
-            {{endfor}}
-            {{endif}}
+            {template="attendanceTableBody" group="attendance" app="penh" params="$attendance"}
             </tbody>
         </table>
     </div>
