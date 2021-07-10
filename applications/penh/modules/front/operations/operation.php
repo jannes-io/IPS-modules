@@ -33,7 +33,7 @@ class _operation extends \IPS\Content\Controller
 
 
         \IPS\Output::i()->title = \IPS\Member::loggedIn()->language()->addToStack('operations_title');
-        \IPS\Output::i()->output = \IPS\Theme::i()->getTemplate('operations', 'penh', 'front')->operations($operations);
+        \IPS\Output::i()->output = \IPS\Theme::i()->getTemplate('operations')->operations($operations);
     }
 
     public function view(): void
@@ -55,7 +55,7 @@ class _operation extends \IPS\Content\Controller
         $table->limit = 3;
 
         $missionTable = (string)$table;
-        \IPS\Output::i()->output = \IPS\Theme::i()->getTemplate('operations', 'penh', 'front')->operation($operation, $missionTable);
+        \IPS\Output::i()->output = \IPS\Theme::i()->getTemplate('operations')->operation($operation, $missionTable);
     }
 
     public function add(): void

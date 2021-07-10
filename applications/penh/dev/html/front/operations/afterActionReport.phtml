@@ -1,0 +1,85 @@
+<ips:template parameters="$aar, $attendance" />
+<div class="ipsPageHeader ipsBox ipsResponsive_pull ipsPadding ipsSpacer_bottom ipsClearfix">
+    <h1 class="ipsType_pageTitle">{$aar->title()}</h1>
+    <hr class="ipsHr">
+    <div class="ipsPageHeader__meta ipsFlex ipsFlex-jc:between ipsFlex-ai:center ipsFlex-fw:wrap ipsGap:3">
+        <div class="ipsFlex-flex:11">
+            <div class="ipsPhotoPanel ipsPhotoPanel_mini ipsPhotoPanel_notPhone ipsClearfix">
+                {template="userPhoto" group="global" app="core" params="$aar->author(), 'mini', $aar->warningRef()"}
+                <div>
+                    <p class="ipsType_reset ipsType_blendLinks">
+						<span class="ipsType_normal">
+							<strong>{lang="byline_itemprop" htmlsprintf="$aar->author()->link($aar->warningRef(), NULL, $aar->isAnonymous())"}</strong><br />
+							<span class="ipsType_light">{datetime="$aar->created_at"} {lang="in"} <a href="{$aar->item()->url()}">{$aar->item()->name|raw}</a></span>
+						</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{if ($aar->canDelete() or $aar->canEdit())}}
+<div class="ipsClearfix">
+    <ul class="ipsToolList ipsToolList_horizontal ipsSpacer_both ipsResponsive_hidePhone">
+        <li>
+            <a href="#elMissionActions_menu" id="elMissionActions" class="ipsButton ipsButton_link ipsButton_medium ipsButton_fullWidth" data-ipsMenu>{lang="moderator_actions"} <i class="fa fa-caret-down"></i></a>
+            <ul id="elMissionActions_menu" class="ipsMenu ipsMenu_auto ipsHide ipsType_reset">
+                {{if $aar->canEdit()}}
+                <li class="ipsMenu_item"><a href="{$aar->url()->setQueryString('do', 'edit')}">{lang="edit"}</a></li>
+                {{endif}}
+                {{if $aar->canDelete()}}
+                <li class="ipsMenu_item"><a href="{$aar->url()->setQueryString('do', 'delete')}">{lang="delete"}</a></li>
+                {{endif}}
+            </ul>
+        </li>
+    </ul>
+</div>
+{{endif}}
+<div class="ipsBox ipsResponsive_pull ipsPadding ipsClearfix">
+    <div class="ipsSpacer_bottom">
+        <strong>{lang="aar_start"}:</strong> {datetime="$aar->start()" norelative="true"}
+    </div>
+    <div class="ipsSpacer_bottom">
+        <strong>{lang="aar_end"}:</strong> {datetime="$aar->end()" norelative="true"}
+    </div>
+    <div class="ipsSpacer_bottom">
+        <strong>{lang="aar_attendance"}</strong>
+        <table class="ipsTable ipsTable_zebra">
+            <thead>
+            <tr>
+                {{foreach \IPS\penh\Operation\AfterActionReport::availableStatus() as $status}}
+                <th>{$ucStatus = ucfirst($status)}</th>
+                {{endforeach}}
+            </tr>
+            </thead>
+            <tbody>
+            {{if \count($attendance) > 0}}
+            {{$rowCount = max(array_map(function ($soldiers) { return \count($soldiers); }, $attendance));}}
+            {{for $i = 0; $i < $rowCount; $i++}}
+            <tr>
+                {{foreach \IPS\penh\Operation\AfterActionReport::availableStatus() as $status}}
+                {{$soldier = $attendance[$status][$i] ?? null;}}
+                <td>
+                    {{if $soldier !== null}}
+                    {{$rank = $soldier->get_rank();}}
+                    {{if $rank->image_small !== null}}
+                    {{$rankImg = '/uploads/' . $soldier->get_rank()->image_small;}}
+                    <img src="{$rankImg}" width="20px" />&nbsp;
+                    {{elseif $rank->icon !== null}}
+                    <i class="fa fa-fw fa-rank {$rank->icon}"></i>
+                    {{endif}}
+                    {$soldier->firstname} {$soldier->lastname}
+                    {{endif}}
+                </td>
+                {{endforeach}}
+            </tr>
+            {{endfor}}
+            {{endif}}
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <strong>{lang="aar_content"}</strong>
+        {$aar->content|raw}
+    </div>
+</div>

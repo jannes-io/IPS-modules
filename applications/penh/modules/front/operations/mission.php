@@ -24,7 +24,7 @@ class _mission extends \IPS\Content\Controller
     public function manage(): void
     {
         $mission = parent::manage();
-        \IPS\Output::i()->output = \IPS\Theme::i()->getTemplate('operations', 'penh', 'front')->mission($mission);
+        \IPS\Output::i()->output = \IPS\Theme::i()->getTemplate('operations')->mission($mission);
     }
 
     public function edit(): void
@@ -48,6 +48,7 @@ class _mission extends \IPS\Content\Controller
             $mission->processAfterEdit($values);
 
             \IPS\Output::i()->redirect($mission->url());
+            return;
         }
 
         \IPS\Output::i()->title = $mission->name;

@@ -22,16 +22,17 @@ class _Mission extends \IPS\Content\Item implements
     \IPS\Content\Permissions,
     \IPS\Content\Views
 {
-    use \IPS\Content\Statistics;
+    protected static $multitons;
 
-    public static $multitons;
     public static $application = 'penh';
     public static $module = 'operations';
     public static $databaseTable = 'penh_missions';
     public static $databasePrefix = 'mission_';
     public static $databaseColumnId = 'id';
-    public static $containerNodeClass = 'IPS\penh\Operation\Operation';
     public static $title = 'name';
+    public static $containerNodeClass = 'IPS\penh\Operation\Operation';
+    public static $commentClass = 'IPS\penh\Operation\AfterActionReport';
+    public static $firstCommentRequired = false;
 
     public static $databaseColumnMap = [
         'author' => 'author',
@@ -41,6 +42,7 @@ class _Mission extends \IPS\Content\Item implements
         'title' => 'name',
         'views' => 'views',
         'content' => 'content',
+        'num_comments' => 'num_aars',
     ];
 
     public function get__title(): string
@@ -57,7 +59,7 @@ class _Mission extends \IPS\Content\Item implements
     {
         $form = parent::formElements($item, $container);
         $form['mission_start'] = new Form\Date('mission_start', $item->start ?? null, true, ['time' => true]);
-        $form['mission_end'] = new Form\Date('mission_end', $item->start ?? null, true, ['time' => true]);
+        $form['mission_end'] = new Form\Date('mission_end', $item->end ?? null, true, ['time' => true]);
 
         if ($item === null || !$item->id) {
             if (static::isCalendarEnabled()) {
@@ -92,7 +94,7 @@ class _Mission extends \IPS\Content\Item implements
 
         if ($this->create_calendar_event && $this->calendar_event_id === null && static::isCalendarEnabled()) {
             $calendarId = \IPS\Settings::i()->penh_calendar_node;
-            $calendar =  \IPS\calendar\Calendar::load($calendarId);
+            $calendar = \IPS\calendar\Calendar::load($calendarId);
 
             $eventValues = [
                 'event_container' => $calendarId,

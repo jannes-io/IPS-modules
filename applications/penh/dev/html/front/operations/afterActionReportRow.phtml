@@ -1,0 +1,17 @@
+<ips:template parameters="$mission, $aar" />
+{{$combatUnit = $aar->combatUnit();}}
+<li class="ipsDataItem">
+    {{if $combatUnit->image !== null}}
+    <div class="ipsDataItem_icon">
+        <span class="ipsUserPhoto ipsUserPhoto_tiny">
+            <img src="/uploads/{$combatUnit->image}" alt="" loading="lazy">
+        </span>
+    </div>
+    {{endif}}
+    <div class="ipsDataItem_main">
+        <a href="{$aar->url()}">{$aar->title()}</a><br />
+        <span class='ipsType_light ipsType_medium ipsType_blendLinks'>
+			{lang="byline" htmlsprintf="$aar->author()->link($mission->warningRef(), NULL, $mission->isAnonymous())"}{datetime="$aar->created_at"}
+		</span>
+    </div>
+</li>

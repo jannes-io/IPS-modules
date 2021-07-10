@@ -11,7 +11,7 @@ if (!\defined('\IPS\SUITE_UNIQUE_KEY')) {
 /**
  * Front Navigation Extension: Operations
  */
-class _Operation extends \IPS\core\FrontNavigation\FrontNavigationAbstract
+class _Operations extends \IPS\core\FrontNavigation\FrontNavigationAbstract
 {
     public static function typeTitle(): string
     {

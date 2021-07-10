@@ -17,12 +17,14 @@ use IPS\Helpers\Form;
 class _Operation extends \IPS\Node\Model implements \IPS\Node\Permissions
 {
     use \IPS\Node\Statistics;
+    use \IPS\Node\Statistics {rebuildPostedIn as statisticsRebuildPostedIn;}
 
     public static $multitons;
     public static $application = 'penh';
     public static $module = 'operation';
     public static $databaseTable = 'penh_operations';
     public static $databasePrefix = 'operation_';
+    public static $databaseColumnId = 'id';
     public static $databaseColumnOrder = 'id DESC';
     public static $nodeTitle = 'operations';
     public static $urlTemplate = 'operation';
@@ -42,6 +44,7 @@ class _Operation extends \IPS\Node\Model implements \IPS\Node\Permissions
         'view' => 'view',
         'read' => 2,
         'add' => 3,
+        'reply' => 4,
     ];
 
     public static $titleLangPrefix = 'penh_operation_';
@@ -76,5 +79,23 @@ class _Operation extends \IPS\Node\Model implements \IPS\Node\Permissions
     public function url()
     {
         return \IPS\Http\Url::internal('app=penh&module=operations&controller=operation&do=view&id='. $this->id);
+    }
+
+    /**
+     * A bug in IPS doesn't add the databasePrefix to the content item databaseColumnId
+     * This function temporarily adds the prefix to the databaseColumnId
+     *
+     * @param array $inSet
+     * @param array $members
+     */
+    public function rebuildPostedIn(array $inSet, $members=[]): void
+    {
+        $contentItem = static::$contentItemClass;
+        $idColumn = $contentItem::$databaseColumnId;
+        $contentItem::$databaseColumnId = $contentItem::$databasePrefix . $idColumn;
+
+        $this->statisticsRebuildPostedIn($inSet, $members);
+
+        $contentItem::$databaseColumnId = $idColumn;
     }
 }

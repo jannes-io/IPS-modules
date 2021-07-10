@@ -21,6 +21,7 @@
         </div>
     </div>
 </div>
+{{if $operation->can('read')}}
 <div>
     <ul class="ipsToolList ipsToolList_horizontal ipsToolList_horizontal--flex ipsClearfix ipsSpacer_both">
         {{if $operation->can('add')}}
@@ -35,6 +36,7 @@
 <div class="ipsBox ipsResponsive_pull ipsSpacer_bottom">
     {$missionTable|raw}
 </div>
+{{endif}}
 <div class="ipsBox ipsPadding ipsResponsive_pull">
     {$operation->content|raw}
 </div>

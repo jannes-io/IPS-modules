@@ -32,8 +32,12 @@ $lang = array(
     'operation_content' => 'Description',
     'operation_start' => 'Start date',
     'operation_end' => 'End date',
-    'penh_operations_perm__label' => 'Groups',
-    'penh_operations_perm__view' => 'Can view?',
+
+    'penh_operations_perm__label' => '',
+    'penh_operations_perm__view' => 'View operation',
+    'penh_operations_perm__read' => 'View missions',
+    'penh_operations_perm__add' => 'Create missions',
+    'penh_operations_perm__reply' => 'Create AARs',
 
     // Front
     // Frontnav
@@ -55,6 +59,15 @@ $lang = array(
     'mission_create_event' => 'Automatically create calendar event',
     'mission_create_combat_record_entry' => 'Automatically create combat record after AAR',
     'mission_content' => 'OPORD',
+    'mission_aars' => 'After Action Reports',
+
+    // AARs
+    'aar_create' => 'Create new AAR',
+    'aar_start' => 'Start',
+    'aar_end' => 'End',
+    'aar_attendance' => 'Attendance',
+    'aar_combat_unit_id' => 'Combat unit',
+    'aar_content' => 'After action report',
 
     // TPR
     'request_approved' => 'TPR Approved',

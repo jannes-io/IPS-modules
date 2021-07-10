@@ -1,0 +1,7 @@
+li#form_aar_attendance {
+    display: none;
+}
+
+#attendance-table th {
+    text-transform: capitalize;
+}

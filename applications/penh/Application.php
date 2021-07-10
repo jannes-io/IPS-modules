@@ -16,6 +16,12 @@ namespace IPS\penh;
  */
 class _Application extends \IPS\Application
 {
+    protected function get__icon(): string
+    {
+        return 'angle-double-up';
+    }
+
+
     public function defaultFrontNavigation(): array
     {
         return [
@@ -23,9 +29,7 @@ class _Application extends \IPS\Application
                 [
                     'key' => 'PerscomEnhanced',
                     'children' => [
-                        [
-                            'key' => 'Operation'
-                        ]
+                        ['key' => 'Operations'],
                     ]
                 ]
             ],
