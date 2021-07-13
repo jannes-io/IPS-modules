@@ -1,14 +1,19 @@
 {
     "front": {
         "operations": {
-            "default_controller": "",
+            "default_controller": "operation",
+            "protected": 0,
+            "default": 1
+        },
+        "attendance": {
+            "default_controller": "attendancesheet",
             "protected": 0,
             "default": 0
         },
-        "attendance": {
-            "default_controller": "",
-            "protected": false,
-            "default": null
+        "personnel": {
+            "default_controller": "orbat",
+            "protected": 0,
+            "default": 0
         }
     },
     "admin": {

@@ -1,0 +1,14 @@
+<ips:template parameters="$combatUnit" />
+{{$unit = $combatUnit['combatUnit'];}}
+<div class="ipsBox ipsWidget ipsWidget_vertical ipsMargin:half combatUnitWidget">
+    <h3 class="ipsType_reset ipsWidget_title">{$unit->name} <span class="ipsType_reset ipsType_light">({$c = \count($combatUnit['personnel'])})</span></h3>
+    <div class="ipsWidget_inner">
+        <ul class="ipsDataList">
+            {{foreach $combatUnit['personnel'] as $soldier}}
+            <li class="ipsDataItem ipsPad_half">
+                {template="soldierRow" group="global" params="$soldier"}
+            </li>
+            {{endforeach}}
+        </ul>
+    </div>
+</div>

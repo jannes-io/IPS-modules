@@ -21,7 +21,6 @@ class _Application extends \IPS\Application
         return 'angle-double-up';
     }
 
-
     public function defaultFrontNavigation(): array
     {
         return [
@@ -31,6 +30,15 @@ class _Application extends \IPS\Application
                     'children' => [
                         ['key' => 'Operations'],
                         ['key' => 'Attendance'],
+                        [
+                            'app' => 'core',
+                            'key' => 'Menu',
+                            'title' => 'frontnavigation_penh_personnel',
+                            'children' => [
+                                ['key' => 'StrengthSheet'],
+                                ['key' => 'Orbat'],
+                            ]
+                        ]
                     ]
                 ]
             ],

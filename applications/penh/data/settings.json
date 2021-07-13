@@ -30,5 +30,9 @@
     {
         "key": "penh_personnel_action_request_id",
         "default": "1"
+    },
+    {
+        "key": "penh_strength_sheet_ignore_status",
+        "default": ""
     }
 ]

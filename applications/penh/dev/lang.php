@@ -4,6 +4,7 @@ $lang = array(
     '__app_penh' => 'PERSCOM Enhanced',
     'module__penh_operations' => 'Operations',
     'module__penh_attendance' => 'Attendance',
+    'module__penh_personnel' => 'Personnel',
 
     // ACP
     // ACP Menu
@@ -17,6 +18,7 @@ $lang = array(
     'menu__penh_operations_operation' => 'Operations',
 
     // Settings
+    'penh_operations_settings_tab' => 'Operations',
     'penh_operations_settings' => 'Operations',
     'penh_operations_content' => 'Operations content',
     'penh_missions_template' => 'Mission content template',
@@ -27,6 +29,9 @@ $lang = array(
 
     'penh_combat_record_settings' => 'PERSCOM Combat record',
     'penh_combat_record_entry_enable' => 'Automatic combat record entries',
+
+    'penh_strength_sheet_settings_tab' => 'Strength Sheet',
+    'penh_strength_sheet_ignore_status' => 'Status to ignore',
 
     // Operations
     'operations' => 'Operations',
@@ -46,6 +51,9 @@ $lang = array(
     'frontnavigation_penh' => 'PERSCOM Enhanced',
     'frontnavigation_penh_operations' => 'Operations',
     'frontnavigation_penh_attendance' => 'Attendance',
+    'frontnavigation_penh_personnel' => 'Personnel',
+    'frontnavigation_penh_strength_sheet' => 'Strength Sheet',
+    'frontnavigation_penh_orbat' => 'Orbat',
 
     // Operations
     'operations_title' => 'Operations',
@@ -82,6 +90,18 @@ $lang = array(
     'attendance_generate' => 'Generate sheet',
     'attendance_view_mission' => 'View mission',
     'attendance_view_aar' => 'View AAR',
+
+    // Strength Sheet
+    'strength_sheet_title' => 'Strength sheet',
+    'strength_sheet_subtitle' => 'Generate a strength sheet. This tool is useful for recruitment and deciding placement of new members.',
+    'strength_sheet_combat_unit' => 'Parent combat unit',
+    'strength_sheet_generate' => 'Generate sheet',
+    'strength_sheet_unit_totals' => 'Unit Totals',
+    'strength_sheet_total' => 'Total',
+    'strength_sheet_placement_instructions' => 'Placement suggestions',
+    'strength_sheet_smallest_size' => 'Smallest size',
+    'strength_sheet_smallest_units' => 'Smallest unit(s)',
+    'strength_sheet_largest_size' => 'Largest size',
 
     // TPR
     'request_approved' => 'TPR Approved',

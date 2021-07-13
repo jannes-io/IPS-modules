@@ -8,6 +8,14 @@
     "attendance": {
       "friendly": "attendance",
       "real": "app=penh&module=attendance&controller=attendancesheet"
+    },
+    "strengthsheet": {
+      "friendly": "strengthsheet",
+      "real": "app=penh&module=personnel&controller=strengthsheet"
+    },
+    "orbat": {
+      "friendly": "orbat",
+      "real": "app=penh&module=personnel&controller=orbat"
     }
   }
 }

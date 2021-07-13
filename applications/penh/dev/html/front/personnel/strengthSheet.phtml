@@ -1,0 +1,48 @@
+<ips:template parameters="$statusCount, $combatUnitCount, $combatUnit, $childUnits" />
+<div class="ipsPageHeader ipsBox ipsResponsive_pull ipsPadding ipsClearfix">
+    <header>
+        <h1 class="ipsType_pageTitle">{lang="strength_sheet_title"}</h1>
+        <div class="ipsGrid">
+            <div class="ipsGrid_span6">
+                <h2>{lang="strength_sheet_unit_totals"}</h2>
+                <ol class="ipsDataList ipsDataList_reducedSpacing">
+                    {{foreach $statusCount['status'] as $count}}
+                    <li class="ipsDataItem">
+                        <strong>{$count['status']}</strong>: {$count['members']}
+                    </li>
+                    {{endforeach}}
+                    <li class="ipsDataItem">
+                        <strong>{lang="strength_sheet_total"}</strong>: {$statusCount['total']}
+                    </li>
+                </ol>
+            </div>
+            <div class="ipsGrid_span6">
+                <h2>{lang="strength_sheet_placement_instructions"}</h2>
+                <ol class="ipsDataList ipsDataList_reducedSpacing">
+                    <li class="ipsDataItem">
+                        <strong>{lang="strength_sheet_smallest_size"}</strong>: {$combatUnitCount['min']}
+                    </li>
+                    <li class="ipsDataItem">
+                        <strong>{lang="strength_sheet_smallest_units"}</strong>:
+                        <ul>
+                            {{foreach $combatUnitCount['minCombatUnits'] as $smallUnit}}
+                            <li>{$smallUnit->name}</li>
+                            {{endforeach}}
+                        </ul>
+                    </li>
+                    <li class="ipsDataItem">
+                        <strong>{lang="strength_sheet_largest_size"}</strong>: {$combatUnitCount['max']}
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </header>
+</div>
+<div class="ipsFlex ipsFlex-jc:center ipsFlex-fw:wrap">
+    {template="combatUnit" group="personnel" params="$combatUnit"}
+</div>
+<div class="ipsFlex ipsFlex-jc:around ipsFlex-fd:row ipsFlex-fw:wrap">
+    {{foreach $childUnits as $childUnit}}
+    {template="combatUnit" group="personnel" params="$childUnit"}
+    {{endforeach}}
+</div>

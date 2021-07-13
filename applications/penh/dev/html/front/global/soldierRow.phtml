@@ -1,0 +1,9 @@
+<ips:template parameters="$soldier" />
+{{$rank = $soldier->get_rank();}}
+{{if $rank->image_small !== null}}
+{{$rankImg = '/uploads/' . $soldier->get_rank()->image_small;}}
+<img src="{$rankImg}" width="20px" />&nbsp;
+{{elseif $rank->icon !== null}}
+<i class="fa fa-fw fa-rank {$rank->icon}"></i>
+{{endif}}
+{$soldier->firstname} {$soldier->lastname}

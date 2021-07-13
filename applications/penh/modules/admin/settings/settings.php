@@ -62,6 +62,12 @@ class _settings extends \IPS\Dispatcher\Controller
         $form->addHeader('penh_combat_record_settings');
         $form->add(new Form\YesNo('penh_combat_record_entry_enable', \IPS\Settings::i()->penh_combat_record_entry_enable, false));
 
+        $form->addTab('penh_strength_sheet_settings_tab');
+        $form->add(new Form\Node('penh_strength_sheet_ignore_status', \IPS\Settings::i()->penh_strength_sheet_ignore_status, false, [
+            'class' => '\IPS\perscom\Personnel\Status',
+            'multiple' => true
+        ]));
+
         if ($values = $form->values()) {
             $values['penh_calendar_node'] = $values['penh_calendar_node'] instanceof \IPS\Node\Model ? $values['penh_calendar_node']->id : null;
             $form->saveAsSettings($values);
