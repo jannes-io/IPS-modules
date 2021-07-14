@@ -80,22 +80,4 @@ class _Operation extends \IPS\Node\Model implements \IPS\Node\Permissions
     {
         return \IPS\Http\Url::internal('app=penh&module=operations&controller=operation&do=view&id='. $this->id);
     }
-
-    /**
-     * A bug in IPS doesn't add the databasePrefix to the content item databaseColumnId
-     * This function temporarily adds the prefix to the databaseColumnId
-     *
-     * @param array $inSet
-     * @param array $members
-     */
-    public function rebuildPostedIn(array $inSet, $members=[]): void
-    {
-        $contentItem = static::$contentItemClass;
-        $idColumn = $contentItem::$databaseColumnId;
-        $contentItem::$databaseColumnId = $contentItem::$databasePrefix . $idColumn;
-
-        $this->statisticsRebuildPostedIn($inSet, $members);
-
-        $contentItem::$databaseColumnId = $idColumn;
-    }
 }

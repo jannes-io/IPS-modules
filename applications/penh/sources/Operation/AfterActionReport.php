@@ -30,8 +30,6 @@ class _AfterActionReport extends \IPS\Content\Comment
     public static $itemClass = 'IPS\penh\Operation\Mission';
     public static $commentTemplate = [['operations', 'penh', 'front'], 'afterActionReportRow'];
 
-    private const ATTENDANCE_STATES = ['present', 'excused', 'absent'];
-
     public static $databaseColumnMap = [
         'item' => 'mission_id',
         'author' => 'author',
@@ -86,7 +84,8 @@ class _AfterActionReport extends \IPS\Content\Comment
 
     public static function availableStatus(): array
     {
-        return self::ATTENDANCE_STATES;
+        $statusValue = \IPS\Settings::i()->penh_aar_status ?? '';
+        return \is_array($statusValue) ? $statusValue : explode(',', $statusValue);
     }
 
     public static function buildForm(\IPS\penh\Operation\Mission $mission, $aar = null)
@@ -120,8 +119,35 @@ class _AfterActionReport extends \IPS\Content\Comment
         $this->combat_unit_id = $values['aar_combat_unit_id']->id;
     }
 
-    public function processAfterCreate()
+    public function processAfterCreate(): void
     {
+        $this->addCombatRecords();
+    }
 
+    protected function addCombatRecords(): void
+    {
+        if (!\IPS\Settings::i()->penh_combat_record_entry_enable || empty(\IPS\Settings::i()->penh_combat_record_aar_status)) {
+            return;
+        }
+
+        /** @var _Mission $mission */
+        $mission = $this->item();
+        if (!$mission->create_combat_record) {
+            return;
+        }
+
+        $eligibleStatus = \IPS\Settings::i()->penh_combat_record_aar_status;
+        foreach ($this->getAttendance() as $soldierId => $status) {
+            if ($status !== $eligibleStatus) {
+                continue;
+            }
+            try {
+                $soldier = \IPS\perscom\Personnel\Soldier::load($soldierId);
+            } catch (\Exception $e) {
+                continue;
+            }
+
+            $soldier->addCombatRecord(\IPS\DateTime::ts($this->end()), $mission->combat_record_entry);
+        }
     }
 }

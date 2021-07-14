@@ -15,6 +15,7 @@ use IPS\Helpers\Form;
  * @property int $end
  * @property string $content
  * @property bool $create_combat_record
+ * @property string $combat_record_entry
  * @property bool $create_calendar_event
  * @property int $calendar_event_id
  */
@@ -77,6 +78,7 @@ class _Mission extends \IPS\Content\Item implements
             }
             if (\IPS\Settings::i()->penh_combat_record_entry_enable) {
                 $form['mission_create_combat_record_entry'] = new Form\Checkbox('mission_create_combat_record_entry', null, false);
+                $form['mission_combat_record_entry '] = new Form\Text('mission_combat_record_entry', null, false);
             }
         }
 
@@ -100,8 +102,6 @@ class _Mission extends \IPS\Content\Item implements
     public function processAfterCreate($comment, $values): void
     {
         $this->create_calendar_event = $this->create_calendar_event ?: (bool)($values['mission_create_event'] ?? false);
-        $this->create_combat_record = $this->create_combat_record ?: (bool)($values['mission_create_combat_record_entry'] ?? false);
-
         if ($this->create_calendar_event && $this->calendar_event_id === null && static::isCalendarEnabled()) {
             $calendarId = \IPS\Settings::i()->penh_calendar_node;
             $calendar = \IPS\calendar\Calendar::load($calendarId);
@@ -127,6 +127,12 @@ class _Mission extends \IPS\Content\Item implements
             $event = \IPS\calendar\Event::createFromForm($eventValues, $calendar);
             $this->calendar_event_id = $event->id;
         }
+
+        $this->create_combat_record = $this->create_combat_record ?: (bool)($values['mission_create_combat_record_entry'] ?? false);
+        if ($this->create_combat_record) {
+            $this->combat_record_entry = $values['mission_combat_record_entry'];
+        }
+
         $this->save();
     }
 
