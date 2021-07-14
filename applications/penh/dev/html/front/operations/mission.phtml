@@ -53,11 +53,14 @@
     </ul>
 </div>
 {{endif}}
+{{$aars = $mission->comments();}}
+{{if \count($aars) > 0}}
 <div class="ipsBox ipsResponsive_pull ipsPadding_horizontal">
     <h3 class="ipsPadding_top">{lang="mission_aars"}</h3>
     <ul class="ipsDataList ipsDataList_reducedSpacing">
-        {{foreach $mission->comments() as $aar}}
+        {{foreach $aars as $aar}}
         {$aar->html()|raw}
         {{endforeach}}
     </ul>
 </div>
+{{endif}}

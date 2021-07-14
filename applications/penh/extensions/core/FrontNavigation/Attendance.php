@@ -20,7 +20,7 @@ class _Attendance extends \IPS\core\FrontNavigation\FrontNavigationAbstract
 
     public function canAccessContent()
     {
-        return \IPS\Member::loggedIn()->canAccessModule(\IPS\Application\Module::get('penh', 'attendance'));
+        return \IPS\Member::loggedIn()->canAccessModule(\IPS\Application\Module::get('penh', 'personnel'));
     }
 
     public function title()
@@ -30,12 +30,12 @@ class _Attendance extends \IPS\core\FrontNavigation\FrontNavigationAbstract
 
     public function link()
     {
-        return \IPS\Http\Url::internal('app=penh&module=attendance', 'front', 'attendance');
+        return \IPS\Http\Url::internal('app=penh&module=personnel', 'front', 'attendance');
     }
 
     public function active()
     {
         return \IPS\Dispatcher::i()->application->directory === 'penh'
-            && \IPS\Dispatcher::i()->module->key === 'attendance';
+            && \IPS\Dispatcher::i()->module->key === 'personnel';
     }
 }

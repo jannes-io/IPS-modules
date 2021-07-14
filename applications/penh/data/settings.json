@@ -1,5 +1,9 @@
 [
     {
+        "key": "penh_aar_status",
+        "default": "present,excused,absent"
+    },
+    {
         "key": "penh_aar_template",
         "default": ""
     },
@@ -10,6 +14,10 @@
     {
         "key": "penh_calendar_node",
         "default": ""
+    },
+    {
+        "key": "penh_combat_record_aar_status",
+        "default": "present"
     },
     {
         "key": "penh_combat_record_entry_enable",

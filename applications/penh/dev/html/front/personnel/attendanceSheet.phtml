@@ -27,7 +27,7 @@
             </th>
         </tr>
         {{$attendance = $aar['attendance'];}}
-        {template="attendanceTableBody" group="attendance" app="penh" params="$attendance"}
+        {template="attendanceTableBody" group="personnel" app="penh" params="$attendance"}
         <tr>
             <td colspan="$countStatus">
                 {{$stats = $aar['statistics'];}}

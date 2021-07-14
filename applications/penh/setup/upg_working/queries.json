@@ -199,5 +199,23 @@
                 "auto_increment": false
             }
         ]
+    },
+    {
+        "method": "addColumn",
+        "params": [
+            "penh_missions",
+            {
+                "name": "mission_combat_record_entry",
+                "type": "VARCHAR",
+                "length": 255,
+                "decimals": null,
+                "values": null,
+                "allow_null": true,
+                "default": null,
+                "comment": "",
+                "unsigned": false,
+                "auto_increment": false
+            }
+        ]
     }
 ]

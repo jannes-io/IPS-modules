@@ -29,14 +29,14 @@ class _Application extends \IPS\Application
                     'key' => 'PerscomEnhanced',
                     'children' => [
                         ['key' => 'Operations'],
-                        ['key' => 'Attendance'],
                         [
                             'app' => 'core',
                             'key' => 'Menu',
                             'title' => 'frontnavigation_penh_personnel',
                             'children' => [
-                                ['key' => 'StrengthSheet'],
                                 ['key' => 'Orbat'],
+                                ['key' => 'Attendance'],
+                                ['key' => 'StrengthSheet'],
                             ]
                         ]
                     ]

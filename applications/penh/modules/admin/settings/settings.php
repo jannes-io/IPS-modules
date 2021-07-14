@@ -52,6 +52,8 @@ class _settings extends \IPS\Dispatcher\Controller
             'key' => 'Operation',
             'autoSaveKey' => 'penh_aar_template-' . ($item->id ?? 'new')
         ]));
+        $statusValue = \IPS\Settings::i()->penh_aar_status ?? '';
+        $form->add(new Form\Stack('penh_aar_status', \is_array($statusValue) ? $statusValue : explode(',', $statusValue)));
 
         $form->addHeader('penh_calendar_settings');
         $form->add(new Form\YesNo('penh_calendar_enable', \IPS\Settings::i()->penh_calendar_enable, false));
@@ -61,6 +63,7 @@ class _settings extends \IPS\Dispatcher\Controller
 
         $form->addHeader('penh_combat_record_settings');
         $form->add(new Form\YesNo('penh_combat_record_entry_enable', \IPS\Settings::i()->penh_combat_record_entry_enable, false));
+        $form->add(new Form\Text('penh_combat_record_aar_status', \IPS\Settings::i()->penh_combat_record_aar_status, false));
 
         $form->addTab('penh_strength_sheet_settings_tab');
         $form->add(new Form\Node('penh_strength_sheet_ignore_status', \IPS\Settings::i()->penh_strength_sheet_ignore_status, false, [

@@ -1,6 +1,6 @@
 <?php
 
-namespace IPS\penh\modules\front\attendance;
+namespace IPS\penh\modules\front\personnel;
 
 use \IPS\Helpers\Form;
 
@@ -27,7 +27,7 @@ class _attendancesheet extends \IPS\Dispatcher\Controller
         $form->add(new Form\Date('attendance_to'));
 
         if ($values = $form->values()) {
-            $url = \IPS\Http\Url::internal('app=penh&module=attendance&controller=attendancesheet&do=sheet&from=&to=')->setQueryString([
+            $url = \IPS\Http\Url::internal('app=penh&module=personnel&controller=attendancesheet&do=sheet&from=&to=')->setQueryString([
                 'from' => $values['attendance_from']->getTimestamp(),
                 'to' => $values['attendance_to']->getTimestamp(),
             ]);
@@ -36,7 +36,7 @@ class _attendancesheet extends \IPS\Dispatcher\Controller
         }
 
         \IPS\Output::i()->title = \IPS\Member::loggedIn()->language()->addToStack('attendance_sheet_title');
-        \IPS\Output::i()->output = \IPS\Theme::i()->getTemplate('attendance')->attendanceSheetForm($form);
+        \IPS\Output::i()->output = \IPS\Theme::i()->getTemplate('personnel')->attendanceSheetForm($form);
     }
 
     public function sheet(): void
@@ -63,12 +63,12 @@ class _attendancesheet extends \IPS\Dispatcher\Controller
             $record = [
                 'mission' => $mission,
                 'statistics' => [],
-                'afterActionReports' => [],
             ];
 
+            $afterActionReports = [];
             foreach ($mission->comments() as $aar) {
                 $combatUnitAttendance = $this->getCombatUnitAttendance($aar);
-                $record['afterActionReports'][] = $combatUnitAttendance;
+                $afterActionReports[] = $combatUnitAttendance;
 
                 if (empty($record['statistics'])) {
                     $record['statistics'] = $combatUnitAttendance['statistics'];
@@ -78,11 +78,17 @@ class _attendancesheet extends \IPS\Dispatcher\Controller
                     }
                 }
             }
+
+            usort($afterActionReports, static function ($aar1, $aar2) {
+                return $aar1['combatUnit']->order - $aar2['combatUnit']->order;
+            });
+
+            $record['afterActionReports'] = $afterActionReports;
             $attendance[] = $record;
         }
 
         \IPS\Output::i()->title = \IPS\Member::loggedIn()->language()->addToStack('attendance_sheet_title');
-        \IPS\Output::i()->output = \IPS\Theme::i()->getTemplate('attendance')->attendanceSheet($attendance);
+        \IPS\Output::i()->output = \IPS\Theme::i()->getTemplate('personnel')->attendanceSheet($attendance);
     }
 
     protected function getCombatUnitAttendance(\IPS\penh\Operation\AfterActionReport $aar): array
@@ -97,11 +103,15 @@ class _attendancesheet extends \IPS\Dispatcher\Controller
         }
 
         foreach ($aar->getAttendance() as $soldierId => $status) {
-            $attendance[$status][] = \IPS\perscom\Personnel\Soldier::load($soldierId);
+            try {
+                $attendance[$status][] = \IPS\perscom\Personnel\Soldier::load($soldierId);
+            } catch (\Exception $ex) {
+                continue;
+            }
             $stats[$status]++;
         }
 
-        $stats['total'] = array_sum($stats);
+        $stats['total'] = array_sum($stats) ?: 1;
 
         return [
             'combatUnit' => $combatUnit,

@@ -5,11 +5,6 @@
             "protected": 0,
             "default": 1
         },
-        "attendance": {
-            "default_controller": "attendancesheet",
-            "protected": 0,
-            "default": 0
-        },
         "personnel": {
             "default_controller": "orbat",
             "protected": 0,

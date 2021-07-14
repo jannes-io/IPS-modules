@@ -22,6 +22,8 @@ $lang = array(
     'penh_operations_settings' => 'Operations',
     'penh_operations_content' => 'Operations content',
     'penh_missions_template' => 'Mission content template',
+    'penh_aar_template' => 'AAR template',
+    'penh_aar_status' => 'Attendance status',
 
     'penh_calendar_settings' => 'Calendar integration',
     'penh_calendar_enable' => 'Calendar integration',
@@ -29,6 +31,7 @@ $lang = array(
 
     'penh_combat_record_settings' => 'PERSCOM Combat record',
     'penh_combat_record_entry_enable' => 'Automatic combat record entries',
+    'penh_combat_record_aar_status' => 'Attendance status to trigger combat record',
 
     'penh_strength_sheet_settings_tab' => 'Strength Sheet',
     'penh_strength_sheet_ignore_status' => 'Status to ignore',
@@ -50,7 +53,7 @@ $lang = array(
     // Frontnav
     'frontnavigation_penh' => 'PERSCOM Enhanced',
     'frontnavigation_penh_operations' => 'Operations',
-    'frontnavigation_penh_attendance' => 'Attendance',
+    'frontnavigation_penh_attendance' => 'Attendance Sheet',
     'frontnavigation_penh_personnel' => 'Personnel',
     'frontnavigation_penh_strength_sheet' => 'Strength Sheet',
     'frontnavigation_penh_orbat' => 'Orbat',
@@ -71,6 +74,7 @@ $lang = array(
     'mission_title_name' => 'Mission %s',
     'mission_create_event' => 'Automatically create calendar event',
     'mission_create_combat_record_entry' => 'Automatically create combat record after AAR',
+    'mission_combat_record_entry' => 'Combat record text',
     'mission_content' => 'OPORD',
     'mission_aars' => 'After Action Reports',
 

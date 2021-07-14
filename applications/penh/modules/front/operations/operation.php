@@ -70,10 +70,16 @@ class _operation extends \IPS\Content\Controller
             return;
         }
 
+        $form = \IPS\penh\Operation\Mission::create($operation);
+
         $langCreate = \IPS\Member::loggedIn()->language()->addToStack('mission_create');
         \IPS\Output::i()->title = $langCreate;
+
         \IPS\Output::i()->breadcrumb[] = [$operation->url(), $operation->name];
         \IPS\Output::i()->breadcrumb[] = [null, $langCreate];
-        \IPS\Output::i()->output = \IPS\penh\Operation\Mission::create($operation);
+
+        \IPS\Output::i()->jsFiles = array_merge(\IPS\Output::i()->jsFiles, \IPS\Output::i()->js('front_mission.js', 'penh', 'front'));
+
+        \IPS\Output::i()->output = \IPS\Theme::i()->getTemplate('operations')->missionForm($form);
     }
 }
