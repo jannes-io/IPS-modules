@@ -25,12 +25,25 @@ class _attendancesheet extends \IPS\Dispatcher\Controller
         $form = new Form('attendance_form', 'attendance_generate');
         $form->add(new Form\Date('attendance_from'));
         $form->add(new Form\Date('attendance_to'));
+        $form->add(new Form\Node('attendance_combat_unit', null, false, [
+            'multiple' => true,
+            'class' => 'IPS\perscom\Units\CombatUnit'
+        ]));
 
         if ($values = $form->values()) {
-            $url = \IPS\Http\Url::internal('app=penh&module=personnel&controller=attendancesheet&do=sheet&from=&to=')->setQueryString([
-                'from' => $values['attendance_from']->getTimestamp(),
-                'to' => $values['attendance_to']->getTimestamp(),
-            ]);
+            $queryString = [];
+            if (!empty($values['attendance_from'])) {
+                $queryString['from'] = $values['attendance_from']->getTimestamp();
+            }
+            if (!empty($values['attendance_to'])) {
+                $queryString['to'] = $values['attendance_to']->getTimestamp();
+            }
+            if (!empty($values['attendance_combat_unit'])) {
+                $queryString['combatunit'] = implode(',', array_keys($values['attendance_combat_unit']));
+            }
+
+            $url = \IPS\Http\Url::internal('app=penh&module=personnel&controller=attendancesheet&do=sheet&from=&to=')
+                ->setQueryString($queryString);
             \IPS\Output::i()->redirect($url);
             return;
         }
@@ -46,13 +59,26 @@ class _attendancesheet extends \IPS\Dispatcher\Controller
 
         $fromParam = \IPS\Request::i()->from ?? $threeMonthsAgo->getTimestamp();
         $toParam = \IPS\Request::i()->to ?? $now->getTimestamp();
+        $combatUnits = \IPS\Request::i()->combatunit ?? '';
 
+        $missionTable = \IPS\penh\Operation\Mission::$databaseTable;
+        $aarTable = \IPS\penh\Operation\AfterActionReport::$databaseTable;
         $select = \IPS\Db::i()->select(
-            '*',
+            "{$missionTable}.*, COUNT({$aarTable}.aar_id) AS aarCount",
             \IPS\penh\Operation\Mission::$databaseTable,
-            ['mission_start > ? and mission_end < ?', $fromParam, $toParam],
-            'mission_start DESC'
+            [
+                "{$missionTable}.mission_start > ? AND {$missionTable}.mission_end < ?" . (!empty($combatUnits) ? " AND {$aarTable}.aar_combat_unit_id IN ({$combatUnits})" : ''),
+                $fromParam,
+                $toParam,
+                $combatUnits
+            ],
+            'mission_start DESC',
+            null,
+            "{$missionTable}.mission_id",
+            'aarCount > 0'
         );
+        $select->join($aarTable, "{$missionTable}.mission_id={$aarTable}.aar_mission_id", 'LEFT');
+
         $missions = [];
         foreach ($select as $mission) {
             $missions[] = \IPS\penh\Operation\Mission::constructFromData($mission);
@@ -66,7 +92,7 @@ class _attendancesheet extends \IPS\Dispatcher\Controller
             ];
 
             $afterActionReports = [];
-            foreach ($mission->comments() as $aar) {
+            foreach ($mission->comments(null, null, 'date', 'asc', null, null, null, empty($combatUnits) ? null : "{$aarTable}.aar_combat_unit_id IN ({$combatUnits})") as $aar) {
                 $combatUnitAttendance = $this->getCombatUnitAttendance($aar);
                 $afterActionReports[] = $combatUnitAttendance;
 
@@ -87,7 +113,9 @@ class _attendancesheet extends \IPS\Dispatcher\Controller
             $attendance[] = $record;
         }
 
-        \IPS\Output::i()->title = \IPS\Member::loggedIn()->language()->addToStack('attendance_sheet_title');
+        $title = \IPS\Member::loggedIn()->language()->addToStack('attendance_sheet_title');
+        \IPS\Output::i()->title = $title;
+        \IPS\Output::i()->breadcrumb[] = [\IPS\Http\Url::internal('attendancesheet'), $title];
         \IPS\Output::i()->output = \IPS\Theme::i()->getTemplate('personnel')->attendanceSheet($attendance);
     }
 

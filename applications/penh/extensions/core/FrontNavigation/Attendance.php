@@ -30,12 +30,13 @@ class _Attendance extends \IPS\core\FrontNavigation\FrontNavigationAbstract
 
     public function link()
     {
-        return \IPS\Http\Url::internal('app=penh&module=personnel', 'front', 'attendance');
+        return \IPS\Http\Url::internal('app=penh&module=personnel', 'front', 'attendancesheet');
     }
 
-    public function active()
+    public function active(): bool
     {
         return \IPS\Dispatcher::i()->application->directory === 'penh'
-            && \IPS\Dispatcher::i()->module->key === 'personnel';
+            && \IPS\Dispatcher::i()->module->key === 'personnel'
+            && \IPS\Dispatcher::i()->controller === 'attendancesheet';
     }
 }

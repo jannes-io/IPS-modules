@@ -91,6 +91,7 @@ $lang = array(
     'attendance_sheet_subtitle' => 'Generate an attendance sheet. Use the controls below to specify a time frame and combat units.',
     'attendance_from' => 'From',
     'attendance_to' => 'To',
+    'attendance_combat_unit' => 'Combat unit',
     'attendance_generate' => 'Generate sheet',
     'attendance_view_mission' => 'View mission',
     'attendance_view_aar' => 'View AAR',

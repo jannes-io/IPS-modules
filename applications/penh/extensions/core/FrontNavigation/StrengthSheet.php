@@ -36,6 +36,7 @@ class _StrengthSheet extends \IPS\core\FrontNavigation\FrontNavigationAbstract
     public function active()
     {
         return \IPS\Dispatcher::i()->application->directory === 'penh'
-            && \IPS\Dispatcher::i()->module->key === 'personnel';
+            && \IPS\Dispatcher::i()->module->key === 'personnel'
+            && \IPS\Dispatcher::i()->controller === 'strengthsheet';
     }
 }

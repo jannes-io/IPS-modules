@@ -5,9 +5,9 @@
       "friendly": "operations",
       "real": "app=penh&module=operations&controller=operation"
     },
-    "attendance": {
-      "friendly": "attendance",
-      "real": "app=penh&module=attendance&controller=attendancesheet"
+    "attendancesheet": {
+      "friendly": "attendancesheet",
+      "real": "app=penh&module=personnel&controller=attendancesheet"
     },
     "strengthsheet": {
       "friendly": "strengthsheet",

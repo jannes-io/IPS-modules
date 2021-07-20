@@ -64,7 +64,7 @@ class _strengthsheet extends \IPS\Dispatcher\Controller
         $statusQuery = \IPS\Db::i()->select(
             "{$statusTable}.status_name AS status, COUNT({$soldierTable}.personnel_id) as members",
             $statusTable,
-            "{$statusTable}.status_id NOT IN ({$ignoreStatus})",
+            empty($ignoreStatus) ? null :  "{$statusTable}.status_id NOT IN ({$ignoreStatus})",
             null,
             null,
             "{$statusTable}.status_id",
@@ -93,7 +93,9 @@ class _strengthsheet extends \IPS\Dispatcher\Controller
             return $acc;
         }, ['min' => PHP_INT_MAX, 'minCombatUnits' => [], 'max' => 0]);
 
-        \IPS\Output::i()->title = \IPS\Member::loggedIn()->language()->addToStack('strength_sheet_title');
+        $title = \IPS\Member::loggedIn()->language()->addToStack('strength_sheet_title');
+        \IPS\Output::i()->title = $title;
+        \IPS\Output::i()->breadcrumb[] = [\IPS\Http\Url::internal('strengthsheet'), $title];
         \IPS\Output::i()->output = \IPS\Theme::i()->getTemplate('personnel')->strengthSheet($statusCount, $combatUnitCount, $parentUnit, $withPersonnel);
     }
 }
