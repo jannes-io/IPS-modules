@@ -126,6 +126,10 @@ class _Server extends \IPS\Node\Model implements \IPS\Node\Permissions
             return $this->ecClientCache;
         }
 
+        if (empty(Settings::i()->aws_region) || empty(Settings::i()->aws_access_key_id) || empty(Settings::i()->aws_access_key_secret)) {
+            throw new \InvalidArgumentException('Missing AWS credentials in module settings.');
+        }
+
         $this->ecClientCache = new Ec2Client([
             'region' => Settings::i()->aws_region,
             'version' => '2016-11-15',

@@ -39,13 +39,17 @@ class _stopawsservers extends \IPS\Task
      */
     public function execute()
     {
-        $runningServers = [];
-        foreach (\IPS\Db::i()->select('*', Server::$databaseTable) as $serverData) {
-            /** @var Server $server */
-            $server = Server::constructFromData($serverData);
-            if ($server->getState() === 'running') {
-                $runningServers[] = $server;
+        try {
+            $runningServers = [];
+            foreach (\IPS\Db::i()->select('*', Server::$databaseTable) as $serverData) {
+                /** @var Server $server */
+                $server = Server::constructFromData($serverData);
+                if ($server->getState() === 'running') {
+                    $runningServers[] = $server;
+                }
             }
+        } catch (\Exception $ex) {
+            return $ex->getMessage();
         }
 
         foreach ($runningServers as $server) {
