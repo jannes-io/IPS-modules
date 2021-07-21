@@ -2,7 +2,7 @@
 This monorepo contains several IPS applications as well as a useful script to run 3rd party applications in "IN_DEV" mode.
 
 # License
-All code in this repository is currently proprietary property of [jannes-io](https://github.com/jannes.io) until further notice. Any use (this includes usage, sharing, downloading, reselling and modifying) without explicit written consent from [jannes-io](https://github.com/jannes.io) is subject to legal action.
+All code in this repository is currently proprietary property of [jannes-io](https://jannes.io/) until further notice. Any use (this includes usage, sharing, downloading, reselling and modifying) without explicit written consent from [jannes-io](https://jannes.io/) is subject to legal action.
 
 ## Instructions
 ### Prerequisites
