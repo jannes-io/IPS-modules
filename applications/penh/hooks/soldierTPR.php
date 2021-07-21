@@ -10,14 +10,15 @@ class penh_hook_soldierTPR extends _HOOK_CLASS_
 {
 	public function isTPRd()
 	{
-		$duration = (new \DateTime())->sub(new \DateInterval('P' . \IPS\Settings::i()->personnel_action_request_duration . 'D'));
+	    $days = \IPS\Settings::i()->personnel_action_request_duration ?? 3;
+		$duration = (new \DateTime())->sub(new \DateInterval('P' . $days . 'D'));
 
         $select = \IPS\Db::i()->select(
             'requests_status AS status',
             'perscom_personnel_action_requests',
             [
 				'requests_form = ? and requests_date > ? and requests_soldier = ?',
-				\IPS\Settings::i()->personnel_action_request_id,
+				\IPS\Settings::i()->personnel_action_request_id ?? 0,
 				$duration->getTimestamp(),
 				$this->id
 			]
@@ -27,8 +28,7 @@ class penh_hook_soldierTPR extends _HOOK_CLASS_
 		if (empty($result)) {
 			return null;
 		}
-		$first = $result[0];
-		return $first;
+        return $result[0];
 	}
 
 }
