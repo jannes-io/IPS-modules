@@ -2,6 +2,9 @@
     "operations": {
         "operation": {
             "operation_manage": "operation_manage"
+        },
+        "settings": {
+            "settings_manage": "settings_manage"
         }
     },
     "settings": {

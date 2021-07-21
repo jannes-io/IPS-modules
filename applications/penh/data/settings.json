@@ -40,6 +40,10 @@
         "default": "1"
     },
     {
+        "key": "penh_personnel_highlighted_awards",
+        "default": ""
+    },
+    {
         "key": "penh_strength_sheet_ignore_status",
         "default": ""
     }

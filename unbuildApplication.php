@@ -18,6 +18,7 @@ class ApplicationUnbuilder
     {
         $this->unbuildLang($dir);
         $this->unbuildTheme($dir);
+        $this->unbuildJS($dir);
     }
 
     private function unbuildLang(string $dir): void
@@ -50,7 +51,25 @@ class ApplicationUnbuilder
             if (!is_dir($templateDir)) {
                 mkdir($templateDir, 0777, true);
             }
-            file_put_contents("$dir/dev/html/$location/$group/$name.phtml", $phtmlContent);
+            file_put_contents("$templateDir/$name.phtml", $phtmlContent);
+        }
+    }
+
+    private function unbuildJS(string $dir)
+    {
+        $jsXML = $this->readXML($dir . '/data/javascript.xml');
+
+        foreach ($jsXML->file as $template) {
+            $location = (string)$template->attributes()->javascript_location;
+            $path = (string)$template->attributes()->javascript_path;
+            $name = (string)$template->attributes()->javascript_name;
+            $content = (string)$template;
+
+            $templateDir = "$dir/dev/js/$location/$path";
+            if (!is_dir($templateDir)) {
+                mkdir($templateDir, 0777, true);
+            }
+            file_put_contents("$templateDir/$name", $content);
         }
     }
 

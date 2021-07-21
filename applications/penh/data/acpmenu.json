@@ -15,6 +15,13 @@
             "do": "",
             "restriction": "operation_manage",
             "subcontrollers": ""
+        },
+        "settings": {
+            "tab": "penh",
+            "controller": "settings",
+            "do": "",
+            "restriction": "settings_manage",
+            "subcontrollers": ""
         }
     }
 }

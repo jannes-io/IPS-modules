@@ -16,9 +16,9 @@ $lang = array(
 
     'menu__penh_operations' => 'Operations',
     'menu__penh_operations_operation' => 'Operations',
+    'menu__penh_operations_settings' => 'Settings',
 
     // Settings
-    'penh_operations_settings_tab' => 'Operations',
     'penh_operations_settings' => 'Operations',
     'penh_operations_content' => 'Operations content',
     'penh_missions_template' => 'Mission content template',
@@ -33,8 +33,10 @@ $lang = array(
     'penh_combat_record_entry_enable' => 'Automatic combat record entries',
     'penh_combat_record_aar_status' => 'Attendance status to trigger combat record',
 
-    'penh_strength_sheet_settings_tab' => 'Strength Sheet',
+    'penh_strength_sheet_settings' => 'Strength Sheet',
     'penh_strength_sheet_ignore_status' => 'Status to ignore',
+    'penh_personnel_profile' => 'P-File Configuration',
+    'penh_personnel_highlighted_awards' => 'Awards to highlight',
 
     // Operations
     'operations' => 'Operations',
@@ -111,4 +113,7 @@ $lang = array(
     // TPR
     'request_approved' => 'TPR Approved',
     'request_pending' => 'TPR Pending Approval',
+
+    // Awards
+    'penh_soldier_medals' => 'Notable Medals',
 );
