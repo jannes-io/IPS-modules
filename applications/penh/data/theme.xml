@@ -340,7 +340,7 @@
 ]]></template>
  <template template_group="personnel" template_name="orbat" template_data="$combatUnits" template_location="front" template_app="penh"><![CDATA[<h1>This module is still under construction. Check back later.</h1>
 ]]></template>
- <template template_group="personnel" template_name="strengthSheet" template_data="$statusCount, $combatUnitCount, $combatUnit, $childUnits" template_location="front" template_app="penh"><![CDATA[<div class="ipsPageHeader ipsBox ipsResponsive_pull ipsPadding ipsClearfix">
+ <template template_group="personnel" template_name="strengthSheet" template_data="$statusCount, $combatUnitCount, $combatUnit, $childUnits" template_location="front" template_app="penh"><![CDATA[<div class="ipsPageHeader ipsBox ipsResponsive_pull ipsPadding ipsClearfix ipsSpacer_bottom">
     <header>
         <h1 class="ipsType_pageTitle">{lang="strength_sheet_title"}</h1>
         <div class="ipsGrid">
@@ -382,7 +382,7 @@
 <div class="ipsFlex ipsFlex-jc:center ipsFlex-fw:wrap">
     {template="combatUnit" group="personnel" params="$combatUnit"}
 </div>
-<div class="ipsFlex ipsFlex-jc:around ipsFlex-fd:row ipsFlex-fw:wrap">
+<div class="ipsFlex ipsFlex-jc:around ipsFlex-fd:row ipsFlex-fw:wrap ipsSpacer_bottom">
     {{foreach $childUnits as $childUnit}}
     {template="combatUnit" group="personnel" params="$childUnit"}
     {{endforeach}}
@@ -394,7 +394,7 @@
         <div class="ipsType_richText ipsType_normal">{lang="strength_sheet_subtitle"}</div>
     </header>
 </div>
-<div class="ipsBox ipsResponsive_pull ipsPadding">
+<div class="ipsBox ipsResponsive_pull ipsPadding ipsSpacer_bottom">
     {$form|raw}
 </div>
 ]]></template>
