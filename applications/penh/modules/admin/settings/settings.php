@@ -37,6 +37,13 @@ class _settings extends \IPS\Dispatcher\Controller
             'multiple' => true
         ], null, null, null, 'penh_personnel_highlighted_awards'));
 
+        $defaultUniformPath = \IPS\Settings::i()->penh_personnel_default_uniform ?? '';
+        $defaultUniform = !empty($defaultUniformPath) ? \IPS\File::get('penh_DefaultUniform', $defaultUniformPath) : null;
+        $form->add(new Form\Upload('penh_personnel_default_uniform', $defaultUniform, false, [
+            'storageExtension' => 'penh_DefaultUniform',
+            'allowedFileTypes' => ['gif', 'jpeg', 'jpe', 'jpg', 'png']
+        ]));
+
         if ($values = $form->values()) {
             $values['penh_strength_sheet_ignore_status'] = \is_array($values['penh_strength_sheet_ignore_status'])
                 ? implode(',', array_keys($values['penh_strength_sheet_ignore_status'] ?? []))
@@ -45,6 +52,8 @@ class _settings extends \IPS\Dispatcher\Controller
             $values['penh_personnel_highlighted_awards'] = \is_array($values['penh_personnel_highlighted_awards'])
                 ? implode(',', array_keys($values['penh_personnel_highlighted_awards'] ?? []))
                 : $values['penh_personnel_highlighted_awards'];
+
+            $values['penh_personnel_default_uniform'] = $values['penh_personnel_default_uniform'] !== null ? (string)$values['penh_personnel_default_uniform'] : null;
 
             $form->saveAsSettings($values);
         }

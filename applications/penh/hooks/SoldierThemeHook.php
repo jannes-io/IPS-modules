@@ -55,6 +55,18 @@ public static function hookData() {
 {{endif}}
 {{endif}}',
     ),
+    1 =>
+    array (
+      'selector' => 'div.ipsPageHeader.ipsClearfix',
+      'type' => 'add_after',
+      'content' => '
+{{if $soldier->uniform === null and !empty(settings.penh_personnel_default_uniform)}}
+{{$defaultUniform = settings.penh_personnel_default_uniform;}}
+    <div class=\'ipsPerscomSoldierUniform_container {{if settings.perscom_settings_personnel_layout_uniform_mobile == "0"}}ipsResponsive_hidePhone{{endif}}\'>
+        <img src="{file=\'$defaultUniform\' extension=\'penh_DefaultUniform\'}" class=\'{{if \IPS\perscom\Helpers\Mobile::isMobile()}}ipsPerscomSoldierUniformFill{{else}}{setting="perscom_settings_personnel_layout_uniform_aspect"}{{endif}}\' title="{$soldier->_title}" style="height: {{if \IPS\perscom\Helpers\Mobile::isMobile()}}200{{else}}{{if settings.perscom_settings_personnel_layout_uniform_height}}{setting="perscom_settings_personnel_layout_uniform_height"}{{else}}200{{endif}}{{endif}}px;" />
+    </div>
+{{endif}}',
+    ),
   ),
 ), parent::hookData() );
 }

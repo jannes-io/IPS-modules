@@ -40,6 +40,10 @@
         "default": "1"
     },
     {
+        "key": "penh_personnel_default_uniform",
+        "default": ""
+    },
+    {
         "key": "penh_personnel_highlighted_awards",
         "default": ""
     },
