@@ -1,10 +1,232 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <theme name="Default" author_name="Invision Power Services, Inc" author_url="https://www.invisioncommunity.com">
- <template template_group="operations" template_name="operation_row" template_data="$operation" template_location="front" template_app="penh"><![CDATA[<div class="ipsBox ipsPad ipsSpacer_bottom">
-    <h4 class="ipsType_pageTitle">{$operation->name}</h4>
-    {$operation->getStartDate()->localeDate()}
+ <template template_group="global" template_name="soldierRow" template_data="$soldier" template_location="front" template_app="penh"><![CDATA[{{$rank = $soldier->get_rank();}}
+{{if $rank->image_small !== null}}
+{{$rankImg = '/uploads/' . $soldier->get_rank()->image_small;}}
+<img src="{$rankImg}" width="20px" />&nbsp;
+{{elseif $rank->icon !== null}}
+<i class="fa fa-fw fa-rank {$rank->icon}"></i>
+{{endif}}
+{$soldier->firstname} {$soldier->lastname}
+]]></template>
+ <template template_group="operations" template_name="afterActionReport" template_data="$aar, $attendance" template_location="front" template_app="penh"><![CDATA[<div class="ipsPageHeader ipsBox ipsResponsive_pull ipsPadding ipsSpacer_bottom ipsClearfix">
+    <h1 class="ipsType_pageTitle">{$aar->title()}</h1>
+    <hr class="ipsHr">
+    <div class="ipsPageHeader__meta ipsFlex ipsFlex-jc:between ipsFlex-ai:center ipsFlex-fw:wrap ipsGap:3">
+        <div class="ipsFlex-flex:11">
+            <div class="ipsPhotoPanel ipsPhotoPanel_mini ipsPhotoPanel_notPhone ipsClearfix">
+                {template="userPhoto" group="global" app="core" params="$aar->author(), 'mini', $aar->warningRef()"}
+                <div>
+                    <p class="ipsType_reset ipsType_blendLinks">
+						<span class="ipsType_normal">
+							<strong>{lang="byline_itemprop" htmlsprintf="$aar->author()->link($aar->warningRef(), NULL, $aar->isAnonymous())"}</strong><br />
+							<span class="ipsType_light">{datetime="$aar->created_at"} {lang="in"} <a href="{$aar->item()->url()}">{$aar->item()->name|raw}</a></span>
+						</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{if ($aar->canDelete() or $aar->canEdit())}}
+<div class="ipsClearfix">
+    <ul class="ipsToolList ipsToolList_horizontal ipsSpacer_both ipsResponsive_hidePhone">
+        <li>
+            <a href="#elMissionActions_menu" id="elMissionActions" class="ipsButton ipsButton_link ipsButton_medium ipsButton_fullWidth" data-ipsMenu>{lang="moderator_actions"} <i class="fa fa-caret-down"></i></a>
+            <ul id="elMissionActions_menu" class="ipsMenu ipsMenu_auto ipsHide ipsType_reset">
+                {{if $aar->canEdit()}}
+                <li class="ipsMenu_item"><a href="{$aar->url()->setQueryString('do', 'edit')}">{lang="edit"}</a></li>
+                {{endif}}
+                {{if $aar->canDelete()}}
+                <li class="ipsMenu_item"><a href="{$aar->url()->setQueryString('do', 'delete')}">{lang="delete"}</a></li>
+                {{endif}}
+            </ul>
+        </li>
+    </ul>
+</div>
+{{endif}}
+<div class="ipsBox ipsResponsive_pull ipsPadding ipsClearfix">
+    <div class="ipsSpacer_bottom">
+        <strong>{lang="aar_start"}:</strong> {datetime="$aar->start()" norelative="true"}
+    </div>
+    <div class="ipsSpacer_bottom">
+        <strong>{lang="aar_end"}:</strong> {datetime="$aar->end()" norelative="true"}
+    </div>
+    <div class="ipsSpacer_bottom">
+        <strong>{lang="aar_attendance"}</strong>
+        <table class="ipsTable ipsTable_zebra">
+            <thead>
+            <tr>
+                {{foreach \IPS\penh\Operation\AfterActionReport::availableStatus() as $status}}
+                <th>
+                    <div class="ipsType_center">
+                        {$ucStatus = ucfirst($status)}
+                    </div>
+                </th>
+                {{endforeach}}
+            </tr>
+            </thead>
+            <tbody>
+            {template="attendanceTableBody" group="personnel" app="penh" params="$attendance"}
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <strong>{lang="aar_content"}</strong>
+        {$aar->content|raw}
+    </div>
+</div>
+]]></template>
+ <template template_group="operations" template_name="afterActionReportForm" template_data="$form, $status" template_location="front" template_app="penh"><![CDATA[<div
+    class="ipsBox ipsResponsive_pull ipsPadding ipsClearfix"
+    data-controller="penh.front.afteractionreport.main"
+    data-status="{$status}"
+>
+    {$form|raw}
+</div>
+]]></template>
+ <template template_group="operations" template_name="afterActionReportRow" template_data="$mission, $aar" template_location="front" template_app="penh"><![CDATA[{{$combatUnit = $aar->combatUnit();}}
+<li class="ipsDataItem">
+    {{if $combatUnit->image !== null}}
+    <div class="ipsDataItem_icon">
+        <span class="ipsUserPhoto ipsUserPhoto_tiny">
+            <img src="/uploads/{$combatUnit->image}" alt="" loading="lazy">
+        </span>
+    </div>
+    {{endif}}
+    <div class="ipsDataItem_main">
+        <a href="{$aar->url()}">{$aar->title()}</a><br />
+        <span class='ipsType_light ipsType_medium ipsType_blendLinks'>
+			{lang="byline" htmlsprintf="$aar->author()->link($mission->warningRef(), NULL, $mission->isAnonymous())"}{datetime="$aar->created_at"}
+		</span>
+    </div>
+</li>
+]]></template>
+ <template template_group="operations" template_name="mission" template_data="$mission" template_location="front" template_app="penh"><![CDATA[<div class="ipsPageHeader ipsBox ipsResponsive_pull ipsPadding ipsSpacer_bottom ipsClearfix">
+    <h1 class="ipsType_pageTitle">{lang="mission_title_name" sprintf="$mission->name"}</h1>
+    <hr class="ipsHr">
+    <div class="ipsPageHeader__meta ipsFlex ipsFlex-jc:between ipsFlex-ai:center ipsFlex-fw:wrap ipsGap:3">
+        <div class="ipsFlex-flex:11">
+            <div class="ipsPhotoPanel ipsPhotoPanel_mini ipsPhotoPanel_notPhone ipsClearfix">
+                {template="userPhoto" group="global" app="core" params="$mission->author(), 'mini', $mission->warningRef()"}
+                <div>
+                    <p class="ipsType_reset ipsType_blendLinks">
+						<span class="ipsType_normal">
+							<strong>{lang="byline_itemprop" htmlsprintf="$mission->author()->link($mission->warningRef(), NULL, $mission->isAnonymous())"}</strong><br />
+							<span class="ipsType_light">{lang="in"} <a href="{$mission->container()->url()}">{$mission->container()->_formattedTitle|raw}</a></span>
+						</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="ipsBox ipsResponsive_pull ipsPadding ipsSpacer_bottom">
+    <div class="ipsSpacer_bottom">
+        <strong>{lang="mission_start"}:</strong> {datetime="$mission->start" norelative="true"}
+    </div>
+    <div class="ipsSpacer_bottom">
+        <strong>{lang="mission_end"}:</strong> {datetime="$mission->end" norelative="true"}
+    </div>
+    <div>
+        {$mission->content|raw}
+    </div>
+</div>
+{{if ($mission->canDelete() or $mission->canEdit() or $mission->canComment())}}
+<div class="ipsClearfix">
+    <ul class="ipsToolList ipsToolList_horizontal ipsSpacer_both ipsResponsive_hidePhone">
+        {{if $mission->canComment()}}
+        <li>
+            <a href="{$url = \IPS\Http\Url::internal('app=penh&module=operations&controller=afteractionreport&do=add&id=' . $mission->id)}" class="ipsButton ipsButton_primary ipsButton_medium ipsButton_fullWidth">
+                {lang="aar_create"}
+            </a>
+        </li>
+        {{endif}}
+        <li>
+            <a href="#elMissionActions_menu" id="elMissionActions" class="ipsButton ipsButton_link ipsButton_medium ipsButton_fullWidth" data-ipsMenu>{lang="moderator_actions"} <i class="fa fa-caret-down"></i></a>
+            <ul id="elMissionActions_menu" class="ipsMenu ipsMenu_auto ipsHide ipsType_reset">
+                {{if $mission->canEdit()}}
+                <li class="ipsMenu_item"><a href="{$mission->url()->setQueryString('do', 'edit')}">{lang="mission_edit"}</a></li>
+                {{endif}}
+                {{if $mission->canDelete()}}
+                <li class="ipsMenu_item"><a href="{$mission->url()->setQueryString('do', 'delete')}">{lang="mission_delete"}</a></li>
+                {{endif}}
+            </ul>
+        </li>
+    </ul>
+</div>
+{{endif}}
+{{$aars = $mission->comments();}}
+{{if \count($aars) > 0}}
+<div class="ipsBox ipsResponsive_pull ipsPadding_horizontal">
+    <h3 class="ipsPadding_top">{lang="mission_aars"}</h3>
+    <ul class="ipsDataList ipsDataList_reducedSpacing">
+        {{foreach $aars as $aar}}
+        {$aar->html()|raw}
+        {{endforeach}}
+    </ul>
+</div>
+{{endif}}
+]]></template>
+ <template template_group="operations" template_name="missionForm" template_data="$form" template_location="front" template_app="penh"><![CDATA[<div class="ipsBox ipsResponsive_pull ipsPadding ipsClearfix" data-controller="penh.front.mission.main">
+    {$form|raw}
+</div>
+]]></template>
+ <template template_group="operations" template_name="operation" template_data="$operation, $missionTable" template_location="front" template_app="penh"><![CDATA[<div class="ipsPageHeader ipsBox ipsResponsive_pull ipsPadding ipsSpacer_bottom ipsClearfix">
+    <header>
+        <h1 class="ipsType_pageTitle">{lang="operation_title_name" sprintf="$operation->name"}</h1>
+    </header>
+    <hr class='ipsHr'>
+    <div class='ipsPageHeader__meta ipsFlex ipsFlex-jc:between ipsFlex-ai:center ipsFlex-fw:wrap ipsGap:3'>
+        <div class='ipsFlex-flex:11'>
+            <div class='ipsClearfix'>
+                <div>
+                    <p class="ipsType_reset ipsType_blendLinks">
+                        <span class="ipsType_normal">
+                            <span>{lang="operation_started"}: </span>{$d = \IPS\DateTime::ts($operation->start)->localeDate()}
+                            {{if $operation->end !== null}}
+                            <span>{lang="operation_ended"}: </span>{$d = \IPS\DateTime::ts($operation->end)->localeDate()}
+                            {{endif}}
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{if $operation->can('read')}}
+<div>
+    <ul class="ipsToolList ipsToolList_horizontal ipsToolList_horizontal--flex ipsClearfix ipsSpacer_both">
+        {{if $operation->can('add')}}
+        <li class="ipsToolList_primaryAction">
+            <a class="ipsButton ipsButton_medium ipsButton_important ipsButton_fullWidth" href="{$operation->url()->setQueryString('do', 'add')}">
+                {lang="mission_create"}
+            </a>
+        </li>
+        {{endif}}
+    </ul>
+</div>
+<div class="ipsBox ipsResponsive_pull ipsSpacer_bottom">
+    {$missionTable|raw}
+</div>
+{{endif}}
+<div class="ipsBox ipsPadding ipsResponsive_pull">
+    {$operation->content|raw}
+</div>
+]]></template>
+ <template template_group="operations" template_name="operationRow" template_data="$operation" template_location="front" template_app="penh"><![CDATA[<div class="ipsBox ipsResponsive_pull ipsPadding ipsSpacer_bottom">
+    <h2>
+        <a class="ipsType_brandedLink" href="{$operation->url()}">{lang="operation_title_name" sprintf="$operation->name"}</a>
+    </h2>
+    <p>
+        <span>{lang="operation_started"}: </span>
+        {$d = \IPS\DateTime::ts($operation->start)->localeDate()}
+    </p>
     {{if $operation->end !== null}}
-        {$operation->getEndDate()->localeDate()}
+    <p>
+        <span>{lang="operation_ended"}: </span>
+        {$d = \IPS\DateTime::ts($operation->end)->localeDate()}
+    </p>
     {{endif}}
     {$operation->content|raw}
 </div>
@@ -12,12 +234,180 @@
 ]]></template>
  <template template_group="operations" template_name="operations" template_data="$operations=[]" template_location="front" template_app="penh"><![CDATA[<div class="ipsPageHeader ipsBox ipsResponsive_pull ipsPadding ipsSpacer_bottom ipsClearfix">
     <header>
-        <h1 class="ipsType_pageTitle">{lang="penh_operations_title"}</h1>
-        <div class="ipsType_richText ipsType_normal">{lang="penh_operations_subtitle"}</div>
+        <h1 class="ipsType_pageTitle">{lang="operations_title"}</h1>
+        {{$subTitle = \IPS\Settings::i()->penh_operations_content;}}
+        <div class="ipsType_richText ipsType_normal">{$subTitle|raw}</div>
     </header>
 </div>
 {{foreach $operations as $operation}}
-    {template="operation_row" app="penh" group="operations" params="$operation"}
+    {template="operationRow" app="penh" group="operations" params="$operation"}
 {{endforeach}}
 ]]></template>
+ <template template_group="personnel" template_name="attendanceSheet" template_data="$attendance" template_location="front" template_app="penh"><![CDATA[{{$allStatus = \IPS\penh\Operation\AfterActionReport::availableStatus();}}
+{{$countStatus = \count($allStatus);}}
+{{foreach $attendance as $record}}
+{{if \count($record['afterActionReports']) > 0}}
+<div class="ipsBox ipsResponsive_pull ipsPadding ipsSpacer_bottom ipsClearfix">
+    <div class="ipsSpacer_bottom">
+        <h2 class="ipsType_pageTitle">{$record['mission']->start()->localeDate()}: {$record['mission']->name}</h2>
+        <a href="{$record['mission']->url()}" target="_blank">{lang="attendance_view_mission"}</a>
+    </div>
+    <table class="ipsTable ipsTable_zebra">
+        <tbody>
+        <tr>
+            {{foreach $allStatus as $status}}
+            <th>
+                <div class="ipsType_center">{$ucStatus = ucfirst($status)}</div>
+            </th>
+            {{endforeach}}
+        </tr>
+        {{foreach $record['afterActionReports'] as $aar}}
+        <tr>
+            <th colspan="{$countStatus}">
+                {$aar['combatUnit']->position}: {$aar['combatUnit']->name}
+                <a class="ipsType_right ipsPos_right" href="{$aar['url']}">
+                    {lang="attendance_view_aar"}
+                </a>
+            </th>
+        </tr>
+        {{$attendance = $aar['attendance'];}}
+        {template="attendanceTableBody" group="personnel" app="penh" params="$attendance"}
+        <tr>
+            <td colspan="$countStatus">
+                {{$stats = $aar['statistics'];}}
+                {{foreach $allStatus as $status}}
+                {$s = ucfirst($status)}: <strong>{$stats[$status]} ({$p = number_format($stats[$status] / $stats['total'], 2) * 100}%)</strong>
+                {{endforeach}}
+            </td>
+        </tr>
+        {{endforeach}}
+        <tr>
+            {{foreach $allStatus as $status}}
+            <th>
+                <div class="ipsType_center">
+                    {$record['statistics'][$status]} ({$p = number_format($record['statistics'][$status] / $record['statistics']['total'], 2) * 100}%)
+                </div>
+            </th>
+            {{endforeach}}
+        </tr>
+        </tbody>
+    </table>
+</div>
+{{endif}}
+{{endforeach}}
+]]></template>
+ <template template_group="personnel" template_name="attendanceSheetForm" template_data="$form" template_location="front" template_app="penh"><![CDATA[<div class="ipsPageHeader ipsBox ipsResponsive_pull ipsPadding ipsSpacer_bottom ipsClearfix">
+    <header>
+        <h1 class="ipsType_pageTitle">{lang="attendance_sheet_title"}</h1>
+        <div class="ipsType_richText ipsType_normal">{lang="attendance_sheet_subtitle"}</div>
+    </header>
+</div>
+<div class="ipsBox ipsResponsive_pull ipsPadding">
+    {$form|raw}
+</div>
+]]></template>
+ <template template_group="personnel" template_name="attendanceTableBody" template_data="$attendance" template_location="front" template_app="penh"><![CDATA[{{if \count($attendance) > 0}}
+{{$rowCount = max(array_map(function ($soldiers) { return \count($soldiers); }, $attendance));}}
+{{for $i = 0; $i < $rowCount; $i++}}
+<tr>
+    {{foreach \IPS\penh\Operation\AfterActionReport::availableStatus() as $status}}
+    {{$soldier = $attendance[$status][$i] ?? null;}}
+    <td>
+        {{if $soldier !== null}}
+        <div class="ipsType_center">
+            {template="soldierRow" group="global" params="$soldier"}
+        </div>
+        {{endif}}
+    </td>
+    {{endforeach}}
+</tr>
+{{endfor}}
+{{endif}}
+]]></template>
+ <template template_group="personnel" template_name="combatUnit" template_data="$combatUnit" template_location="front" template_app="penh"><![CDATA[{{$unit = $combatUnit['combatUnit'];}}
+<div class="ipsBox ipsWidget ipsWidget_vertical ipsMargin:half combatUnitWidget">
+    <h3 class="ipsType_reset ipsWidget_title">{$unit->name} <span class="ipsType_reset ipsType_light">({$c = \count($combatUnit['personnel'])})</span></h3>
+    <div class="ipsWidget_inner">
+        <ul class="ipsDataList">
+            {{foreach $combatUnit['personnel'] as $soldier}}
+            <li class="ipsDataItem ipsPad_half">
+                {template="soldierRow" group="global" params="$soldier"}
+            </li>
+            {{endforeach}}
+        </ul>
+    </div>
+</div>
+]]></template>
+ <template template_group="personnel" template_name="orbat" template_data="$combatUnits" template_location="front" template_app="penh"><![CDATA[<h1>This module is still under construction. Check back later.</h1>
+]]></template>
+ <template template_group="personnel" template_name="strengthSheet" template_data="$statusCount, $combatUnitCount, $combatUnit, $childUnits" template_location="front" template_app="penh"><![CDATA[<div class="ipsPageHeader ipsBox ipsResponsive_pull ipsPadding ipsClearfix">
+    <header>
+        <h1 class="ipsType_pageTitle">{lang="strength_sheet_title"}</h1>
+        <div class="ipsGrid">
+            <div class="ipsGrid_span6">
+                <h2>{lang="strength_sheet_unit_totals"}</h2>
+                <ol class="ipsDataList ipsDataList_reducedSpacing">
+                    {{foreach $statusCount['status'] as $count}}
+                    <li class="ipsDataItem">
+                        <strong>{$count['status']}</strong>: {$count['members']}
+                    </li>
+                    {{endforeach}}
+                    <li class="ipsDataItem">
+                        <strong>{lang="strength_sheet_total"}</strong>: {$statusCount['total']}
+                    </li>
+                </ol>
+            </div>
+            <div class="ipsGrid_span6">
+                <h2>{lang="strength_sheet_placement_instructions"}</h2>
+                <ol class="ipsDataList ipsDataList_reducedSpacing">
+                    <li class="ipsDataItem">
+                        <strong>{lang="strength_sheet_smallest_size"}</strong>: {$combatUnitCount['min']}
+                    </li>
+                    <li class="ipsDataItem">
+                        <strong>{lang="strength_sheet_smallest_units"}</strong>:
+                        <ul>
+                            {{foreach $combatUnitCount['minCombatUnits'] as $smallUnit}}
+                            <li>{$smallUnit->name}</li>
+                            {{endforeach}}
+                        </ul>
+                    </li>
+                    <li class="ipsDataItem">
+                        <strong>{lang="strength_sheet_largest_size"}</strong>: {$combatUnitCount['max']}
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </header>
+</div>
+<div class="ipsFlex ipsFlex-jc:center ipsFlex-fw:wrap">
+    {template="combatUnit" group="personnel" params="$combatUnit"}
+</div>
+<div class="ipsFlex ipsFlex-jc:around ipsFlex-fd:row ipsFlex-fw:wrap">
+    {{foreach $childUnits as $childUnit}}
+    {template="combatUnit" group="personnel" params="$childUnit"}
+    {{endforeach}}
+</div>
+]]></template>
+ <template template_group="personnel" template_name="strengthSheetForm" template_data="$form" template_location="front" template_app="penh"><![CDATA[<div class="ipsPageHeader ipsBox ipsResponsive_pull ipsPadding ipsSpacer_bottom ipsClearfix">
+    <header>
+        <h1 class="ipsType_pageTitle">{lang="strength_sheet_title"}</h1>
+        <div class="ipsType_richText ipsType_normal">{lang="strength_sheet_subtitle"}</div>
+    </header>
+</div>
+<div class="ipsBox ipsResponsive_pull ipsPadding">
+    {$form|raw}
+</div>
+]]></template>
+ <css css_location="front" css_app="penh" css_attributes="" css_path="afteractionreport" css_name="form.css">li#form_aar_attendance {
+    display: none;
+}
+
+#attendance-table th {
+    text-transform: capitalize;
+}
+</css>
+ <css css_location="front" css_app="penh" css_attributes="" css_path="personnel" css_name="combatUnit.css">.combatUnitWidget {
+    width: 300px;
+}
+</css>
 </theme>

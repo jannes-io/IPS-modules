@@ -1,0 +1,11 @@
+{
+    "added": [
+        "front\/personnel",
+        "admin\/settings"
+    ],
+    "edited": [
+        "front\/operations",
+        "admin\/operations"
+    ],
+    "removed": []
+}

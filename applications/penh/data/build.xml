@@ -1,8 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <build>
- <module key="front/operations"><![CDATA[{"default_controller":"","protected":0,"default":0}]]></module>
- <module key="admin/operations"><![CDATA[{"default_controller":"","protected":false,"default":null}]]></module>
- <setting key="personnel_action_request_id"><![CDATA[{"key":"personnel_action_request_id","default":"1"}]]></setting>
- <hook key="soldierTPR"><![CDATA[{"type":"C","class":"\\IPS\\perscom\\Personnel\\Soldier"}]]></hook>
- <hook key="soldierRowTPR"><![CDATA[{"type":"S","class":"\\IPS\\Theme\\class_perscom_front_personnel"}]]></hook>
+ <module key="front/operations"><![CDATA[{"default_controller":"operation","protected":0,"default":1}]]></module>
+ <module key="front/personnel"><![CDATA[{"default_controller":"attendancesheet","protected":0,"default":0}]]></module>
+ <module key="admin/operations"><![CDATA[{"default_controller":"","protected":0,"default":0}]]></module>
+ <module key="admin/settings"><![CDATA[{"default_controller":"","protected":0,"default":1}]]></module>
+ <setting key="penh_aar_status"><![CDATA[{"key":"penh_aar_status","default":"present,excused,absent"}]]></setting>
+ <setting key="penh_aar_template"><![CDATA[{"key":"penh_aar_template","default":""}]]></setting>
+ <setting key="penh_calendar_enable"><![CDATA[{"key":"penh_calendar_enable","default":"0"}]]></setting>
+ <setting key="penh_calendar_node"><![CDATA[{"key":"penh_calendar_node","default":""}]]></setting>
+ <setting key="penh_combat_record_aar_status"><![CDATA[{"key":"penh_combat_record_aar_status","default":"present"}]]></setting>
+ <setting key="penh_combat_record_entry_enable"><![CDATA[{"key":"penh_combat_record_entry_enable","default":"0"}]]></setting>
+ <setting key="penh_missions_template"><![CDATA[{"key":"penh_missions_template","default":""}]]></setting>
+ <setting key="penh_operations_content"><![CDATA[{"key":"penh_operations_content","default":"Combat operations."}]]></setting>
+ <setting key="penh_personnel_action_request_duration"><![CDATA[{"key":"penh_personnel_action_request_duration","default":"3"}]]></setting>
+ <setting key="penh_personnel_action_request_id"><![CDATA[{"key":"penh_personnel_action_request_id","default":"1"}]]></setting>
+ <setting key="penh_personnel_default_uniform"><![CDATA[{"key":"penh_personnel_default_uniform","default":""}]]></setting>
+ <setting key="penh_personnel_highlighted_awards"><![CDATA[{"key":"penh_personnel_highlighted_awards","default":""}]]></setting>
+ <setting key="penh_strength_sheet_ignore_status"><![CDATA[{"key":"penh_strength_sheet_ignore_status","default":""}]]></setting>
+ <hook key="Soldier"><![CDATA[{"type":"C","class":"\\IPS\\perscom\\Personnel\\Soldier"}]]></hook>
+ <hook key="SoldierThemeHook"><![CDATA[{"type":"S","class":"\\IPS\\Theme\\class_perscom_front_personnel"}]]></hook>
 </build>

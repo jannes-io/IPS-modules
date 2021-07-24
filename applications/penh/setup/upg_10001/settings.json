@@ -1,0 +1,21 @@
+{
+    "added": [
+        "penh_aar_status",
+        "penh_aar_template",
+        "penh_calendar_enable",
+        "penh_calendar_node",
+        "penh_combat_record_aar_status",
+        "penh_combat_record_entry_enable",
+        "penh_missions_template",
+        "penh_operations_content",
+        "penh_personnel_action_request_duration",
+        "penh_personnel_action_request_id",
+        "penh_personnel_default_uniform",
+        "penh_personnel_highlighted_awards",
+        "penh_strength_sheet_ignore_status"
+    ],
+    "edited": [],
+    "removed": [
+        "personnel_action_request_id"
+    ]
+}

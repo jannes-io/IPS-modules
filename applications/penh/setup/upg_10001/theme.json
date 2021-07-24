@@ -1,0 +1,40 @@
+{
+    "html": {
+        "added": [
+            "front\/global\/soldierRow",
+            "front\/operations\/afterActionReport",
+            "front\/operations\/afterActionReportForm",
+            "front\/operations\/afterActionReportRow",
+            "front\/operations\/mission",
+            "front\/operations\/missionForm",
+            "front\/operations\/operation",
+            "front\/operations\/operationRow",
+            "front\/personnel\/attendanceSheet",
+            "front\/personnel\/attendanceSheetForm",
+            "front\/personnel\/attendanceTableBody",
+            "front\/personnel\/combatUnit",
+            "front\/personnel\/orbat",
+            "front\/personnel\/strengthSheet",
+            "front\/personnel\/strengthSheetForm"
+        ],
+        "edited": [
+            "front\/operations\/operations"
+        ],
+        "removed": [
+            "front\/operations\/operation_row"
+        ]
+    },
+    "css": {
+        "added": [
+            "front\/afteractionreport\/form.css",
+            "front\/personnel\/combatUnit.css"
+        ],
+        "edited": [],
+        "removed": []
+    },
+    "resources": {
+        "added": [],
+        "edited": [],
+        "removed": []
+    }
+}

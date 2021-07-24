@@ -1,22 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <language>
- <app key="penh" version="10000">
+ <app key="penh" version="10001">
   <word key="__app_penh" js="0">PERSCOM Enhanced</word>
   <word key="module__penh_operations" js="0">Operations</word>
+  <word key="module__penh_attendance" js="0">Attendance</word>
+  <word key="module__penh_personnel" js="0">Personnel</word>
   <word key="menutab__penh" js="0">PERSCOM Enhanced</word>
   <word key="menutab__penh_icon" js="0">angle-double-up</word>
+  <word key="menu__penh_settings" js="0">Settings</word>
+  <word key="menu__penh_settings_settings" js="0">Settings</word>
   <word key="menu__penh_operations" js="0">Operations</word>
   <word key="menu__penh_operations_operation" js="0">Operations</word>
+  <word key="menu__penh_operations_settings" js="0">Settings</word>
+  <word key="penh_operations_settings" js="0">Operations</word>
+  <word key="penh_operations_content" js="0">Operations content</word>
+  <word key="penh_missions_template" js="0">Mission content template</word>
+  <word key="penh_aar_template" js="0">AAR template</word>
+  <word key="penh_aar_status" js="0">Attendance status</word>
+  <word key="penh_calendar_settings" js="0">Calendar integration</word>
+  <word key="penh_calendar_enable" js="0">Calendar integration</word>
+  <word key="penh_calendar_node" js="0">Calendar</word>
+  <word key="penh_combat_record_settings" js="0">PERSCOM Combat record</word>
+  <word key="penh_combat_record_entry_enable" js="0">Automatic combat record entries</word>
+  <word key="penh_combat_record_aar_status" js="0">Attendance status to trigger combat record</word>
+  <word key="penh_strength_sheet_settings" js="0">Strength Sheet</word>
+  <word key="penh_strength_sheet_ignore_status" js="0">Status to ignore</word>
+  <word key="penh_personnel_profile" js="0">P-File Configuration</word>
+  <word key="penh_personnel_highlighted_awards" js="0">Awards to highlight</word>
   <word key="operations" js="0">Operations</word>
   <word key="operation_name" js="0">Name</word>
   <word key="operation_content" js="0">Description</word>
   <word key="operation_start" js="0">Start date</word>
   <word key="operation_end" js="0">End date</word>
-  <word key="penh_operations_perm__label" js="0">Groups</word>
-  <word key="penh_operations_perm__view" js="0">Can view?</word>
+  <word key="penh_operations_perm__label" js="0"></word>
+  <word key="penh_operations_perm__view" js="0">View operation</word>
+  <word key="penh_operations_perm__read" js="0">View missions</word>
+  <word key="penh_operations_perm__add" js="0">Create missions</word>
+  <word key="penh_operations_perm__reply" js="0">Create AARs</word>
   <word key="frontnavigation_penh" js="0">PERSCOM Enhanced</word>
   <word key="frontnavigation_penh_operations" js="0">Operations</word>
-  <word key="penh_operations_title" js="0">Operations</word>
-  <word key="penh_operations_subtitle" js="0">TO BE CHANGED TO A CONTENT FIELD</word>
+  <word key="frontnavigation_penh_attendance" js="0">Attendance Sheet</word>
+  <word key="frontnavigation_penh_personnel" js="0">Personnel</word>
+  <word key="frontnavigation_penh_strength_sheet" js="0">Strength Sheet</word>
+  <word key="frontnavigation_penh_orbat" js="0">Orbat</word>
+  <word key="operations_title" js="0">Operations</word>
+  <word key="operation_title_name" js="0">Operation %s</word>
+  <word key="operation_started" js="0">Started on</word>
+  <word key="operation_ended" js="0">Ended on</word>
+  <word key="missions" js="0">Missions</word>
+  <word key="mission_create" js="0">Create new mission</word>
+  <word key="mission_edit" js="0">Edit mission</word>
+  <word key="mission_delete" js="0">Delete missions</word>
+  <word key="mission_start" js="0">Start</word>
+  <word key="mission_end" js="0">End</word>
+  <word key="mission_title_name" js="0">Mission %s</word>
+  <word key="mission_create_event" js="0">Automatically create calendar event</word>
+  <word key="mission_create_combat_record_entry" js="0">Automatically create combat record after AAR</word>
+  <word key="mission_combat_record_entry" js="0">Combat record text</word>
+  <word key="mission_content" js="0">OPORD</word>
+  <word key="mission_aars" js="0">After Action Reports</word>
+  <word key="aar_create" js="0">Create new AAR</word>
+  <word key="aar_start" js="0">Start</word>
+  <word key="aar_end" js="0">End</word>
+  <word key="aar_attendance" js="0">Attendance</word>
+  <word key="aar_combat_unit_id" js="0">Combat unit</word>
+  <word key="aar_content" js="0">After action report</word>
+  <word key="attendance_sheet_title" js="0">Attendance sheet</word>
+  <word key="attendance_sheet_subtitle" js="0">Generate an attendance sheet. Use the controls below to specify a time frame and combat units.</word>
+  <word key="attendance_from" js="0">From</word>
+  <word key="attendance_to" js="0">To</word>
+  <word key="attendance_combat_unit" js="0">Combat unit</word>
+  <word key="attendance_generate" js="0">Generate sheet</word>
+  <word key="attendance_view_mission" js="0">View mission</word>
+  <word key="attendance_view_aar" js="0">View AAR</word>
+  <word key="strength_sheet_title" js="0">Strength sheet</word>
+  <word key="strength_sheet_subtitle" js="0">Generate a strength sheet. This tool is useful for recruitment and deciding placement of new members.</word>
+  <word key="strength_sheet_combat_unit" js="0">Parent combat unit</word>
+  <word key="strength_sheet_generate" js="0">Generate sheet</word>
+  <word key="strength_sheet_unit_totals" js="0">Unit Totals</word>
+  <word key="strength_sheet_total" js="0">Total</word>
+  <word key="strength_sheet_placement_instructions" js="0">Placement suggestions</word>
+  <word key="strength_sheet_smallest_size" js="0">Smallest size</word>
+  <word key="strength_sheet_smallest_units" js="0">Smallest unit(s)</word>
+  <word key="strength_sheet_largest_size" js="0">Largest size</word>
+  <word key="request_approved" js="0">TPR Approved</word>
+  <word key="request_pending" js="0">TPR Pending Approval</word>
+  <word key="penh_soldier_medals" js="0">Notable Medals</word>
  </app>
 </language>

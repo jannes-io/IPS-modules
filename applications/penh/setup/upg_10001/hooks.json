@@ -1,0 +1,11 @@
+{
+    "added": [
+        "Soldier",
+        "SoldierThemeHook"
+    ],
+    "edited": [],
+    "removed": [
+        "soldierTPR",
+        "soldierRowTPR"
+    ]
+}
