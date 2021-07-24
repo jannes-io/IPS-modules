@@ -15,6 +15,8 @@ if (!\defined('\IPS\SUITE_UNIQUE_KEY')) {
  */
 class _settings extends \IPS\Dispatcher\Controller
 {
+    public static $csrfProtected = true;
+
     public function execute(): void
     {
         \IPS\Dispatcher::i()->checkAcpPermission('settings_manage');

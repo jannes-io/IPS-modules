@@ -1,5 +1,5 @@
 <ips:template parameters="$statusCount, $combatUnitCount, $combatUnit, $childUnits" />
-<div class="ipsPageHeader ipsBox ipsResponsive_pull ipsPadding ipsClearfix">
+<div class="ipsPageHeader ipsBox ipsResponsive_pull ipsPadding ipsClearfix ipsSpacer_bottom">
     <header>
         <h1 class="ipsType_pageTitle">{lang="strength_sheet_title"}</h1>
         <div class="ipsGrid">
@@ -41,7 +41,7 @@
 <div class="ipsFlex ipsFlex-jc:center ipsFlex-fw:wrap">
     {template="combatUnit" group="personnel" params="$combatUnit"}
 </div>
-<div class="ipsFlex ipsFlex-jc:around ipsFlex-fd:row ipsFlex-fw:wrap">
+<div class="ipsFlex ipsFlex-jc:around ipsFlex-fd:row ipsFlex-fw:wrap ipsSpacer_bottom">
     {{foreach $childUnits as $childUnit}}
     {template="combatUnit" group="personnel" params="$childUnit"}
     {{endforeach}}
