@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <language>
- <app key="penh" version="10001">
+ <app key="penh" version="10002">
   <word key="__app_penh" js="0">PERSCOM Enhanced</word>
   <word key="module__penh_operations" js="0">Operations</word>
   <word key="module__penh_attendance" js="0">Attendance</word>
@@ -27,6 +27,7 @@
   <word key="penh_strength_sheet_ignore_status" js="0">Status to ignore</word>
   <word key="penh_personnel_profile" js="0">P-File Configuration</word>
   <word key="penh_personnel_highlighted_awards" js="0">Awards to highlight</word>
+  <word key="penh_personnel_default_uniform" js="0">Default uniform</word>
   <word key="operations" js="0">Operations</word>
   <word key="operation_name" js="0">Name</word>
   <word key="operation_content" js="0">Description</word>
