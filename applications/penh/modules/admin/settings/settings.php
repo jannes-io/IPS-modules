@@ -31,13 +31,13 @@ class _settings extends \IPS\Dispatcher\Controller
         $form->add(new Form\Node('penh_strength_sheet_ignore_status', \IPS\Settings::i()->penh_strength_sheet_ignore_status, false, [
             'class' => '\IPS\perscom\Personnel\Status',
             'multiple' => true
-        ], null, null, null, 'penh_strength_sheet_ignore_status'));
+        ]));
 
         $form->addHeader('penh_personnel_profile');
         $form->add(new Form\Node('penh_personnel_highlighted_awards', \IPS\Settings::i()->penh_personnel_highlighted_awards, false, [
             'class' => '\IPS\perscom\Awards\Award',
             'multiple' => true
-        ], null, null, null, 'penh_personnel_highlighted_awards'));
+        ]));
 
         $defaultUniformPath = \IPS\Settings::i()->penh_personnel_default_uniform ?? '';
         $defaultUniform = !empty($defaultUniformPath) ? \IPS\File::get('penh_DefaultUniform', $defaultUniformPath) : null;

@@ -60,7 +60,7 @@ class _strengthsheet extends \IPS\Dispatcher\Controller
 
         $soldierTable = \IPS\perscom\Personnel\Soldier::$databaseTable;
         $statusTable = \IPS\perscom\Personnel\Status::$databaseTable;
-        $ignoreStatus = implode(',', array_keys(\IPS\Settings::i()->penh_strength_sheet_ignore_status ?: []));
+        $ignoreStatus = \IPS\Settings::i()->penh_strength_sheet_ignore_status ?? '';
         $statusQuery = \IPS\Db::i()->select(
             "{$statusTable}.status_name AS status, COUNT({$soldierTable}.personnel_id) as members",
             $statusTable,
