@@ -37,6 +37,7 @@ $lang = array(
     'penh_strength_sheet_ignore_status' => 'Status to ignore',
     'penh_personnel_profile' => 'P-File Configuration',
     'penh_personnel_highlighted_awards' => 'Awards to highlight',
+    'penh_personnel_default_uniform' => 'Default uniform',
 
     // Operations
     'operations' => 'Operations',

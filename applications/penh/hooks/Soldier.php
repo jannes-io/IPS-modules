@@ -47,8 +47,9 @@ class penh_hook_Soldier extends _HOOK_CLASS_
             $select = \IPS\Db::i()->select(
                 'COUNT(*)',
                 \IPS\perscom\Records\Service::$databaseTable,
-                ["service_records_soldier = ? AND service_records_text LIKE '%{$award->name}%'", $this->id]
+                ["service_records_soldier = ? AND service_records_item_class = ? AND service_records_item_id = ?", $this->id, \get_class($award), $award->id]
             );
+
             if ($select->first() > 0) {
                 $highlightedAwards[] = $award;
             }
