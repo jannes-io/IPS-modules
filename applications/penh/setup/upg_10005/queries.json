@@ -1,5 +1,5 @@
-[
-    {
+{
+    "1": {
         "method": "addColumn",
         "params": [
             "penh_operations",
@@ -17,4 +17,4 @@
             }
         ]
     }
-]
+}
