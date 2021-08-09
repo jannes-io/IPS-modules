@@ -17,7 +17,6 @@ use IPS\Helpers\Form;
 class _Operation extends \IPS\Node\Model implements \IPS\Node\Permissions
 {
     use \IPS\Node\Statistics;
-    use \IPS\Node\Statistics {rebuildPostedIn as statisticsRebuildPostedIn;}
 
     public static $multitons;
     public static $application = 'penh';
