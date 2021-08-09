@@ -1,0 +1,20 @@
+[
+    {
+        "method": "addColumn",
+        "params": [
+            "penh_operations",
+            {
+                "name": "operation_order",
+                "type": "INT",
+                "length": null,
+                "decimals": null,
+                "values": null,
+                "allow_null": false,
+                "default": 0,
+                "comment": "",
+                "unsigned": false,
+                "auto_increment": false
+            }
+        ]
+    }
+]

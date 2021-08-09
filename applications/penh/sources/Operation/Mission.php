@@ -117,7 +117,7 @@ class _Mission extends \IPS\Content\Item implements
                     'all_day' => false,
                     'repeat_end' => 'never',
                 ],
-                'event_content' => $values['mission_content'],
+                'event_content' => "<p><a href='{$this->url()}'>{$this->name}</a></p>" . $values['mission_content'],
                 'event_cover_photo' => null,
                 'event_location' => null,
                 'event_title' => $this->name,

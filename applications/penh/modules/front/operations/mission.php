@@ -58,4 +58,28 @@ class _mission extends \IPS\Content\Controller
         \IPS\Output::i()->breadcrumb[] = [$mission->url, $mission->mapped('title')];
         \IPS\Output::i()->output = $form;
     }
+
+    public function delete(): void
+    {
+        try {
+            $mission = static::$contentModel::loadAndCheckPerms(\IPS\Request::i()->id);
+        } catch (\Exception $ex) {
+            \IPS\Output::i()->error('node_error', '2F176/1', 404, '');
+            return;
+        }
+
+        if (!$mission->canDelete()) {
+            \IPS\Output::i()->error('node_error', '2F176/1', 403, '');
+            return;
+        }
+
+        $operation = $mission->container();
+        if ($mission->calendar_event !== null) {
+            $event = \IPS\calendar\Event::load($mission->calendar_event);
+            $event->delete();
+        }
+        $mission->delete();
+
+        \IPS\Output::i()->redirect($operation->url());
+    }
 }

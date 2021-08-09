@@ -24,7 +24,7 @@ class _Operation extends \IPS\Node\Model implements \IPS\Node\Permissions
     public static $databaseTable = 'penh_operations';
     public static $databasePrefix = 'operation_';
     public static $databaseColumnId = 'id';
-    public static $databaseColumnOrder = 'id DESC';
+    public static $databaseColumnOrder = 'order';
     public static $nodeTitle = 'operations';
     public static $urlTemplate = 'operation';
     public static $urlBase = 'app=penh&module=operations&controller=operation&do=view&id=';
