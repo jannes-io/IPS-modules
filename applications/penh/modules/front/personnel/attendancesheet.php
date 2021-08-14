@@ -57,8 +57,8 @@ class _attendancesheet extends \IPS\Dispatcher\Controller
         $now = new \DateTime();
         $threeMonthsAgo = (new \DateTime())->sub(new \DateInterval('P3M'));
 
-        $fromParam = \IPS\Request::i()->from ?? $threeMonthsAgo->getTimestamp();
-        $toParam = \IPS\Request::i()->to ?? $now->getTimestamp();
+        $fromParam = \IPS\Request::i()->from ?: $threeMonthsAgo->getTimestamp();
+        $toParam = \IPS\Request::i()->to ?: $now->getTimestamp();
         $combatUnits = \IPS\Request::i()->combatunit ?? '';
 
         $missionTable = \IPS\penh\Operation\Mission::$databaseTable;
