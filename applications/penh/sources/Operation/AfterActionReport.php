@@ -66,20 +66,12 @@ class _AfterActionReport extends \IPS\Content\Comment
 
     public function getAttendance(): array
     {
-        try {
-            return json_decode($this->attendance, true, 512, JSON_THROW_ON_ERROR);
-        } catch (\JsonException $e) {
-            return [];
-        }
+        return json_decode($this->attendance, true) ?? [];
     }
 
     public function setAttendance(array $attendance): void
     {
-        try {
-            $this->attendance = json_encode($attendance, JSON_THROW_ON_ERROR);
-        } catch (\JsonException $e) {
-            $this->attendance = '{}';
-        }
+        $this->attendance = json_encode($attendance) ?? '{}';
     }
 
     public static function availableStatus(): array
@@ -92,13 +84,13 @@ class _AfterActionReport extends \IPS\Content\Comment
     {
         $form = new Form;
         $form->add(new Form\Node('aar_combat_unit_id', $aar->combat_unit_id ?? null, true, [
-            'class' => 'IPS\perscom\Units\CombatUnit'
+            'class' => 'IPS\perscom\Units\CombatUnit',
         ]));
         $form->add(new Form\Text('aar_attendance', $aar->attendance ?? '{}', false));
         $form->add(new Form\Editor('aar_content', $aar->content ?? \IPS\Settings::i()->penh_aar_template, true, [
             'app' => 'penh',
             'key' => 'AfterActionReport',
-            'autoSaveKey' => 'penh_aar_content-' . ($aar->id ?? 'new')
+            'autoSaveKey' => 'penh_aar_content-' . ($aar->id ?? 'new'),
         ]));
 
         return $form;
