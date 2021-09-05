@@ -1,0 +1,21 @@
+{
+    "core": {
+        "EditorLocations": {
+            "AfterActionReport": "IPS\\penh\\extensions\\core\\EditorLocations\\AfterActionReport",
+            "Operation": "IPS\\penh\\extensions\\core\\EditorLocations\\Operation"
+        },
+        "FileStorage": {
+            "DefaultUniform": "IPS\\penh\\extensions\\core\\FileStorage\\DefaultUniform"
+        },
+        "FrontNavigation": {
+            "Attendance": "IPS\\penh\\extensions\\core\\FrontNavigation\\Attendance",
+            "Operations": "IPS\\penh\\extensions\\core\\FrontNavigation\\Operations",
+            "Orbat": "IPS\\penh\\extensions\\core\\FrontNavigation\\Orbat",
+            "PerscomEnhanced": "IPS\\penh\\extensions\\core\\FrontNavigation\\PerscomEnhanced",
+            "StrengthSheet": "IPS\\penh\\extensions\\core\\FrontNavigation\\StrengthSheet"
+        },
+        "Notifications": {
+            "PenhNotification": "IPS\\penh\\extensions\\core\\Notifications\\PenhNotification"
+        }
+    }
+}

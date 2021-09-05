@@ -1,18 +1,22 @@
 <ips:template parameters="$operation" />
-<div class="ipsBox ipsResponsive_pull ipsPadding ipsSpacer_bottom">
-    <h2>
+<div class="ipsBox ipsResponsive_pull ipsSpacer_bottom">
+    <h2 class="ipsPadding">
         <a class="ipsType_brandedLink" href="{$operation->url()}">{lang="operation_title_name" sprintf="$operation->name"}</a>
     </h2>
-    <p>
-        <span>{lang="operation_started"}: </span>
-        {$d = \IPS\DateTime::ts($operation->start)->localeDate()}
-    </p>
-    {{if $operation->end !== null}}
-    <p>
-        <span>{lang="operation_ended"}: </span>
-        {$d = \IPS\DateTime::ts($operation->end)->localeDate()}
-    </p>
-    {{endif}}
-    {$operation->content|raw}
+    <div class="ipsPadding">
+        <p>
+            <span>{lang="operation_started"}: </span>
+            {$d = \IPS\DateTime::ts($operation->start)->localeDate()}
+        </p>
+        {{if $operation->end !== null}}
+        <p>
+            <span>{lang="operation_ended"}: </span>
+            {$d = \IPS\DateTime::ts($operation->end)->localeDate()}
+        </p>
+        {{endif}}
+        <div class="ipsType_richText" data-ipsTruncate data-ipsTruncate-type="hide" data-ipsTruncate-size="300">
+            {$operation->content|raw}
+        </div>
+    </div>
 </div>
 

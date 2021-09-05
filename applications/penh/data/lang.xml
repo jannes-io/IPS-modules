@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <language>
- <app key="penh" version="10005">
+ <app key="penh" version="10007">
   <word key="__app_penh" js="0">PERSCOM Enhanced</word>
   <word key="module__penh_operations" js="0">Operations</word>
   <word key="module__penh_attendance" js="0">Attendance</word>
@@ -12,17 +12,22 @@
   <word key="menu__penh_operations" js="0">Operations</word>
   <word key="menu__penh_operations_operation" js="0">Operations</word>
   <word key="menu__penh_operations_settings" js="0">Settings</word>
+  <word key="penh_operations_settings_tab" js="0">Operation settings</word>
   <word key="penh_operations_settings" js="0">Operations</word>
   <word key="penh_operations_content" js="0">Operations content</word>
   <word key="penh_missions_template" js="0">Mission content template</word>
   <word key="penh_aar_template" js="0">AAR template</word>
   <word key="penh_aar_status" js="0">Attendance status</word>
-  <word key="penh_calendar_settings" js="0">Calendar integration</word>
-  <word key="penh_calendar_enable" js="0">Calendar integration</word>
+  <word key="penh_operations_integrations_tab" js="0">Integrations</word>
+  <word key="penh_calendar_settings" js="0">Calendar</word>
+  <word key="penh_calendar_enable" js="0">Allow creation of calendar events</word>
   <word key="penh_calendar_node" js="0">Calendar</word>
   <word key="penh_combat_record_settings" js="0">PERSCOM Combat record</word>
   <word key="penh_combat_record_entry_enable" js="0">Automatic combat record entries</word>
   <word key="penh_combat_record_aar_status" js="0">Attendance status to trigger combat record</word>
+  <word key="penh_notification_settings" js="0">Notifications</word>
+  <word key="penh_missions_notification_enable" js="0">When a new mission is posted</word>
+  <word key="penh_missions_notification_status" js="0">Status to receive notification (empty = all)</word>
   <word key="penh_strength_sheet_settings" js="0">Strength Sheet</word>
   <word key="penh_strength_sheet_ignore_status" js="0">Status to ignore</word>
   <word key="penh_personnel_profile" js="0">P-File Configuration</word>
@@ -44,6 +49,9 @@
   <word key="frontnavigation_penh_personnel" js="0">Personnel</word>
   <word key="frontnavigation_penh_strength_sheet" js="0">Strength Sheet</word>
   <word key="frontnavigation_penh_orbat" js="0">Orbat</word>
+  <word key="notifications__penh_PenhNotification" js="0">PERSCOM Enhanced</word>
+  <word key="notifications__missions" js="0">Missions</word>
+  <word key="notifications__missions_title" js="0">A new mission was posted: %s</word>
   <word key="operations_title" js="0">Operations</word>
   <word key="operation_title_name" js="0">Operation %s</word>
   <word key="operation_started" js="0">Started on</word>
@@ -67,7 +75,7 @@
   <word key="aar_combat_unit_id" js="0">Combat unit</word>
   <word key="aar_content" js="0">After action report</word>
   <word key="attendance_sheet_title" js="0">Attendance sheet</word>
-  <word key="attendance_sheet_subtitle" js="0">Generate an attendance sheet. Use the controls below to specify a time frame and combat units.</word>
+  <word key="attendance_sheet_subtitle" js="0">Generate an attendance sheet. All units and missions over the past 2 months are selected by default.</word>
   <word key="attendance_from" js="0">From</word>
   <word key="attendance_to" js="0">To</word>
   <word key="attendance_combat_unit" js="0">Combat unit</word>

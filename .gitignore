@@ -1,10 +1,10 @@
 *
 
-!.gitignore
-!README.md
-!docker-compose.yml
-!constants.php
-!unbuildApplication.php
+!./.gitignore
+!./README.md
+!./docker-compose.yml
+!./constants.php
+!./unbuildApplication.php
 
 !*/
 !/applications/awsservermanager/*

@@ -134,10 +134,38 @@ class _Mission extends \IPS\Content\Item implements
         }
 
         $this->save();
+        $this->sendNotification();
     }
 
     protected static function isCalendarEnabled(): bool
     {
         return \IPS\Application::load('calendar')->enabled && \IPS\Settings::i()->penh_calendar_enable && \IPS\Settings::i()->penh_calendar_node;
+    }
+
+    protected function sendNotification(): void
+    {
+        if (!\IPS\Settings::i()->penh_missions_notification_enable) {
+            return;
+        }
+        $notification = new \IPS\Notification(\IPS\Application::load('penh'), 'missions', $this, [$this]);
+
+        $statusToReceive = \IPS\Settings::i()->penh_missions_notification_status;
+
+        $where = empty($statusToReceive) ? null : "perscom_personnel.personnel_status IN ({$statusToReceive})";
+
+        $recipientQuery = \IPS\Db::i()->select(
+            \IPS\Member::$databaseTable . '.*',
+            \IPS\Member::$databaseTable,
+            $where
+        );
+
+        if ($where !== null) {
+            $recipientQuery->join('perscom_personnel', 'perscom_personnel.personnel_member_id = core_members.member_id', 'LEFT');
+        }
+
+        foreach ($recipientQuery as $recipient) {
+            $notification->recipients->attach(\IPS\Member::constructFromData($recipient));
+        }
+        $notification->send();
     }
 }

@@ -10,6 +10,8 @@
  <setting key="penh_calendar_node"><![CDATA[{"key":"penh_calendar_node","default":""}]]></setting>
  <setting key="penh_combat_record_aar_status"><![CDATA[{"key":"penh_combat_record_aar_status","default":"present"}]]></setting>
  <setting key="penh_combat_record_entry_enable"><![CDATA[{"key":"penh_combat_record_entry_enable","default":"0"}]]></setting>
+ <setting key="penh_missions_notification_enable"><![CDATA[{"key":"penh_missions_notification_enable","default":"0"}]]></setting>
+ <setting key="penh_missions_notification_status"><![CDATA[{"key":"penh_missions_notification_status","default":""}]]></setting>
  <setting key="penh_missions_template"><![CDATA[{"key":"penh_missions_template","default":""}]]></setting>
  <setting key="penh_operations_content"><![CDATA[{"key":"penh_operations_content","default":"Combat operations."}]]></setting>
  <setting key="penh_personnel_action_request_duration"><![CDATA[{"key":"penh_personnel_action_request_duration","default":"3"}]]></setting>

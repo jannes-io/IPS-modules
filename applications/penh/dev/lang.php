@@ -19,19 +19,25 @@ $lang = array(
     'menu__penh_operations_settings' => 'Settings',
 
     // Settings
+    'penh_operations_settings_tab' => 'Operation settings',
     'penh_operations_settings' => 'Operations',
     'penh_operations_content' => 'Operations content',
     'penh_missions_template' => 'Mission content template',
     'penh_aar_template' => 'AAR template',
     'penh_aar_status' => 'Attendance status',
 
-    'penh_calendar_settings' => 'Calendar integration',
-    'penh_calendar_enable' => 'Calendar integration',
+    'penh_operations_integrations_tab' => 'Integrations',
+    'penh_calendar_settings' => 'Calendar',
+    'penh_calendar_enable' => 'Allow creation of calendar events',
     'penh_calendar_node' => 'Calendar',
 
     'penh_combat_record_settings' => 'PERSCOM Combat record',
     'penh_combat_record_entry_enable' => 'Automatic combat record entries',
     'penh_combat_record_aar_status' => 'Attendance status to trigger combat record',
+
+    'penh_notification_settings' => 'Notifications',
+    'penh_missions_notification_enable' => 'When a new mission is posted',
+    'penh_missions_notification_status' => 'Status to receive notification (empty = all)',
 
     'penh_strength_sheet_settings' => 'Strength Sheet',
     'penh_strength_sheet_ignore_status' => 'Status to ignore',
@@ -60,6 +66,11 @@ $lang = array(
     'frontnavigation_penh_personnel' => 'Personnel',
     'frontnavigation_penh_strength_sheet' => 'Strength Sheet',
     'frontnavigation_penh_orbat' => 'Orbat',
+
+    // Notifications
+    'notifications__penh_PenhNotification' => 'PERSCOM Enhanced',
+    'notifications__missions' => 'Missions',
+    'notifications__missions_title' => 'A new mission was posted: %s',
 
     // Operations
     'operations_title' => 'Operations',

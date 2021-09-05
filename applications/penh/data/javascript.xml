@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <javascript app="penh">
- <file javascript_app="penh" javascript_location="front" javascript_path="controllers/afteractionreport" javascript_name="ips.afteractionreport.main.js" javascript_type="controller" javascript_version="10005" javascript_position="1000050"><![CDATA[;(function ($) {
+ <file javascript_app="penh" javascript_location="front" javascript_path="controllers/afteractionreport" javascript_name="ips.afteractionreport.main.js" javascript_type="controller" javascript_version="10007" javascript_position="1000050"><![CDATA[;(function ($) {
     'use strict';
 
     ips.controller.register('penh.front.afteractionreport.main', {
@@ -142,7 +142,7 @@
     });
 }(jQuery));
 ]]></file>
- <file javascript_app="penh" javascript_location="front" javascript_path="controllers/mission" javascript_name="ips.mission.main.js" javascript_type="controller" javascript_version="10005" javascript_position="1000100">;(function ($) {
+ <file javascript_app="penh" javascript_location="front" javascript_path="controllers/mission" javascript_name="ips.mission.main.js" javascript_type="controller" javascript_version="10007" javascript_position="1000100">;(function ($) {
     'use strict';
 
     ips.controller.register('penh.front.mission.main', {

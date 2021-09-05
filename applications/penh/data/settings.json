@@ -24,6 +24,14 @@
         "default": "0"
     },
     {
+        "key": "penh_missions_notification_enable",
+        "default": "0"
+    },
+    {
+        "key": "penh_missions_notification_status",
+        "default": ""
+    },
+    {
         "key": "penh_missions_template",
         "default": ""
     },
