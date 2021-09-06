@@ -71,6 +71,7 @@ $lang = array(
     'notifications__penh_PenhNotification' => 'PERSCOM Enhanced',
     'notifications__missions' => 'Missions',
     'notifications__missions_title' => 'A new mission was posted: %s',
+    'mailsub__penh_notification_missions' => 'New Mission Posted',
 
     // Operations
     'operations_title' => 'Operations',
@@ -88,6 +89,7 @@ $lang = array(
     'mission_title_name' => 'Mission %s',
     'mission_create_event' => 'Automatically create calendar event',
     'mission_create_combat_record_entry' => 'Automatically create combat record after AAR',
+    'mission_send_notification' => 'Send notification',
     'mission_combat_record_entry' => 'Combat record text',
     'mission_content' => 'OPORD',
     'mission_aars' => 'After Action Reports',

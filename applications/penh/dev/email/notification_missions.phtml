@@ -1,0 +1,11 @@
+<ips:template parameters="$mission, $email" />
+<br />
+
+{$email->language->addToStack('notifications__missions_title', false, ['sprintf' => $mission->name])}
+
+<br />
+<br />
+
+{$mission->content()|raw}
+<br /><br />
+<em style='color: #8c8c8c'>&mdash; {setting="board_name"}</em>

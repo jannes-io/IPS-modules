@@ -1,2 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<emails/>
+<emails><template><template_app>penh</template_app><template_name>notification_missions</template_name><template_content_html><![CDATA[<br />
+
+{$email->language->addToStack('notifications__missions_title', false, ['sprintf' => $mission->name])}
+
+<br />
+<br />
+
+{$mission->content()|raw}
+<br /><br />
+<em style='color: #8c8c8c'>&mdash; {setting="board_name"}</em>
+]]></template_content_html><template_data>$mission, $email</template_data><template_content_plaintext><![CDATA[
+{$email->language->addToStack('notifications__missions_title', false, ['sprintf' => $mission->name])}
+
+-- {setting="board_name"}
+]]></template_content_plaintext><template_pinned>0</template_pinned></template></emails>

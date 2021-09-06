@@ -1,0 +1,5 @@
+<ips:template parameters="$mission, $email" />
+
+{$email->language->addToStack('notifications__missions_title', false, ['sprintf' => $mission->name])}
+
+-- {setting="board_name"}

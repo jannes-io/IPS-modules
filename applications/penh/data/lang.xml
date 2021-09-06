@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <language>
- <app key="penh" version="10007">
+ <app key="penh" version="10008">
   <word key="__app_penh" js="0">PERSCOM Enhanced</word>
   <word key="module__penh_operations" js="0">Operations</word>
   <word key="module__penh_attendance" js="0">Attendance</word>
@@ -52,6 +52,7 @@
   <word key="notifications__penh_PenhNotification" js="0">PERSCOM Enhanced</word>
   <word key="notifications__missions" js="0">Missions</word>
   <word key="notifications__missions_title" js="0">A new mission was posted: %s</word>
+  <word key="mailsub__penh_notification_missions" js="0">New Mission Posted</word>
   <word key="operations_title" js="0">Operations</word>
   <word key="operation_title_name" js="0">Operation %s</word>
   <word key="operation_started" js="0">Started on</word>
@@ -65,6 +66,7 @@
   <word key="mission_title_name" js="0">Mission %s</word>
   <word key="mission_create_event" js="0">Automatically create calendar event</word>
   <word key="mission_create_combat_record_entry" js="0">Automatically create combat record after AAR</word>
+  <word key="mission_send_notification" js="0">Send notification</word>
   <word key="mission_combat_record_entry" js="0">Combat record text</word>
   <word key="mission_content" js="0">OPORD</word>
   <word key="mission_aars" js="0">After Action Reports</word>

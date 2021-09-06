@@ -80,6 +80,9 @@ class _Mission extends \IPS\Content\Item implements
                 $form['mission_create_combat_record_entry'] = new Form\Checkbox('mission_create_combat_record_entry', null, false);
                 $form['mission_combat_record_entry '] = new Form\Text('mission_combat_record_entry', null, false);
             }
+            if (\IPS\Settings::i()->penh_missions_notification_enable) {
+                $form['mission_send_notification'] = new Form\Checkbox('mission_send_notification', true, false);
+            }
         }
 
         $form['mission_content'] = new Form\Editor('mission_content', $item->content ?? \IPS\Settings::i()->penh_missions_template, true, [
@@ -134,7 +137,10 @@ class _Mission extends \IPS\Content\Item implements
         }
 
         $this->save();
-        $this->sendNotification();
+
+        if ((bool)($values['mission_send_notification'] ?? false)) {
+            $this->sendNotification();
+        }
     }
 
     protected static function isCalendarEnabled(): bool

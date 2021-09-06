@@ -25,7 +25,7 @@ class _PenhNotification
     public function getConfiguration($member): array
     {
         return [
-            'missions' => ['default' => ['inline', 'email'], 'disabled' => []]
+            'missions' => ['default' => ['inline'], 'disabled' => ['email']]
         ];
     }
 
@@ -39,7 +39,7 @@ class _PenhNotification
         return [
             'title' => \IPS\Member::loggedIn()->language()->addToStack('notifications__missions_title', false, [
                 'sprintf' => [
-                    $mission->title,
+                    $mission->name,
                 ]
             ]),
             'url' => $mission->url(),
