@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <language>
- <app key="awsservermanager" version="10002">
+ <app key="awsservermanager" version="10003">
   <word key="__app_awsservermanager" js="0">AWS Server Manager</word>
   <word key="menutab__awsservermanager" js="0">AWS Steam Servers</word>
   <word key="menutab__awsservermanager_icon" js="0">server</word>
@@ -15,7 +15,9 @@
   <word key="minutes_since_last_activity" js="0">Minutes since last activity</word>
   <word key="menu__awsservermanager_servers_servers" js="0">Servers</word>
   <word key="awsservermanager_servers" js="0">Manage Servers</word>
-  <word key="name" js="0">Internal Name</word>
+  <word key="awsservermanager_servers_settings" js="0">Server Settings</word>
+  <word key="name" js="0">Server Name</word>
+  <word key="server_description" js="0">Description</word>
   <word key="position" js="0">Position</word>
   <word key="ip" js="0">IP Address</word>
   <word key="port" js="0">Port</word>

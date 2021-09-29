@@ -1,5 +1,5 @@
-[
-    {
+{
+    "1": {
         "method": "addColumn",
         "params": [
             "awsservermanager_servers",
@@ -17,7 +17,7 @@
             }
         ]
     },
-    {
+    "2": {
         "method": "changeColumn",
         "params": [
             "awsservermanager_servers",
@@ -36,4 +36,4 @@
             }
         ]
     }
-]
+}
