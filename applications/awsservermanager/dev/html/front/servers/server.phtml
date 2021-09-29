@@ -3,6 +3,12 @@
     <div class="ipsBox ipsPad ipsMargin_bottom">
         <ul class="ipsDataList ipsDataList_reducedSpacing ipsContained_container" data-controller="awsservermanager.front.servers.main" data-serverId="{$server->id}">
             <li class="ipsDataItem">
+                <p class="ipsType_reset ipsType_large ipsType_bold">{$server->name}</p>
+                {{if $server->server_description}}
+                <p>{$server->server_description}</p>
+                {{endif}}
+            </li>
+            <li class="ipsDataItem">
                 <p><strong>{lang="awsservermanager_server_ip"}:</strong> {$server->domain ?: $server->ip}</p>
                 <p><strong>{lang="awsservermanager_server_port"}:</strong> {$server->port}</p>
             </li>

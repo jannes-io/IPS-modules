@@ -15,6 +15,7 @@ require_once \IPS\ROOT_PATH . '/applications/awsservermanager/system/3rd_party/a
  * Class _Server
  * @package IPS\awsservermanager
  * @property string $name
+ * @property string $server_description
  * @property int $position
  * @property string $ip
  * @property int $port
@@ -61,6 +62,7 @@ class _Server extends \IPS\Node\Model implements \IPS\Node\Permissions
     {
         $form->addHeader('awsservermanager_servers_settings');
         $form->add(new Form\Text('name', $this->name, false, [], null, null, null, 'name'));
+        $form->add(new Form\TextArea('server_description', $this->server_description, false, [], null, null, null, 'server_description'));
         $form->add(new Form\Number('position', $this->position, false, [], null, null, null, 'position'));
         $form->add(new Form\Text('ip', $this->ip, false, ['placeholder' => '0.0.0.0'], null, null, null, 'ip'));
         $form->add(new Form\Number('port', $this->port, false, ['placeholder' => '2302'], null, null, null, 'port'));
