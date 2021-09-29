@@ -3,6 +3,7 @@
     "app_author": "Jannes Drijkoningen",
     "app_directory": "awsservermanager",
     "app_protected": 0,
-    "app_website": "https:\/\/github.com\/jannes-io\/",
-    "app_update_check": ""
+    "app_website": null,
+    "app_update_check": null,
+    "app_hide_tab": 0
 }

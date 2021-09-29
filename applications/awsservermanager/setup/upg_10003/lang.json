@@ -1,0 +1,17 @@
+{
+    "normal": {
+        "added": [
+            "awsservermanager_servers_settings",
+            "server_description"
+        ],
+        "edited": [
+            "name"
+        ],
+        "removed": []
+    },
+    "js": {
+        "added": [],
+        "edited": [],
+        "removed": []
+    }
+}
