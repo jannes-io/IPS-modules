@@ -122,6 +122,7 @@ class _attendancesheet extends \IPS\Dispatcher\Controller
     protected function getCombatUnitAttendance(\IPS\penh\Operation\AfterActionReport $aar): array
     {
         $combatUnit = \IPS\perscom\Units\CombatUnit::load($aar->combat_unit_id);
+        $roster = \IPS\perscom\Personnel\Roster::load($combatUnit->roster);
         $attendance = [];
 
         $stats = [];
@@ -137,6 +138,10 @@ class _attendancesheet extends \IPS\Dispatcher\Controller
                 continue;
             }
             $stats[$status]++;
+        }
+
+        foreach ($attendance as $status => $soldiers) {
+            $attendance[$status] = \IPS\perscom\Personnel\Soldier::sortPersonnel($soldiers, explode(',', $roster->sort));
         }
 
         $stats['total'] = array_sum($stats) ?: 1;

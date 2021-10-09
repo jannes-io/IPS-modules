@@ -150,9 +150,12 @@ class _afteractionreport extends \IPS\Dispatcher\Controller
     public function personnel(): void
     {
         try {
-            $personnel = \IPS\perscom\Personnel\Soldier::roots('view', null, [
-                ['personnel_combat_unit = ?', \IPS\Request::i()->id]
-            ]);
+            $combatUnit = \IPS\perscom\Units\CombatUnit::load(\IPS\Request::i()->id);
+            $roster = \IPS\perscom\Personnel\Roster::load($combatUnit->roster);
+            $personnel = \IPS\perscom\Personnel\Soldier::sortPersonnel(
+                \IPS\perscom\Personnel\Soldier::roots('view', null, ['personnel_combat_unit = ?', $combatUnit->id]),
+                explode(',', $roster->sort)
+            );
         } catch (\Exception $e) {
             \IPS\Output::i()->json('[]', 404);
             return;
@@ -167,7 +170,7 @@ class _afteractionreport extends \IPS\Dispatcher\Controller
                 'lastname' => $soldier->lastname,
                 'rank' => [
                     'order' => $rank->order,
-                    'image_small' => $rank->image_smal,
+                    'image_small' => $rank->image_small,
                     'icon' => $rank->icon,
                 ]
             ];
