@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <theme name="Default" author_name="Invision Power Services, Inc" author_url="https://www.invisioncommunity.com">
- <template template_group="global" template_name="soldierRow" template_data="$soldier" template_location="front" template_app="penh"><![CDATA[{{$rank = $soldier->get_rank();}}
-{{if $rank->image_small !== null}}
-{{$rankImg = '/uploads/' . $soldier->get_rank()->image_small;}}
-<img src="{$rankImg}" width="20px" />&nbsp;
-{{elseif $rank->icon !== null}}
-<i class="fa fa-fw fa-rank {$rank->icon}"></i>
+ <template template_group="global" template_name="soldierRow" template_data="$soldier" template_location="front" template_app="penh"><![CDATA[{{if $soldier->rank->media == \IPS\perscom\Ranks\Rank::RANK_ICON}}
+<i class='rank {$soldier->rank->icon}' title="{$soldier->rank->_title}" data-ipsTooltip></i>
+{{else}}
+<img src="{file='$soldier->rank->image_small' extension='perscom_Ranks'}" title="{$soldier->rank->_title}" data-ipsTooltip style="height: 15px;"/>
 {{endif}}
-{$soldier->firstname} {$soldier->lastname}
+<a href="{$soldier->url()->__toString()}">{$soldier->_title}</a>
 ]]></template>
  <template template_group="operations" template_name="afterActionReport" template_data="$aar, $attendance" template_location="front" template_app="penh"><![CDATA[<div class="ipsPageHeader ipsBox ipsResponsive_pull ipsPadding ipsSpacer_bottom ipsClearfix">
     <h1 class="ipsType_pageTitle">{$aar->title()}</h1>

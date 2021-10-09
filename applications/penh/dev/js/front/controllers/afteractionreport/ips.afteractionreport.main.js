@@ -93,6 +93,7 @@
                 } else if (soldier.rank.icon) {
                     const rankIcon = document.createElement('i');
                     rankIcon.classList.add('fa', 'fa-fw', 'fa-rank', soldier.rank.icon);
+                    nameElem.append(rankIcon);
                 }
 
                 const name = document.createElement('span');
