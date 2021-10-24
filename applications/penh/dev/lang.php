@@ -104,13 +104,19 @@ $lang = array(
 
     // Attendance
     'attendance_sheet_title' => 'Attendance sheet',
-    'attendance_sheet_subtitle' => 'Generate an attendance sheet. All units and missions over the past 2 months are selected by default.',
+    'attendance_sheet_subtitle' => 'Generate an attendance sheet. All units and missions over the past 3 months are selected by default.',
+    'attendance_combat_unit_sheet' => 'Unit sheet',
+    'attendance_soldier_sheet' => 'Soldier sheet',
     'attendance_from' => 'From',
     'attendance_to' => 'To',
     'attendance_combat_unit' => 'Combat unit',
+    'attendance_soldier' => 'Soldier',
     'attendance_generate' => 'Generate sheet',
     'attendance_view_mission' => 'View mission',
     'attendance_view_aar' => 'View AAR',
+    'attendance_date' => 'Date',
+    'attendance_mission' => 'Mission',
+    'attendance_status' => 'Status',
 
     // Strength Sheet
     'strength_sheet_title' => 'Strength sheet',

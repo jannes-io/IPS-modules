@@ -1,0 +1,60 @@
+<ips:template parameters="$soldier, $attendance, $statistics" />
+<div class="ipsPageHeader ipsBox ipsResponsive_pull ipsPadding ipsSpacer_bottom ipsClearfix">
+    <header>
+        <h1 class="ipsType_pageTitle">
+            <a href="{$soldier->url()->__toString()}">{$soldier->_title}</a>
+        </h1>
+        <div class="ipsGrid">
+            <div class="ipsGrid_span6">
+                <ol class="ipsDataList ipsDataList_reducedSpacing ipsSpacer_bottom ipsSpacer_half">
+                    <li class="ipsDataItem">
+                        <strong>{lang="attendance_combat_unit"}</strong>: <a href="{$soldier->combat_unit->url()->__toString()}">{$soldier->combat_unit->_title}</a>
+                    </li>
+                    {{if $soldier->supervisor}}
+                    <li class="ipsDataItem">
+                        <strong>{lang="personnel_supervisor"}</strong>: <a href="{$soldier->supervisor->url()->__toString()}">{$soldier->supervisor->_title}</a>
+                    </li>
+                    {{endif}}
+                </ol>
+                <ol class="ipsDataList ipsDataList_reducedSpacing">
+                    {{$total = $statistics['total'];}}
+                    {{unset($statistics['total']);}}
+                    {{$allStatus = \IPS\penh\Operation\AfterActionReport::availableStatus();}}
+                    {{foreach $allStatus as $status}}
+                    {{if !empty($statistics[$status])}}
+                    {{$count = $statistics[$status];}}
+                    <li class="ipsDataItem">
+                        <strong>{$s = ucfirst($status)}</strong>: {$count} ({$p = number_format($count / $total, 2) * 100}%)
+                    </li>
+                    {{endif}}
+                    {{endforeach}}
+                </ol>
+            </div>
+        </div>
+    </header>
+</div>
+<div class="ipsBox ipsResponsive_pull ipsPadding ipsSpacer_bottom ipsClearfix">
+    <table class="ipsTable ipsTable_zebra">
+        <thead>
+        <tr>
+            <th>{lang="attendance_date"}</th>
+            <th>{lang="attendance_mission"}</th>
+            <th>{lang="attendance_status"}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{foreach $attendance as $attended}}
+        {{$mission = $attended->aar->item();}}
+        <tr>
+            <td>{datetime="$mission->start" norelative="true" dateonly="true"}</td>
+            <td>
+                <a href="{$attended->aar->url()}">{$mission->_title}</a>
+            </td>
+            <td class="attendance-status-{$attended->status}">{$attended->status}</td>
+        </tr>
+        {{endforeach}}
+        </tbody>
+    </table>
+</div>
+
+

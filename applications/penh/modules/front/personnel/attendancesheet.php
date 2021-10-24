@@ -22,15 +22,16 @@ class _attendancesheet extends \IPS\Dispatcher\Controller
 
     protected function manage(): void
     {
-        $form = new Form('attendance_form', 'attendance_generate');
-        $form->add(new Form\Date('attendance_from'));
-        $form->add(new Form\Date('attendance_to'));
-        $form->add(new Form\Node('attendance_combat_unit', null, false, [
+        $combatUnitSheet = new Form('attendance_combat_unit_sheet', 'attendance_generate');
+        $combatUnitSheet->addHeader('attendance_combat_unit_sheet');
+        $combatUnitSheet->add(new Form\Node('attendance_combat_unit', null, false, [
             'multiple' => true,
-            'class' => 'IPS\perscom\Units\CombatUnit'
+            'class' => 'IPS\perscom\Units\CombatUnit',
         ]));
+        $combatUnitSheet->add(new Form\Date('attendance_from'));
+        $combatUnitSheet->add(new Form\Date('attendance_to'));
 
-        if ($values = $form->values()) {
+        if ($values = $combatUnitSheet->values()) {
             $queryString = [];
             if (!empty($values['attendance_from'])) {
                 $queryString['from'] = $values['attendance_from']->getTimestamp();
@@ -42,23 +43,55 @@ class _attendancesheet extends \IPS\Dispatcher\Controller
                 $queryString['combatunit'] = implode(',', array_keys($values['attendance_combat_unit']));
             }
 
-            $url = \IPS\Http\Url::internal('app=penh&module=personnel&controller=attendancesheet&do=sheet&from=&to=')
+            $url = \IPS\Http\Url::internal('app=penh&module=personnel&controller=attendancesheet&do=combatunitsheet&from=&to=')
+                ->setQueryString($queryString);
+            \IPS\Output::i()->redirect($url);
+            return;
+        }
+
+        $soldierForm = new Form('attendance_soldier_sheet', 'attendance_generate');
+        $soldierForm->addHeader('attendance_soldier_sheet');
+        $soldierForm->add(new Form\Node('attendance_soldier', null, true, [
+            'multiple' => false,
+            'class' => 'IPS\perscom\Personnel\Soldier',
+        ]));
+        $soldierForm->add(new Form\Date('attendance_from'));
+        $soldierForm->add(new Form\Date('attendance_to'));
+        if ($values = $soldierForm->values()) {
+            $queryString = [];
+            if (!empty($values['attendance_from'])) {
+                $queryString['from'] = $values['attendance_from']->getTimestamp();
+            }
+            if (!empty($values['attendance_to'])) {
+                $queryString['to'] = $values['attendance_to']->getTimestamp();
+            }
+            $queryString['soldier'] = $values['attendance_soldier']->id;
+
+            $url = \IPS\Http\Url::internal('app=penh&module=personnel&controller=attendancesheet&do=soldiersheet&from=&to=&soldier=')
                 ->setQueryString($queryString);
             \IPS\Output::i()->redirect($url);
             return;
         }
 
         \IPS\Output::i()->title = \IPS\Member::loggedIn()->language()->addToStack('attendance_sheet_title');
-        \IPS\Output::i()->output = \IPS\Theme::i()->getTemplate('personnel')->attendanceSheetForm($form);
+        \IPS\Output::i()->output = \IPS\Theme::i()->getTemplate('personnel')->attendanceSheetForm($combatUnitSheet, $soldierForm);
     }
 
-    public function sheet(): void
+    protected function getDefaultDates(): array
     {
         $now = new \DateTime();
+        $now->setTime(23, 59, 59);
         $threeMonthsAgo = (new \DateTime())->sub(new \DateInterval('P3M'));
+        $threeMonthsAgo->setTime(0, 0, 0);
 
         $fromParam = \IPS\Request::i()->from ?: $threeMonthsAgo->getTimestamp();
         $toParam = \IPS\Request::i()->to ?: $now->getTimestamp();
+        return ['from' => $fromParam, 'to' => $toParam];
+    }
+
+    public function combatunitsheet(): void
+    {
+        ['from' => $fromParam, 'to' => $toParam] = $this->getDefaultDates();
         $combatUnits = \IPS\Request::i()->combatunit ?? '';
 
         $missionTable = \IPS\penh\Operation\Mission::$databaseTable;
@@ -70,7 +103,7 @@ class _attendancesheet extends \IPS\Dispatcher\Controller
                 "{$missionTable}.mission_start > ? AND {$missionTable}.mission_end < ?" . (!empty($combatUnits) ? " AND {$aarTable}.aar_combat_unit_id IN ({$combatUnits})" : ''),
                 $fromParam,
                 $toParam,
-                $combatUnits
+                $combatUnits,
             ],
             'mission_start DESC',
             null,
@@ -152,5 +185,32 @@ class _attendancesheet extends \IPS\Dispatcher\Controller
             'statistics' => $stats,
             'url' => $aar->url(),
         ];
+    }
+
+    public function soldiersheet(): void
+    {
+        ['from' => $fromParam, 'to' => $toParam] = $this->getDefaultDates();
+
+        $soldierId = \IPS\Request::i()->soldier;
+        $soldier = \IPS\perscom\Personnel\Soldier::load($soldierId);
+        $attendance = \IPS\penh\Operation\Attendance::findBySoldier($soldierId, $fromParam, $toParam);
+
+        usort($attendance, static function ($a, $b) {
+            return $a->aar->item()->start < $b->aar->item()->start ? 1 : -1;
+        });
+
+        $statistics = array_reduce($attendance, static function ($acc, $attended) {
+            if (!isset($acc[$attended->status])) {
+                $acc[$attended->status] = 0;
+            }
+            $acc[$attended->status]++;
+            $acc['total']++;
+            return $acc;
+        }, ['total' => 0]);
+
+        $title = \IPS\Member::loggedIn()->language()->addToStack('attendance_sheet_title');
+        \IPS\Output::i()->title = $title;
+        \IPS\Output::i()->breadcrumb[] = [\IPS\Http\Url::internal('attendancesheet'), $title];
+        \IPS\Output::i()->output = \IPS\Theme::i()->getTemplate('personnel')->soldierSheet($soldier, $attendance, $statistics);
     }
 }

@@ -428,5 +428,91 @@
                 ]
             }
         }
+    },
+    "penh_mission_attendance": {
+        "name": "penh_mission_attendance",
+        "columns": {
+            "attendance_soldier_id": {
+                "allow_null": false,
+                "auto_increment": false,
+                "comment": "",
+                "decimals": null,
+                "default": "0",
+                "length": 20,
+                "name": "attendance_soldier_id",
+                "type": "BIGINT",
+                "unsigned": true,
+                "values": []
+            },
+            "attendance_aar_id": {
+                "allow_null": false,
+                "auto_increment": false,
+                "comment": "",
+                "decimals": null,
+                "default": "0",
+                "length": 20,
+                "name": "attendance_aar_id",
+                "type": "BIGINT",
+                "unsigned": true,
+                "values": []
+            },
+            "attendance_status": {
+                "allow_null": true,
+                "auto_increment": false,
+                "comment": "",
+                "decimals": null,
+                "default": null,
+                "length": 255,
+                "name": "attendance_status",
+                "type": "VARCHAR",
+                "unsigned": false,
+                "values": []
+            },
+            "attendance_id": {
+                "name": "attendance_id",
+                "type": "BIGINT",
+                "length": null,
+                "decimals": null,
+                "values": null,
+                "allow_null": false,
+                "default": 0,
+                "comment": "",
+                "unsigned": true,
+                "auto_increment": true
+            }
+        },
+        "indexes": {
+            "aar_idx": {
+                "type": "key",
+                "name": "aar_idx",
+                "columns": [
+                    "attendance_aar_id"
+                ],
+                "length": [
+                    null
+                ]
+            },
+            "soldier_id": {
+                "type": "key",
+                "name": "soldier_id",
+                "columns": [
+                    "attendance_soldier_id"
+                ],
+                "length": [
+                    null
+                ]
+            },
+            "PRIMARY": {
+                "type": "primary",
+                "name": "PRIMARY",
+                "length": [
+                    null
+                ],
+                "columns": [
+                    "attendance_id"
+                ]
+            }
+        },
+        "collation": "utf8mb4_unicode_ci"
     }
 }
