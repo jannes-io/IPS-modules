@@ -1,0 +1,95 @@
+[
+    {
+        "method": "createTable",
+        "params": [
+            {
+                "name": "penh_mission_attendance",
+                "columns": {
+                    "attendance_aar_id": {
+                        "name": "attendance_aar_id",
+                        "type": "BIGINT",
+                        "length": null,
+                        "decimals": null,
+                        "values": null,
+                        "allow_null": false,
+                        "default": 0,
+                        "comment": "",
+                        "unsigned": true,
+                        "auto_increment": false
+                    },
+                    "attendance_soldier_id": {
+                        "name": "attendance_soldier_id",
+                        "type": "BIGINT",
+                        "length": null,
+                        "decimals": null,
+                        "values": null,
+                        "allow_null": false,
+                        "default": 0,
+                        "comment": "",
+                        "unsigned": true,
+                        "auto_increment": false
+                    },
+                    "attendance_status": {
+                        "name": "attendance_status",
+                        "type": "VARCHAR",
+                        "length": 255,
+                        "decimals": null,
+                        "values": null,
+                        "allow_null": true,
+                        "default": null,
+                        "comment": "",
+                        "unsigned": false,
+                        "auto_increment": false
+                    },
+                    "attendance_id": {
+                        "name": "attendance_id",
+                        "type": "BIGINT",
+                        "length": null,
+                        "decimals": null,
+                        "values": null,
+                        "allow_null": false,
+                        "default": 0,
+                        "comment": "",
+                        "unsigned": true,
+                        "primary": true,
+                        "auto_increment": true
+                    }
+                },
+                "indexes": {
+                    "solder_aar_idx": {
+                        "type": "primary",
+                        "name": "solder_aar_idx",
+                        "columns": [
+                            "attendance_soldier_id",
+                            "attendance_aar_id"
+                        ],
+                        "length": [
+                            null,
+                            null
+                        ]
+                    },
+                    "aar_idx": {
+                        "type": "key",
+                        "name": "aar_idx",
+                        "columns": [
+                            "attendance_aar_id"
+                        ],
+                        "length": [
+                            null
+                        ]
+                    },
+                    "soldier_id": {
+                        "type": "key",
+                        "name": "soldier_id",
+                        "columns": [
+                            "attendance_soldier_id"
+                        ],
+                        "length": [
+                            null
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+]

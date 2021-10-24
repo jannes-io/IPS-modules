@@ -88,7 +88,8 @@ class _Mission extends \IPS\Content\Item implements
         $form['mission_content'] = new Form\Editor('mission_content', $item->content ?? \IPS\Settings::i()->penh_missions_template, true, [
             'app' => 'penh',
             'key' => 'Operation',
-            'autoSaveKey' => 'penh_mission_content-' . ($item->id ?? 'new')
+            'autoSaveKey' => 'penh_mission_content-' . ($item->id ?? 'new'),
+            'attachIds' => $item !== null ? [$item->id, null, 'mission'] : null,
         ]);
 
         return $form;
@@ -137,6 +138,7 @@ class _Mission extends \IPS\Content\Item implements
         }
 
         $this->save();
+        \IPS\File::claimAttachments('penh_mission_content-new', $this->id, null, 'mission', false);
 
         if ((bool)($values['mission_send_notification'] ?? false)) {
             $this->sendNotification();

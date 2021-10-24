@@ -66,12 +66,34 @@ class _AfterActionReport extends \IPS\Content\Comment
 
     public function getAttendance(): array
     {
-        return json_decode($this->attendance, true) ?? [];
+        $attendance = \IPS\penh\Operation\Attendance::findByAar($this->id);
+
+        $attendanceArr = [];
+        foreach ($attendance as $attendanceObj) {
+            $attendanceArr[$attendanceObj->soldier_id] = $attendanceObj->status;
+        }
+
+        return $attendanceArr;
     }
 
-    public function setAttendance(array $attendance): void
+    public function setAttendance(array $attendanceArr): void
     {
-        $this->attendance = json_encode($attendance) ?? '{}';
+        if (!$this->id) {
+            throw new \OutOfRangeException('Attempted to set attendance on unsaved AAR.');
+        }
+
+        foreach ($attendanceArr as $soldierId => $status) {
+            /** @var _Attendance|null $attendance */
+            $attendance = \IPS\penh\Operation\Attendance::findOneBySoldierAndAar($soldierId, $this->id);
+            if ($attendance === null) {
+                $attendance = new \IPS\penh\Operation\Attendance();
+                $attendance->soldier_id = $soldierId;
+                $attendance->aar_id = $this->id;
+            }
+
+            $attendance->status = $status;
+            $attendance->save();
+        }
     }
 
     public static function availableStatus(): array
@@ -107,8 +129,9 @@ class _AfterActionReport extends \IPS\Content\Comment
     public function processForm($values): void
     {
         $this->content = $values['aar_content'];
-        $this->attendance = $values['aar_attendance'];
         $this->combat_unit_id = $values['aar_combat_unit_id']->id;
+
+        $this->setAttendance(json_decode($values['aar_attendance'], true));
     }
 
     public function processAfterCreate(): void
