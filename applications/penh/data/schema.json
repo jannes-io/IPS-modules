@@ -335,18 +335,6 @@
                 "unsigned": true,
                 "auto_increment": false
             },
-            "aar_attendance": {
-                "name": "aar_attendance",
-                "type": "LONGTEXT",
-                "length": null,
-                "decimals": null,
-                "values": null,
-                "allow_null": true,
-                "default": null,
-                "comment": "",
-                "unsigned": false,
-                "auto_increment": false
-            },
             "aar_content": {
                 "name": "aar_content",
                 "type": "MEDIUMTEXT",
@@ -469,19 +457,29 @@
                 "values": []
             },
             "attendance_id": {
+                "allow_null": false,
+                "auto_increment": true,
+                "comment": "",
+                "decimals": null,
+                "default": null,
+                "length": 20,
                 "name": "attendance_id",
                 "type": "BIGINT",
-                "length": null,
-                "decimals": null,
-                "values": null,
-                "allow_null": false,
-                "default": 0,
-                "comment": "",
                 "unsigned": true,
-                "auto_increment": true
+                "values": []
             }
         },
         "indexes": {
+            "PRIMARY": {
+                "type": "primary",
+                "name": "PRIMARY",
+                "length": [
+                    null
+                ],
+                "columns": [
+                    "attendance_id"
+                ]
+            },
             "aar_idx": {
                 "type": "key",
                 "name": "aar_idx",
@@ -492,24 +490,14 @@
                     null
                 ]
             },
-            "soldier_id": {
+            "soldier_idx": {
                 "type": "key",
-                "name": "soldier_id",
+                "name": "soldier_idx",
                 "columns": [
                     "attendance_soldier_id"
                 ],
                 "length": [
                     null
-                ]
-            },
-            "PRIMARY": {
-                "type": "primary",
-                "name": "PRIMARY",
-                "length": [
-                    null
-                ],
-                "columns": [
-                    "attendance_id"
                 ]
             }
         },

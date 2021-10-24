@@ -1,0 +1,21 @@
+{
+    "normal": {
+        "added": [
+            "attendance_combat_unit_sheet",
+            "attendance_soldier_sheet",
+            "attendance_soldier",
+            "attendance_date",
+            "attendance_mission",
+            "attendance_status"
+        ],
+        "edited": [
+            "attendance_sheet_subtitle"
+        ],
+        "removed": []
+    },
+    "js": {
+        "added": [],
+        "edited": [],
+        "removed": []
+    }
+}

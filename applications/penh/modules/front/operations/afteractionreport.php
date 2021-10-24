@@ -177,31 +177,4 @@ class _afteractionreport extends \IPS\Dispatcher\Controller
             ];
         }, $personnel)));
     }
-
-    /**
-     * @deprecated only needs to be ran once per installation
-     */
-    public function upgradesystem(): void
-    {
-        $select = \IPS\Db::i()->select(
-            '*',
-            \IPS\penh\Operation\AfterActionReport::$databaseTable
-        );
-        foreach ($select as $rawAar) {
-            $aar = \IPS\penh\Operation\AfterActionReport::constructFromData($rawAar);
-            if (!$aar->id) {
-                continue;
-            }
-            foreach ($aar->getAttendance() as $soldierId => $status) {
-                /** @var _Attendance $attendance */
-                $attendance = new \IPS\penh\Operation\Attendance();
-                $attendance->soldier_id = $soldierId;
-                $attendance->aar_id = $aar->id;
-                $attendance->status = $status;
-
-                $attendance->save();
-            }
-        }
-        \IPS\Output::i()->redirect('/');
-    }
 }
