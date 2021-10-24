@@ -11,7 +11,6 @@ use IPS\Helpers\Form;
  * @property int $id
  * @property int $mission_id
  * @property int $combat_unit_id
- * @property string $attendance
  * @property string $content
  * @property int $author
  * @property string $author_name

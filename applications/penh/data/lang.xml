@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <language>
- <app key="penh" version="10009">
+ <app key="penh" version="10012">
   <word key="__app_penh" js="0">PERSCOM Enhanced</word>
   <word key="module__penh_operations" js="0">Operations</word>
   <word key="module__penh_attendance" js="0">Attendance</word>
@@ -77,13 +77,19 @@
   <word key="aar_combat_unit_id" js="0">Combat unit</word>
   <word key="aar_content" js="0">After action report</word>
   <word key="attendance_sheet_title" js="0">Attendance sheet</word>
-  <word key="attendance_sheet_subtitle" js="0">Generate an attendance sheet. All units and missions over the past 2 months are selected by default.</word>
+  <word key="attendance_sheet_subtitle" js="0">Generate an attendance sheet. All units and missions over the past 3 months are selected by default.</word>
+  <word key="attendance_combat_unit_sheet" js="0">Unit sheet</word>
+  <word key="attendance_soldier_sheet" js="0">Soldier sheet</word>
   <word key="attendance_from" js="0">From</word>
   <word key="attendance_to" js="0">To</word>
   <word key="attendance_combat_unit" js="0">Combat unit</word>
+  <word key="attendance_soldier" js="0">Soldier</word>
   <word key="attendance_generate" js="0">Generate sheet</word>
   <word key="attendance_view_mission" js="0">View mission</word>
   <word key="attendance_view_aar" js="0">View AAR</word>
+  <word key="attendance_date" js="0">Date</word>
+  <word key="attendance_mission" js="0">Mission</word>
+  <word key="attendance_status" js="0">Status</word>
   <word key="strength_sheet_title" js="0">Strength sheet</word>
   <word key="strength_sheet_subtitle" js="0">Generate a strength sheet. This tool is useful for recruitment and deciding placement of new members.</word>
   <word key="strength_sheet_combat_unit" js="0">Parent combat unit</word>

@@ -1,5 +1,5 @@
-[
-    {
+{
+    "1": {
         "method": "createTable",
         "params": [
             {
@@ -56,40 +56,9 @@
                     }
                 },
                 "indexes": {
-                    "solder_aar_idx": {
-                        "type": "primary",
-                        "name": "solder_aar_idx",
-                        "columns": [
-                            "attendance_soldier_id",
-                            "attendance_aar_id"
-                        ],
-                        "length": [
-                            null,
-                            null
-                        ]
-                    },
-                    "aar_idx": {
-                        "type": "key",
-                        "name": "aar_idx",
-                        "columns": [
-                            "attendance_aar_id"
-                        ],
-                        "length": [
-                            null
-                        ]
-                    },
-                    "soldier_id": {
-                        "type": "key",
-                        "name": "soldier_id",
-                        "columns": [
-                            "attendance_soldier_id"
-                        ],
-                        "length": [
-                            null
-                        ]
-                    }
+
                 }
             }
         ]
     }
-]
+}
