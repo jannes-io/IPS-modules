@@ -42,6 +42,7 @@ class _settings extends \IPS\Dispatcher\Controller
         $form->add(new Form\Password('steam_api_key', \IPS\Settings::i()->steam_api_key, false, [], null, null, null, 'steam_api_key'));
         $form->addHeader('stop_conditions');
         $form->add(new Form\Number('minutes_since_last_activity', \IPS\Settings::i()->minutes_since_last_activity, false, ['placeholder' => '30'], null, null, null, 'minutes_since_last_activity'));
+        $form->add(new Form\Number('minimum_players', \IPS\Settings::i()->minimum_players, false, ['placeholder' => '0'], null, null, null, 'minimum_players'));
 
         if ($values = $form->values()) {
             $form->saveAsSettings($values);
