@@ -52,15 +52,16 @@ class _stopawsservers extends \IPS\Task
             return $ex->getMessage();
         }
 
+        $minimumPlayers = \IPS\Settings::i()->minimum_players;
         foreach ($runningServers as $server) {
             $steamInfo = $server->getSteamInfo();
-            if ($steamInfo !== null && $steamInfo->players > 0) {
+            if ($steamInfo !== null && $steamInfo->players >= $minimumPlayers) {
                 $now = new DateTime();
                 $server->last_activity = $now->format('Y-m-d H:i:s');
                 $server->save();
             }
 
-            if ($steamInfo === null || $steamInfo->players === 0) {
+            if ($steamInfo === null || $steamInfo->players < $minimumPlayers) {
                 $this->stopServerIfExpired($server);
             }
         }

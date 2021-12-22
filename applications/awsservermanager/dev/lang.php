@@ -16,6 +16,7 @@ $lang = [
     'steam_api_key' => 'Steam API Credentials',
     'stop_conditions' => 'Server stop conditions',
     'minutes_since_last_activity' => 'Minutes since last activity',
+    'minimum_players' => 'Minimum players to keep online',
 
     ## Server
     'menu__awsservermanager_servers_servers' => 'Servers',
