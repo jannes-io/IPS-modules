@@ -6,6 +6,7 @@
  <setting key="aws_access_key_id"><![CDATA[{"key":"aws_access_key_id","default":""}]]></setting>
  <setting key="aws_access_key_secret"><![CDATA[{"key":"aws_access_key_secret","default":""}]]></setting>
  <setting key="aws_region"><![CDATA[{"key":"aws_region","default":""}]]></setting>
+ <setting key="minimum_players"><![CDATA[{"key":"minimum_players","default":"1"}]]></setting>
  <setting key="minutes_since_last_activity"><![CDATA[{"key":"minutes_since_last_activity","default":"30"}]]></setting>
  <setting key="steam_api_key"><![CDATA[{"key":"steam_api_key","default":""}]]></setting>
 </build>

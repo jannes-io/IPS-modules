@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <language>
- <app key="awsservermanager" version="10003">
+ <app key="awsservermanager" version="10004">
   <word key="__app_awsservermanager" js="0">AWS Server Manager</word>
   <word key="menutab__awsservermanager" js="0">AWS Steam Servers</word>
   <word key="menutab__awsservermanager_icon" js="0">server</word>
@@ -13,6 +13,7 @@
   <word key="steam_api_key" js="0">Steam API Credentials</word>
   <word key="stop_conditions" js="0">Server stop conditions</word>
   <word key="minutes_since_last_activity" js="0">Minutes since last activity</word>
+  <word key="minimum_players" js="0">Minimum players to keep online</word>
   <word key="menu__awsservermanager_servers_servers" js="0">Servers</word>
   <word key="awsservermanager_servers" js="0">Manage Servers</word>
   <word key="awsservermanager_servers_settings" js="0">Server Settings</word>
