@@ -107,7 +107,14 @@ class _AfterActionReport extends \IPS\Content\Comment
         $form->add(new Form\Node('aar_combat_unit_id', $aar->combat_unit_id ?? null, true, [
             'class' => 'IPS\perscom\Units\CombatUnit',
         ]));
-        $form->add(new Form\Text('aar_attendance', $aar->attendance ?? '{}', false));
+
+        if ($aar !== null) {
+            $attendance = $aar->getAttendance();
+            $form->add(new Form\Text('aar_attendance', \json_encode($attendance), false));
+        } else {
+            $form->add(new Form\Text('aar_attendance', '{}', false));
+        }
+
         $form->add(new Form\Editor('aar_content', $aar->content ?? \IPS\Settings::i()->penh_aar_template, true, [
             'app' => 'penh',
             'key' => 'AfterActionReport',
@@ -136,6 +143,7 @@ class _AfterActionReport extends \IPS\Content\Comment
     public function processAfterCreate(): void
     {
         $this->addCombatRecords();
+        $this->sendStatusEmail();
     }
 
     protected function addCombatRecords(): void
@@ -162,6 +170,46 @@ class _AfterActionReport extends \IPS\Content\Comment
             }
 
             $soldier->addCombatRecord(\IPS\DateTime::ts($this->end()), $mission->combat_record_entry);
+        }
+    }
+
+    protected function sendStatusEmail(): void
+    {
+        $statusToReceive = \IPS\Settings::i()->penh_aar_attendance_notification_status;
+        if (empty($statusToReceive) || !\IPS\Settings::i()->penh_aar_attendance_notification_enable) {
+            return;
+        }
+
+        $soldierIds = [];
+        foreach ($this->getAttendance() as $soldierId => $status) {
+            if ($status === $statusToReceive) {
+                $soldierIds[] = $soldierId;
+            }
+        }
+        if (empty($soldierIds)) {
+            return;
+        }
+
+        $recipientSoldiers = implode(',', $soldierIds);
+        $recipientQuery = \IPS\Db::i()
+            ->select(
+                \IPS\Member::$databaseTable . '.*',
+                \IPS\Member::$databaseTable,
+                "perscom_personnel.personnel_id IN ({$recipientSoldiers})"
+            )
+            ->join('perscom_personnel', 'perscom_personnel.personnel_member_id = core_members.member_id', 'LEFT');
+
+        foreach ($recipientQuery as $recipient) {
+            $member = \IPS\Member::constructFromData($recipient);
+            $emailSubject = $member->language()->addToStack('notifications__attendance_title', false, [
+                'sprintf' => [
+                    $statusToReceive,
+                    $this->item()->name,
+                ]
+            ]);
+            $emailContent = \IPS\Settings::i()->penh_aar_attendance_notification_content;
+            $email = \IPS\Email::buildFromContent($emailSubject, $emailContent, null, \IPS\Email::TYPE_TRANSACTIONAL, true, 'notification_attendance');
+            $email->send($member);
         }
     }
 }

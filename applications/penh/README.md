@@ -7,7 +7,11 @@ This documentation is a WIP, add an entry for each module.
 Operations are collections of missions that follow a similar time-line. Operations are the base off event hierarchy.
 Once an operation is created, missions can be made. Missions have the option to automatically create calendar events and combat record entries.
 
-Finally, after the event, the combat unit supervisor can create an AAR which would include attendance for their combat unit. This will trigger the combat record assignment as well as populate the attendance sheet.
+Finally, after the event, the combat unit supervisor can create an AAR which would include attendance for their combat unit. 
+
+AARs can be set up to do multiple things:
+- Automatically create PERSCOM combat records.
+- Send emails based on status. For example to remind a soldier of their duties when marked absent.
 
 #### Settings
 All settings regarding the Operations module can be found in ACP under "Operations -> Settings".

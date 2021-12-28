@@ -1,5 +1,17 @@
 [
     {
+        "key": "penh_aar_attendance_notification_content",
+        "default": ""
+    },
+    {
+        "key": "penh_aar_attendance_notification_enable",
+        "default": "0"
+    },
+    {
+        "key": "penh_aar_attendance_notification_status",
+        "default": "absent"
+    },
+    {
         "key": "penh_aar_status",
         "default": "present,excused,absent"
     },

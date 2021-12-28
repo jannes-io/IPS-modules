@@ -20,11 +20,15 @@ $lang = array(
 
     // Settings
     'penh_operations_settings_tab' => 'Operation settings',
-    'penh_operations_settings' => 'Operations',
+    'penh_operations_settings' => 'Operations Configuration',
     'penh_operations_content' => 'Operations content',
     'penh_missions_template' => 'Mission content template',
+    'penh_aar_settings' => 'AARs Configuration',
     'penh_aar_template' => 'AAR template',
     'penh_aar_status' => 'Attendance status',
+    'penh_aar_attendance_notification_enable' => 'Enable attendance notification',
+    'penh_aar_attendance_notification_status' => 'Status to trigger notification',
+    'penh_aar_attendance_notification_content' => 'Notification content',
 
     'penh_operations_integrations_tab' => 'Integrations',
     'penh_calendar_settings' => 'Calendar',
@@ -69,9 +73,14 @@ $lang = array(
 
     // Notifications
     'notifications__penh_PenhNotification' => 'PERSCOM Enhanced',
+
     'notifications__missions' => 'Missions',
     'notifications__missions_title' => 'A new mission was posted: %s',
     'mailsub__penh_notification_missions' => 'New Mission Posted',
+
+    'notifications__attendance' => 'Attendance',
+    'notifications__attendance_title' => 'You were marked %s for mission %s',
+    'mailsub__penh_notification_attendance' => 'Attendance submitted',
 
     // Operations
     'operations_title' => 'Operations',
