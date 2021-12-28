@@ -32,20 +32,29 @@ class _settings extends \IPS\Dispatcher\Controller
         $form->add(new Form\Editor('penh_operations_content', \IPS\Settings::i()->penh_operations_content ?? null, true, [
             'app' => 'penh',
             'key' => 'Operation',
-            'autoSaveKey' => 'penh_operations_content-' . ($item->id ?? 'new')
+            'autoSaveKey' => 'penh_operations_content'
         ]));
         $form->add(new Form\Editor('penh_missions_template', \IPS\Settings::i()->penh_missions_template ?? null, true, [
             'app' => 'penh',
             'key' => 'Operation',
-            'autoSaveKey' => 'penh_missions_template-' . ($item->id ?? 'new')
+            'autoSaveKey' => 'penh_missions_template'
         ]));
+
+        $form->addHeader('penh_aar_settings');
         $form->add(new Form\Editor('penh_aar_template', \IPS\Settings::i()->penh_aar_template ?? null, true, [
             'app' => 'penh',
             'key' => 'Operation',
-            'autoSaveKey' => 'penh_aar_template-' . ($item->id ?? 'new')
+            'autoSaveKey' => 'penh_aar_template'
         ]));
         $statusValue = \IPS\Settings::i()->penh_aar_status ?? '';
         $form->add(new Form\Stack('penh_aar_status', \is_array($statusValue) ? $statusValue : explode(',', $statusValue)));
+        $form->add(new Form\YesNo('penh_aar_attendance_notification_enable', \IPS\Settings::i()->penh_aar_attendance_notification_enable, false));
+        $form->add(new Form\Text('penh_aar_attendance_notification_status', \IPS\Settings::i()->penh_aar_attendance_notification_status, false));
+        $form->add(new Form\Editor('penh_aar_attendance_notification_content', \IPS\Settings::i()->penh_aar_attendance_notification_content ?? null, true, [
+            'app' => 'penh',
+            'key' => 'Operation',
+            'autoSaveKey' => 'penh_aar_attendance_notification_content'
+        ]));
 
         $form->addTab('penh_operations_integrations_tab');
         $form->addHeader('penh_calendar_settings');
