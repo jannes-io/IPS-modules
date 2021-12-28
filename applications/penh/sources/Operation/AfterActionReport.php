@@ -107,7 +107,14 @@ class _AfterActionReport extends \IPS\Content\Comment
         $form->add(new Form\Node('aar_combat_unit_id', $aar->combat_unit_id ?? null, true, [
             'class' => 'IPS\perscom\Units\CombatUnit',
         ]));
-        $form->add(new Form\Text('aar_attendance', $aar->attendance ?? '{}', false));
+
+        if ($aar !== null) {
+            $attendance = $aar->getAttendance();
+            $form->add(new Form\Text('aar_attendance', \json_encode($attendance), false));
+        } else {
+            $form->add(new Form\Text('aar_attendance', '{}', false));
+        }
+
         $form->add(new Form\Editor('aar_content', $aar->content ?? \IPS\Settings::i()->penh_aar_template, true, [
             'app' => 'penh',
             'key' => 'AfterActionReport',
