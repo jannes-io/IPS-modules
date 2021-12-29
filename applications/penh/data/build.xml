@@ -4,6 +4,9 @@
  <module key="front/personnel"><![CDATA[{"default_controller":"attendancesheet","protected":0,"default":0}]]></module>
  <module key="admin/operations"><![CDATA[{"default_controller":"","protected":0,"default":0}]]></module>
  <module key="admin/settings"><![CDATA[{"default_controller":"","protected":0,"default":1}]]></module>
+ <setting key="penh_aar_attendance_notification_content"><![CDATA[{"key":"penh_aar_attendance_notification_content","default":""}]]></setting>
+ <setting key="penh_aar_attendance_notification_enable"><![CDATA[{"key":"penh_aar_attendance_notification_enable","default":"0"}]]></setting>
+ <setting key="penh_aar_attendance_notification_status"><![CDATA[{"key":"penh_aar_attendance_notification_status","default":"absent"}]]></setting>
  <setting key="penh_aar_status"><![CDATA[{"key":"penh_aar_status","default":"present,excused,absent"}]]></setting>
  <setting key="penh_aar_template"><![CDATA[{"key":"penh_aar_template","default":""}]]></setting>
  <setting key="penh_calendar_enable"><![CDATA[{"key":"penh_calendar_enable","default":"0"}]]></setting>
