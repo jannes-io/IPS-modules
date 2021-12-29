@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <language>
- <app key="awsservermanager" version="10004">
+ <app key="awsservermanager" version="10005">
   <word key="__app_awsservermanager" js="0">AWS Server Manager</word>
   <word key="menutab__awsservermanager" js="0">AWS Steam Servers</word>
   <word key="menutab__awsservermanager_icon" js="0">server</word>
-  <word key="menu__awsservermanager_servers" js="0">Servers</word>
+  <word key="menu__awsservermanager_servers" js="0">AWS EC2</word>
+  <word key="menu__awsservermanager_awsses" js="0">AWS SES</word>
+  <word key="menu__awsservermanager_awsses_settings" js="0">Settings</word>
   <word key="menu__awsservermanager_servers_settings" js="0">Settings</word>
   <word key="aws_credentials" js="0">AWS Programmatic Access Credentials</word>
   <word key="aws_region" js="0">Region</word>
@@ -14,6 +16,11 @@
   <word key="stop_conditions" js="0">Server stop conditions</word>
   <word key="minutes_since_last_activity" js="0">Minutes since last activity</word>
   <word key="minimum_players" js="0">Minimum players to keep online</word>
+  <word key="aws_ses_region" js="0">Region</word>
+  <word key="aws_ses_access_key_id" js="0">Access Key ID</word>
+  <word key="aws_ses_access_key_secret" js="0">Access Key Secret</word>
+  <word key="aws_ses_enable" js="0">Send all email through AWS SES</word>
+  <word key="aws_ses_enable_bulk_only" js="0">Send bulk email through AWS SES</word>
   <word key="menu__awsservermanager_servers_servers" js="0">Servers</word>
   <word key="awsservermanager_servers" js="0">Manage Servers</word>
   <word key="awsservermanager_servers_settings" js="0">Server Settings</word>
