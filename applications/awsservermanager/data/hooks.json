@@ -1,1 +1,6 @@
-[]
+{
+    "Email": {
+        "type": "C",
+        "class": "\\IPS\\Email"
+    }
+}

@@ -14,5 +14,14 @@
             "restriction": "servers_manage",
             "subcontrollers": ""
         }
+    },
+    "awsses": {
+        "settings": {
+            "tab": "awsservermanager",
+            "controller": "settings",
+            "do": "",
+            "restriction": "settings_manage",
+            "subcontrollers": ""
+        }
     }
 }

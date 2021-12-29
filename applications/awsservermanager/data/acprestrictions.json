@@ -6,5 +6,10 @@
         "servers": {
             "servers_manage": "servers_manage"
         }
+    },
+    "awsses": {
+        "settings": {
+            "settings_manage": "settings_manage"
+        }
     }
 }

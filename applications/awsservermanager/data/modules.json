@@ -4,13 +4,18 @@
             "default_controller": "servers",
             "protected": 0,
             "default": 1
+        },
+        "awsses": {
+            "default_controller": "",
+            "protected": false,
+            "default": null
         }
     },
     "front": {
         "servers": {
             "default_controller": "",
-            "protected": false,
-            "default": null
+            "protected": 0,
+            "default": 0
         }
     }
 }
