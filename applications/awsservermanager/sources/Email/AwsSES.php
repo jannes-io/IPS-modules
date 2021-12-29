@@ -29,6 +29,9 @@ class _AwsSES extends \IPS\Email
      */
     public function _send($to, $cc = [], $bcc = [], $fromEmail = null, $fromName = null, $additionalHeaders = [])
     {
+        $fromEmail = $fromEmail ?: \IPS\Settings::i()->email_out;
+        $fromName = $fromName ?: \IPS\Settings::i()->board_name;
+
         $region = \IPS\Settings::i()->aws_ses_region;
         $accessKeyId = \IPS\Settings::i()->aws_ses_access_key_id;
         $accessKeySecret = \IPS\Settings::i()->aws_ses_access_key_secret;
@@ -68,7 +71,7 @@ class _AwsSES extends \IPS\Email
                     'ToAddresses' => $recipients,
                 ],
                 'ReplyToAddresses' => [$fromEmail],
-                'Source' => $fromName !== null ? "$fromName <{$fromEmail}>" : $fromEmail,
+                'Source' => !empty($fromName) ? "\"$fromName\" <{$fromEmail}>" : $fromEmail,
                 'Message' => [
                     'Body' => [
                         'Html' => [
@@ -86,9 +89,9 @@ class _AwsSES extends \IPS\Email
                     ],
                 ],
             ]);
-           if (empty($result['MessageId'])) {
-               throw new \IPS\Email\Outgoing\Exception('Something went wrong sending email through SES: ' . \json_encode($result));
-           }
+            if (empty($result['MessageId'])) {
+                throw new \IPS\Email\Outgoing\Exception('Something went wrong sending email through SES: ' . \json_encode($result));
+            }
         } catch (AwsException $e) {
             throw new \IPS\Email\Outgoing\Exception($e->getMessage());
         }
