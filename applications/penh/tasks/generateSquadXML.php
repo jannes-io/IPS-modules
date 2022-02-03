@@ -80,7 +80,7 @@ class _generateSquadXML extends \IPS\Task
             $member->addChild('icq', $combatUnit->position);
             $member->addChild('remark', "{$combatUnit->_title}, $combatUnitPosition");
         }
-        file_put_contents($rootDir . 'penh_squad.xml', $xml->asXML());
+        file_put_contents($rootDir . 'squad.xml', $xml->asXML());
 		return null;
 	}
 
