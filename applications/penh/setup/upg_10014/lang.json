@@ -1,0 +1,19 @@
+{
+    "normal": {
+        "added": [
+            "penh_personnel_squadxml",
+            "penh_personnel_squadxml_help",
+            "penh_personnel_squadxml_enable",
+            "penh_personnel_squadxml_pid_field",
+            "penh_personnel_squadxml_nick",
+            "penh_personnel_squadxml_logo"
+        ],
+        "edited": [],
+        "removed": []
+    },
+    "js": {
+        "added": [],
+        "edited": [],
+        "removed": []
+    }
+}
