@@ -1,0 +1,25 @@
+{
+    "html": {
+        "added": [],
+        "edited": [
+            "front\/global\/soldierRow",
+            "front\/operations\/mission",
+            "front\/operations\/operation",
+            "front\/operations\/operationRow",
+            "front\/operations\/operations",
+            "front\/personnel\/attendanceSheetForm",
+            "front\/personnel\/soldierSheet"
+        ],
+        "removed": []
+    },
+    "css": {
+        "added": [],
+        "edited": [],
+        "removed": []
+    },
+    "resources": {
+        "added": [],
+        "edited": [],
+        "removed": []
+    }
+}
