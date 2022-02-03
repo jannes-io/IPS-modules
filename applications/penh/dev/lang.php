@@ -49,6 +49,13 @@ $lang = array(
     'penh_personnel_highlighted_awards' => 'Awards to highlight',
     'penh_personnel_default_uniform' => 'Default uniform',
 
+    'penh_personnel_squadxml' => 'SquadXML Configuration',
+    'penh_personnel_squadxml_help' => 'SquadXML is generated every hour in \'/penh_squad.xml\'. Members can use the link to display a custom SquadXML in-game. I.E. https://example.com/penh_squad.xml',
+    'penh_personnel_squadxml_enable' => 'Enable automatic generation',
+    'penh_personnel_squadxml_pid_field' => 'Player ID P-File custom field',
+    'penh_personnel_squadxml_nick' => 'Clan tag',
+    'penh_personnel_squadxml_logo' => 'Logo (.paa)',
+
     // Operations
     'operations' => 'Operations',
     'operation_name' => 'Name',

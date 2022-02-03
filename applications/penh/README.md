@@ -29,6 +29,9 @@ The attendance sheet is populated by after action reports. Multiple combat units
 #### Strength Sheet
 Strength sheet lists a combat unit's child units and their numbers. This is useful when assigning new members to combat units and allows them to be filled equally. Additionally, this tool has some total statistics for tracking purposes. 
 
+#### SquadXML
+PERSCOM comes with a paid addon to generate SquadXMLs. The SquadXML feature in PENH is a simplified and hands-off version of that. It runs automatically every 6 hours. If you need extended SquadXML settings we recommend using the built-in PERSCOM addon. For simple, generic SquadXMLs this feature should provide the required functionality.
+
 #### Settings
 All settings regarding the Strength Sheet can be found in ACP under "Settings -> Settings -> Strength Sheet".
 The attendance sheet is influenced by mission and AAR settings, which are in the Operations module.
