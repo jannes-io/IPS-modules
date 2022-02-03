@@ -45,8 +45,8 @@ class _generateSquadXML extends \IPS\Task
         $xml->addChild('title', \IPS\Settings::i()->board_name);
         $xml->addChild('email', \IPS\Settings::i()->email_out);
 
-        if (\IPS\Settings::i()->site_address) {
-            $xml->addChild('web', \IPS\Settings::i()->site_address);
+        if (\IPS\Settings::i()->base_url) {
+            $xml->addChild('web', \IPS\Settings::i()->base_url);
         }
 
         $rootDir = \IPS\ROOT_PATH . DIRECTORY_SEPARATOR;
