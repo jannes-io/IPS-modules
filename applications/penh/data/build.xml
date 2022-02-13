@@ -29,4 +29,5 @@
  <setting key="penh_strength_sheet_ignore_status"><![CDATA[{"key":"penh_strength_sheet_ignore_status","default":""}]]></setting>
  <hook key="Soldier"><![CDATA[{"type":"C","class":"\\IPS\\perscom\\Personnel\\Soldier"}]]></hook>
  <hook key="SoldierThemeHook"><![CDATA[{"type":"S","class":"\\IPS\\Theme\\class_perscom_front_personnel"}]]></hook>
+ <hook key="ActivityTracker"><![CDATA[{"type":"C","class":"\\IPS\\perscom\\modules\\front\\activitytracker\\activitytracker"}]]></hook>
 </build>
