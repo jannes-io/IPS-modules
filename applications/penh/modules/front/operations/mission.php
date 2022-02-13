@@ -24,6 +24,12 @@ class _mission extends \IPS\Content\Controller
     public function manage(): void
     {
         $mission = parent::manage();
+
+        if ($mission === null) {
+            \IPS\Output::i()->error('node_error', '2F176/1', 404, '');
+            return;
+        }
+
         \IPS\Output::i()->output = \IPS\Theme::i()->getTemplate('operations')->mission($mission);
     }
 
