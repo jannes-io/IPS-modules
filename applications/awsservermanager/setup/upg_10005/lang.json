@@ -1,0 +1,22 @@
+{
+    "normal": {
+        "added": [
+            "menu__awsservermanager_awsses",
+            "menu__awsservermanager_awsses_settings",
+            "aws_ses_region",
+            "aws_ses_access_key_id",
+            "aws_ses_access_key_secret",
+            "aws_ses_enable",
+            "aws_ses_enable_bulk_only"
+        ],
+        "edited": [
+            "menu__awsservermanager_servers"
+        ],
+        "removed": []
+    },
+    "js": {
+        "added": [],
+        "edited": [],
+        "removed": []
+    }
+}

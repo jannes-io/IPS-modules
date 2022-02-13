@@ -9,6 +9,13 @@ use IPS\Helpers\Form;
 use IPS\Http\Url;
 use IPS\Settings;
 
+
+/* To prevent PHP errors (extending class does not exist) revealing path */
+if (!\defined('\IPS\SUITE_UNIQUE_KEY')) {
+    header((isset($_SERVER['SERVER_PROTOCOL']) ? $_SERVER['SERVER_PROTOCOL'] : 'HTTP/1.0') . ' 403 Forbidden');
+    exit;
+}
+
 require_once \IPS\ROOT_PATH . '/applications/awsservermanager/system/3rd_party/aws-autoloader.php';
 
 /**

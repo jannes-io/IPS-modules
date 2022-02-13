@@ -1,0 +1,11 @@
+{
+    "added": [
+        "aws_ses_access_key_id",
+        "aws_ses_access_key_secret",
+        "aws_ses_enable",
+        "aws_ses_enable_bulk_only",
+        "aws_ses_region"
+    ],
+    "edited": [],
+    "removed": []
+}

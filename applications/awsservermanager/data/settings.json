@@ -12,6 +12,26 @@
         "default": ""
     },
     {
+        "key": "aws_ses_access_key_id",
+        "default": ""
+    },
+    {
+        "key": "aws_ses_access_key_secret",
+        "default": ""
+    },
+    {
+        "key": "aws_ses_enable",
+        "default": "0"
+    },
+    {
+        "key": "aws_ses_enable_bulk_only",
+        "default": "0"
+    },
+    {
+        "key": "aws_ses_region",
+        "default": ""
+    },
+    {
         "key": "minimum_players",
         "default": "1"
     },

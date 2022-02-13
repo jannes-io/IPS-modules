@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <build>
  <module key="admin/servers"><![CDATA[{"default_controller":"servers","protected":0,"default":1}]]></module>
- <module key="front/servers"><![CDATA[{"default_controller":"","protected":false,"default":null}]]></module>
+ <module key="admin/awsses"><![CDATA[{"default_controller":"","protected":false,"default":null}]]></module>
+ <module key="front/servers"><![CDATA[{"default_controller":"","protected":0,"default":0}]]></module>
  <task frequency="P0Y0M0DT0H10M0S">stopawsservers</task>
  <setting key="aws_access_key_id"><![CDATA[{"key":"aws_access_key_id","default":""}]]></setting>
  <setting key="aws_access_key_secret"><![CDATA[{"key":"aws_access_key_secret","default":""}]]></setting>
  <setting key="aws_region"><![CDATA[{"key":"aws_region","default":""}]]></setting>
+ <setting key="aws_ses_access_key_id"><![CDATA[{"key":"aws_ses_access_key_id","default":""}]]></setting>
+ <setting key="aws_ses_access_key_secret"><![CDATA[{"key":"aws_ses_access_key_secret","default":""}]]></setting>
+ <setting key="aws_ses_enable"><![CDATA[{"key":"aws_ses_enable","default":"0"}]]></setting>
+ <setting key="aws_ses_enable_bulk_only"><![CDATA[{"key":"aws_ses_enable_bulk_only","default":"0"}]]></setting>
+ <setting key="aws_ses_region"><![CDATA[{"key":"aws_ses_region","default":""}]]></setting>
  <setting key="minimum_players"><![CDATA[{"key":"minimum_players","default":"1"}]]></setting>
  <setting key="minutes_since_last_activity"><![CDATA[{"key":"minutes_since_last_activity","default":"30"}]]></setting>
  <setting key="steam_api_key"><![CDATA[{"key":"steam_api_key","default":""}]]></setting>
+ <hook key="Email"><![CDATA[{"type":"C","class":"\\IPS\\Email"}]]></hook>
 </build>

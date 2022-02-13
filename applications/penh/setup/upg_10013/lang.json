@@ -1,0 +1,22 @@
+{
+    "normal": {
+        "added": [
+            "penh_aar_settings",
+            "penh_aar_attendance_notification_enable",
+            "penh_aar_attendance_notification_status",
+            "penh_aar_attendance_notification_content",
+            "notifications__attendance",
+            "notifications__attendance_title",
+            "mailsub__penh_notification_attendance"
+        ],
+        "edited": [
+            "penh_operations_settings"
+        ],
+        "removed": []
+    },
+    "js": {
+        "added": [],
+        "edited": [],
+        "removed": []
+    }
+}

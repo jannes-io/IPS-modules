@@ -5,7 +5,11 @@ $lang = [
     '__app_awsservermanager' => 'AWS Server Manager',
     'menutab__awsservermanager' => 'AWS Steam Servers',
     'menutab__awsservermanager_icon' => 'server',
-    'menu__awsservermanager_servers' => 'Servers',
+    'menu__awsservermanager_servers' => 'AWS EC2',
+
+    'menu__awsservermanager_awsses' => 'AWS SES',
+    'menu__awsservermanager_awsses_settings' => 'Settings',
+
 
     ## Settings
     'menu__awsservermanager_servers_settings' => 'Settings',
@@ -17,6 +21,12 @@ $lang = [
     'stop_conditions' => 'Server stop conditions',
     'minutes_since_last_activity' => 'Minutes since last activity',
     'minimum_players' => 'Minimum players to keep online',
+
+    'aws_ses_region' => 'Region',
+    'aws_ses_access_key_id' => 'Access Key ID',
+    'aws_ses_access_key_secret' => 'Access Key Secret',
+    'aws_ses_enable' => 'Send all email through AWS SES',
+    'aws_ses_enable_bulk_only' => 'Send bulk email through AWS SES',
 
     ## Server
     'menu__awsservermanager_servers_servers' => 'Servers',

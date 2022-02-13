@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <language>
- <app key="penh" version="10012">
+ <app key="penh" version="10013">
   <word key="__app_penh" js="0">PERSCOM Enhanced</word>
   <word key="module__penh_operations" js="0">Operations</word>
   <word key="module__penh_attendance" js="0">Attendance</word>
@@ -13,11 +13,15 @@
   <word key="menu__penh_operations_operation" js="0">Operations</word>
   <word key="menu__penh_operations_settings" js="0">Settings</word>
   <word key="penh_operations_settings_tab" js="0">Operation settings</word>
-  <word key="penh_operations_settings" js="0">Operations</word>
+  <word key="penh_operations_settings" js="0">Operations Configuration</word>
   <word key="penh_operations_content" js="0">Operations content</word>
   <word key="penh_missions_template" js="0">Mission content template</word>
+  <word key="penh_aar_settings" js="0">AARs Configuration</word>
   <word key="penh_aar_template" js="0">AAR template</word>
   <word key="penh_aar_status" js="0">Attendance status</word>
+  <word key="penh_aar_attendance_notification_enable" js="0">Enable attendance notification</word>
+  <word key="penh_aar_attendance_notification_status" js="0">Status to trigger notification</word>
+  <word key="penh_aar_attendance_notification_content" js="0">Notification content</word>
   <word key="penh_operations_integrations_tab" js="0">Integrations</word>
   <word key="penh_calendar_settings" js="0">Calendar</word>
   <word key="penh_calendar_enable" js="0">Allow creation of calendar events</word>
@@ -53,6 +57,9 @@
   <word key="notifications__missions" js="0">Missions</word>
   <word key="notifications__missions_title" js="0">A new mission was posted: %s</word>
   <word key="mailsub__penh_notification_missions" js="0">New Mission Posted</word>
+  <word key="notifications__attendance" js="0">Attendance</word>
+  <word key="notifications__attendance_title" js="0">You were marked %s for mission %s</word>
+  <word key="mailsub__penh_notification_attendance" js="0">Attendance submitted</word>
   <word key="operations_title" js="0">Operations</word>
   <word key="operation_title_name" js="0">Operation %s</word>
   <word key="operation_started" js="0">Started on</word>
