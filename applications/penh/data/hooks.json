@@ -6,5 +6,9 @@
     "SoldierThemeHook": {
         "type": "S",
         "class": "\\IPS\\Theme\\class_perscom_front_personnel"
+    },
+    "ActivityTracker": {
+        "type": "C",
+        "class": "\\IPS\\perscom\\modules\\front\\activitytracker\\activitytracker"
     }
 }
