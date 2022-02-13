@@ -5,7 +5,8 @@
             "Operation": "IPS\\penh\\extensions\\core\\EditorLocations\\Operation"
         },
         "FileStorage": {
-            "DefaultUniform": "IPS\\penh\\extensions\\core\\FileStorage\\DefaultUniform"
+            "DefaultUniform": "IPS\\penh\\extensions\\core\\FileStorage\\DefaultUniform",
+            "SquadXML": "IPS\\penh\\extensions\\core\\FileStorage\\SquadXML"
         },
         "FrontNavigation": {
             "Attendance": "IPS\\penh\\extensions\\core\\FrontNavigation\\Attendance",

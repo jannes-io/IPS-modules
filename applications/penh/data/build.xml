@@ -4,6 +4,7 @@
  <module key="front/personnel"><![CDATA[{"default_controller":"attendancesheet","protected":0,"default":0}]]></module>
  <module key="admin/operations"><![CDATA[{"default_controller":"","protected":0,"default":0}]]></module>
  <module key="admin/settings"><![CDATA[{"default_controller":"","protected":0,"default":1}]]></module>
+ <task frequency="P0Y0M0DT1H0M0S">generateSquadXML</task>
  <setting key="penh_aar_attendance_notification_content"><![CDATA[{"key":"penh_aar_attendance_notification_content","default":""}]]></setting>
  <setting key="penh_aar_attendance_notification_enable"><![CDATA[{"key":"penh_aar_attendance_notification_enable","default":"0"}]]></setting>
  <setting key="penh_aar_attendance_notification_status"><![CDATA[{"key":"penh_aar_attendance_notification_status","default":"absent"}]]></setting>
@@ -21,6 +22,10 @@
  <setting key="penh_personnel_action_request_id"><![CDATA[{"key":"penh_personnel_action_request_id","default":"1"}]]></setting>
  <setting key="penh_personnel_default_uniform"><![CDATA[{"key":"penh_personnel_default_uniform","default":""}]]></setting>
  <setting key="penh_personnel_highlighted_awards"><![CDATA[{"key":"penh_personnel_highlighted_awards","default":""}]]></setting>
+ <setting key="penh_personnel_squadxml_enable"><![CDATA[{"key":"penh_personnel_squadxml_enable","default":"0"}]]></setting>
+ <setting key="penh_personnel_squadxml_logo"><![CDATA[{"key":"penh_personnel_squadxml_logo","default":""}]]></setting>
+ <setting key="penh_personnel_squadxml_nick"><![CDATA[{"key":"penh_personnel_squadxml_nick","default":""}]]></setting>
+ <setting key="penh_personnel_squadxml_pid_field"><![CDATA[{"key":"penh_personnel_squadxml_pid_field","default":""}]]></setting>
  <setting key="penh_strength_sheet_ignore_status"><![CDATA[{"key":"penh_strength_sheet_ignore_status","default":""}]]></setting>
  <hook key="Soldier"><![CDATA[{"type":"C","class":"\\IPS\\perscom\\Personnel\\Soldier"}]]></hook>
  <hook key="SoldierThemeHook"><![CDATA[{"type":"S","class":"\\IPS\\Theme\\class_perscom_front_personnel"}]]></hook>
