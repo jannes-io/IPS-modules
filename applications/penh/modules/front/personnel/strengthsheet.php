@@ -18,7 +18,7 @@ class _strengthsheet extends \IPS\Dispatcher\Controller
     public function execute(): void
     {
         parent::execute();
-        \IPS\Output::i()->cssFiles = array_merge(\IPS\Output::i()->cssFiles, \IPS\Theme::i()->css('personnel/combatUnit.css', 'penh', 'front'));
+        \IPS\Output::i()->cssFiles = array_merge(\IPS\Output::i()->cssFiles, \IPS\Theme::i()->css('personnel/combatunit.css', 'penh', 'front'));
     }
 
     protected function manage(): void

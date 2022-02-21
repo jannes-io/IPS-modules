@@ -24,10 +24,6 @@ class _attendancesheet extends \IPS\Dispatcher\Controller
     {
         $combatUnitSheet = new Form('attendance_combat_unit_sheet', 'attendance_generate');
         $combatUnitSheet->addHeader('attendance_combat_unit_sheet');
-        $combatUnitSheet->add(new Form\Node('attendance_combat_unit', null, false, [
-            'multiple' => true,
-            'class' => 'IPS\perscom\Units\CombatUnit',
-        ]));
         $combatUnitSheet->add(new Form\Date('attendance_from'));
         $combatUnitSheet->add(new Form\Date('attendance_to'));
 
@@ -39,9 +35,6 @@ class _attendancesheet extends \IPS\Dispatcher\Controller
             if (!empty($values['attendance_to'])) {
                 $queryString['to'] = $values['attendance_to']->getTimestamp();
             }
-            if (!empty($values['attendance_combat_unit'])) {
-                $queryString['combatunit'] = implode(',', array_keys($values['attendance_combat_unit']));
-            }
 
             $url = \IPS\Http\Url::internal('app=penh&module=personnel&controller=attendancesheet&do=combatunitsheet&from=&to=')
                 ->setQueryString($queryString);
@@ -51,9 +44,9 @@ class _attendancesheet extends \IPS\Dispatcher\Controller
 
         $soldierForm = new Form('attendance_soldier_sheet', 'attendance_generate');
         $soldierForm->addHeader('attendance_soldier_sheet');
-        $soldierForm->add(new Form\Node('attendance_soldier', null, true, [
+        $soldierForm->add(new Form\Node('attendance_combat_unit', null, true, [
             'multiple' => false,
-            'class' => 'IPS\perscom\Personnel\Soldier',
+            'class' => 'IPS\perscom\Units\CombatUnit',
         ]));
         $soldierForm->add(new Form\Date('attendance_from'));
         $soldierForm->add(new Form\Date('attendance_to'));
@@ -65,9 +58,9 @@ class _attendancesheet extends \IPS\Dispatcher\Controller
             if (!empty($values['attendance_to'])) {
                 $queryString['to'] = $values['attendance_to']->getTimestamp();
             }
-            $queryString['soldier'] = $values['attendance_soldier']->id;
+            $queryString['combatunit'] = $values['attendance_combat_unit']->id;
 
-            $url = \IPS\Http\Url::internal('app=penh&module=personnel&controller=attendancesheet&do=soldiersheet&from=&to=&soldier=')
+            $url = \IPS\Http\Url::internal('app=penh&module=personnel&controller=attendancesheet&do=soldiersheet&from=&to=&combatunit=')
                 ->setQueryString($queryString);
             \IPS\Output::i()->redirect($url);
             return;
@@ -190,27 +183,61 @@ class _attendancesheet extends \IPS\Dispatcher\Controller
     public function soldiersheet(): void
     {
         ['from' => $fromParam, 'to' => $toParam] = $this->getDefaultDates();
+        $combatUnit = \IPS\perscom\Units\CombatUnit::load(\IPS\Request::i()->combatunit);
+        $roster = \IPS\perscom\Personnel\Roster::load($combatUnit->roster);
 
-        $soldierId = \IPS\Request::i()->soldier;
-        $soldier = \IPS\perscom\Personnel\Soldier::load($soldierId);
-        $attendance = \IPS\penh\Operation\Attendance::findBySoldier($soldierId, $fromParam, $toParam);
+        if (empty($combatUnit) || empty($roster)) {
+            throw new \OutOfRangeException('Combat unit not found');
+        }
 
-        usort($attendance, static function ($a, $b) {
-            return $a->aar->item()->start < $b->aar->item()->start ? 1 : -1;
-        });
+        $personnel = \IPS\perscom\Personnel\Soldier::sortPersonnel(
+            \IPS\perscom\Personnel\Soldier::roots('view', null, ['personnel_combat_unit=?', $combatUnit->id]),
+            explode(',', $roster->sort)
+        );
 
-        $statistics = array_reduce($attendance, static function ($acc, $attended) {
-            if (!isset($acc[$attended->status])) {
-                $acc[$attended->status] = 0;
+        $missions = [];
+        $statistics = ['total' => ['total' => 0]];
+        foreach (\IPS\penh\Operation\AfterActionReport::availableStatus() as $status) {
+            $statistics['total'][$status] = 0;
+        }
+
+        foreach ($personnel as $soldier) {
+            if (!isset($statistics[$soldier->id])) {
+                $statistics[$soldier->id] = [];
+                foreach (\IPS\penh\Operation\AfterActionReport::availableStatus() as $status) {
+                    $statistics[$soldier->id][$status] = 0;
+                }
+                $statistics[$soldier->id]['total'] = 0;
             }
-            $acc[$attended->status]++;
-            $acc['total']++;
-            return $acc;
-        }, ['total' => 0]);
+
+            $attendances = \IPS\penh\Operation\Attendance::findBySoldier($soldier->id, $fromParam, $toParam);
+            foreach ($attendances as $attendance) {
+                $mission = $attendance->aar->item();
+                if (!isset($missions[$mission->id])) {
+                    $missions[$mission->id] = [
+                        'mission' => $mission,
+                        'attendance' => []
+                    ];
+                }
+                $missions[$mission->id]['attendance'][] = [
+                    'soldier' => $soldier,
+                    'attendance' => $attendance,
+                ];
+                $statistics[$soldier->id][$attendance->status]++;
+                $statistics['total'][$attendance->status]++;
+                $statistics[$soldier->id]['total']++;
+                $statistics['total']['total']++;
+            }
+        }
+
+        usort($missions, static function ($a, $b) {
+            return $a['mission']->start < $b['mission']->start ? 1 : -1;
+        });
 
         $title = \IPS\Member::loggedIn()->language()->addToStack('attendance_sheet_title');
         \IPS\Output::i()->title = $title;
         \IPS\Output::i()->breadcrumb[] = [\IPS\Http\Url::internal('attendancesheet'), $title];
-        \IPS\Output::i()->output = \IPS\Theme::i()->getTemplate('personnel')->soldierSheet($soldier, $attendance, $statistics);
+        \IPS\Output::i()->cssFiles = array_merge(\IPS\Output::i()->cssFiles, \IPS\Theme::i()->css('personnel/attendancesheet.css', 'penh', 'front'));
+        \IPS\Output::i()->output = \IPS\Theme::i()->getTemplate('personnel')->soldierSheet($personnel, $combatUnit, $missions, $statistics);
     }
 }

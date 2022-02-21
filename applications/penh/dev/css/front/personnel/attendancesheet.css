@@ -1,0 +1,8 @@
+.tableWrapper {
+    overflow-x: auto;
+}
+
+body[data-pageapp="penh"][data-pagemodule="personnel"][data-pagecontroller="attendancesheet"] #ipsLayout_mainArea {
+    display: flex;
+    flex-direction: column;
+}

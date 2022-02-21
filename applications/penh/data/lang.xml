@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <language>
- <app key="penh" version="10017">
+ <app key="penh" version="10021">
   <word key="__app_penh" js="0">PERSCOM Enhanced</word>
   <word key="module__penh_operations" js="0">Operations</word>
   <word key="module__penh_attendance" js="0">Attendance</word>
@@ -103,6 +103,7 @@
   <word key="attendance_date" js="0">Date</word>
   <word key="attendance_mission" js="0">Mission</word>
   <word key="attendance_status" js="0">Status</word>
+  <word key="attendance_empty" js="0">No data found for the selected time-range/combat unit.</word>
   <word key="strength_sheet_title" js="0">Strength sheet</word>
   <word key="strength_sheet_subtitle" js="0">Generate a strength sheet. This tool is useful for recruitment and deciding placement of new members.</word>
   <word key="strength_sheet_combat_unit" js="0">Parent combat unit</word>

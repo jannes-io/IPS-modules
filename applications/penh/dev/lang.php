@@ -133,6 +133,7 @@ $lang = array(
     'attendance_date' => 'Date',
     'attendance_mission' => 'Mission',
     'attendance_status' => 'Status',
+    'attendance_empty' => 'No data found for the selected time-range/combat unit.',
 
     // Strength Sheet
     'strength_sheet_title' => 'Strength sheet',
