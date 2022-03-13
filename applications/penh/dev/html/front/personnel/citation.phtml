@@ -1,0 +1,5 @@
+<ips:template parameters="$serviceRecord, $award" />
+<div class="ipsPadding ipsFlex ipsFlex-ai:center ipsFlex-fd:column">
+    <img class="ipsSpacer_bottom" src="{file='$award->image' extension='perscom_Awards'}" height="40px" title="{$award->_title}" data-ipsTooltip />
+    <p class="ipsType_reset">{$serviceRecord->citation|raw}</p>
+</div>

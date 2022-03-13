@@ -30,4 +30,6 @@
  <hook key="Soldier"><![CDATA[{"type":"C","class":"\\IPS\\perscom\\Personnel\\Soldier"}]]></hook>
  <hook key="SoldierThemeHook"><![CDATA[{"type":"S","class":"\\IPS\\Theme\\class_perscom_front_personnel"}]]></hook>
  <hook key="ActivityTracker"><![CDATA[{"type":"C","class":"\\IPS\\perscom\\modules\\front\\activitytracker\\activitytracker"}]]></hook>
+ <hook key="ServiceRecordCitation"><![CDATA[{"type":"C","class":"\\IPS\\perscom\\Records\\Service"}]]></hook>
+ <hook key="SoldierFrontModule"><![CDATA[{"type":"C","class":"\\IPS\\perscom\\modules\\front\\personnel\\soldier"}]]></hook>
 </build>

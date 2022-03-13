@@ -153,4 +153,8 @@ $lang = array(
 
     // Awards
     'penh_soldier_medals' => 'Notable Medals',
+
+    // Citations
+    'penh_award_citation' => 'Award Citation',
+    'penh_service_record_citation' => 'View Citation'
 );

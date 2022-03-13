@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <language>
- <app key="penh" version="10021">
+ <app key="penh" version="10022">
   <word key="__app_penh" js="0">PERSCOM Enhanced</word>
   <word key="module__penh_operations" js="0">Operations</word>
   <word key="module__penh_attendance" js="0">Attendance</word>
@@ -117,5 +117,7 @@
   <word key="request_approved" js="0">TPR Approved</word>
   <word key="request_pending" js="0">TPR Pending Approval</word>
   <word key="penh_soldier_medals" js="0">Notable Medals</word>
+  <word key="penh_award_citation" js="0">Award Citation</word>
+  <word key="penh_service_record_citation" js="0">View Citation</word>
  </app>
 </language>

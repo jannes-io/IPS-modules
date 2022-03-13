@@ -8,6 +8,11 @@ if ( !\defined( '\IPS\SUITE_UNIQUE_KEY' ) )
 
 class penh_hook_Soldier extends _HOOK_CLASS_
 {
+    public function get_administrative_unit_positions()
+    {
+        return parent::get_administrative_unit_positions() ?? [];
+    }
+
 	public function isTPRd()
 	{
 	    $days = \IPS\Settings::i()->personnel_action_request_duration ?? 3;

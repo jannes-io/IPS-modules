@@ -10,5 +10,13 @@
     "ActivityTracker": {
         "type": "C",
         "class": "\\IPS\\perscom\\modules\\front\\activitytracker\\activitytracker"
+    },
+    "ServiceRecordCitation": {
+        "type": "C",
+        "class": "\\IPS\\perscom\\Records\\Service"
+    },
+    "SoldierFrontModule": {
+        "type": "C",
+        "class": "\\IPS\\perscom\\modules\\front\\personnel\\soldier"
     }
 }

@@ -327,6 +327,11 @@
 {{endfor}}
 {{endif}}
 ]]></template>
+ <template template_group="personnel" template_name="citation" template_data="$serviceRecord, $award" template_location="front" template_app="penh"><![CDATA[<div class="ipsPadding ipsFlex ipsFlex-ai:center ipsFlex-fd:column">
+    <img class="ipsSpacer_bottom" src="{file='$award->image' extension='perscom_Awards'}" height="40px" title="{$award->_title}" data-ipsTooltip />
+    <p class="ipsType_reset">{$serviceRecord->citation|raw}</p>
+</div>
+]]></template>
  <template template_group="personnel" template_name="combatUnit" template_data="$combatUnit" template_location="front" template_app="penh"><![CDATA[{{$unit = $combatUnit['combatUnit'];}}
 <div class="ipsBox ipsWidget ipsWidget_vertical ipsMargin:half combatUnitWidget">
     <h3 class="ipsType_reset ipsWidget_title">{$unit->name} <span class="ipsType_reset ipsType_light">({$c = \count($combatUnit['personnel'])})</span></h3>
