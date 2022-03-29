@@ -1,0 +1,19 @@
+{
+    "normal": {
+        "added": [
+            "r__operation",
+            "r__operation_manage",
+            "r__operations_add",
+            "r__operations_edit",
+            "r__operations_delete",
+            "r__operations_permissions"
+        ],
+        "edited": [],
+        "removed": []
+    },
+    "js": {
+        "added": [],
+        "edited": [],
+        "removed": []
+    }
+}

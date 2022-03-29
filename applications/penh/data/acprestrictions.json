@@ -1,7 +1,11 @@
 {
     "operations": {
         "operation": {
-            "operation_manage": "operation_manage"
+            "operation_manage": "operation_manage",
+            "operations_add": "operations_add",
+            "operations_delete": "operations_delete",
+            "operations_edit": "operations_edit",
+            "operations_permissions": "operations_permissions"
         },
         "settings": {
             "settings_manage": "settings_manage"

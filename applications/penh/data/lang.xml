@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <language>
- <app key="penh" version="10022">
+ <app key="penh" version="10024">
   <word key="__app_penh" js="0">PERSCOM Enhanced</word>
   <word key="module__penh_operations" js="0">Operations</word>
   <word key="module__penh_attendance" js="0">Attendance</word>
@@ -12,6 +12,12 @@
   <word key="menu__penh_operations" js="0">Operations</word>
   <word key="menu__penh_operations_operation" js="0">Operations</word>
   <word key="menu__penh_operations_settings" js="0">Settings</word>
+  <word key="r__operation" js="0">Operations</word>
+  <word key="r__operation_manage" js="0">Manage Operations</word>
+  <word key="r__operations_add" js="0">Create Operations</word>
+  <word key="r__operations_edit" js="0">Edit Operations</word>
+  <word key="r__operations_delete" js="0">Delete Operations</word>
+  <word key="r__operations_permissions" js="0">Manage Permissions</word>
   <word key="penh_operations_settings_tab" js="0">Operation settings</word>
   <word key="penh_operations_settings" js="0">Operations Configuration</word>
   <word key="penh_operations_content" js="0">Operations content</word>

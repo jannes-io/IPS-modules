@@ -39,7 +39,7 @@ class penh_hook_ServiceRecordCitation extends _HOOK_CLASS_
         return $form;
     }
 
-    public static function addCitationToLastRecord(int $soldierId, string $citationText): void
+    public static function addCitationToLastRecord($soldierId, $citationText)
     {
         $records = iterator_to_array(\IPS\Db::i()->select(
             'service_records_id',
@@ -59,7 +59,7 @@ class penh_hook_ServiceRecordCitation extends _HOOK_CLASS_
         $citation->save();
     }
 
-    public function get_citation(): ?string
+    public function get_citation()
     {
         try {
             $citation = \IPS\penh\Records\ServiceRecordCitation::load($this->id);

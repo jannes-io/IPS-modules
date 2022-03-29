@@ -18,6 +18,14 @@ $lang = array(
     'menu__penh_operations_operation' => 'Operations',
     'menu__penh_operations_settings' => 'Settings',
 
+    // ACP Restrictions
+    'r__operation' => 'Operations',
+    'r__operation_manage' => 'Manage Operations',
+    'r__operations_add' => 'Create Operations',
+    'r__operations_edit' => 'Edit Operations',
+    'r__operations_delete' => 'Delete Operations',
+    'r__operations_permissions' => 'Manage Permissions',
+
     // Settings
     'penh_operations_settings_tab' => 'Operation settings',
     'penh_operations_settings' => 'Operations Configuration',
