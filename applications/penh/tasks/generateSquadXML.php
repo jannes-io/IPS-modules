@@ -65,7 +65,7 @@ class _generateSquadXML extends \IPS\Task
         $personnel = \IPS\perscom\Personnel\Soldier::roots();
         foreach ($personnel as $soldier) {
             $playerId = $soldier->$pidColumn;
-            if (empty($playerId)) {
+            if (empty($playerId) || !is_numeric($playerId)) {
                 continue;
             }
 
