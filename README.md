@@ -1,4 +1,4 @@
-# Corps Of Engineers IPS modules.
+# Custom IPS applications.
 This monorepo contains several IPS applications as well as a useful script to run 3rd party applications in "IN_DEV" mode.
 
 # License
